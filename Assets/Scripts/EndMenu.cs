@@ -18,7 +18,7 @@ public class EndMenu : MonoBehaviour
      void Update()
     {
         //uses the score from level 1 for the end score
-        endScoreText.text = Destroyer.score;
+        //endScoreText.text = Destroyer.score;
 
     }
     public void QuitGame()
