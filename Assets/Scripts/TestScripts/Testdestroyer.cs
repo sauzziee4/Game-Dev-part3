@@ -21,6 +21,7 @@ public class Testdestroyer : MonoBehaviour
         if (GetComponent<Transform>().position.z < player[0].GetComponent<Transform>().position.z)
         {
             
+            
 
             _pointManager.value += _trioPoints;
             Debug.Log(_pointManager.value);

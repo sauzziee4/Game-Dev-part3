@@ -8,8 +8,17 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
+
+    public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance == null) { Instance = this; } else if (Instance != this) { Destroy(this); }
+        DontDestroyOnLoad(gameObject);
+    }
+
     [SerializeField] private GameObject scoreDisplay;
-    int score = 0;  
+     public int score = 0;  
 
     //public Text valText;
     TextMeshProUGUI scoreText;
@@ -23,9 +32,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        scoreText.text = PointsManager.Instance.value.ToString();
+        scoreText.text = GameManager.Instance.score.ToString();
         //Debug.Log(scoreText.text);
         
+
         GoToNextScene();
     }
 
