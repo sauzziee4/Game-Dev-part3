@@ -16,14 +16,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
-        scoreText.text = Pointsmanager.Instance.value.ToString();
+        scoreText.text = PointsManager.Instance.value.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        scoreText.text = Pointsmanager.Instance.value.ToString();
+        scoreText.text = PointsManager.Instance.value.ToString();
+        //Debug.Log(scoreText.text);
         
         GoToNextScene();
     }
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         
 
-        if (Pointsmanager.Instance.value >= 40)
+        if (PointsManager.Instance.value >= 40)
            
 
         {

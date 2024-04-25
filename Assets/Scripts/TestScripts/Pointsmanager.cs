@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pointsmanager : MonoBehaviour
+public class PointsManager : MonoBehaviour
 {
 
-    public static Pointsmanager Instance { get; private set; }
+    public static PointsManager Instance { get; private set; }
 
     public int value = 0;
 
