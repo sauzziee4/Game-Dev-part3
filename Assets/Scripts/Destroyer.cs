@@ -8,6 +8,8 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
 
+    //Outdated
+
     GameObject[] enemylist = null;
     GameObject[] player = null;
     GameObject[] pickUplist = null;

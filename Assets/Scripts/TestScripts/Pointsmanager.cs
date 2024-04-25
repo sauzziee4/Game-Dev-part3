@@ -7,7 +7,7 @@ public class PointsManager : MonoBehaviour
 
     public static PointsManager Instance { get; private set; }
 
-    public int value = 0;
+    //public int value = 0;
 
 
     private void Awake()

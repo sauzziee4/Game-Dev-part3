@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0f)
         {
             // It might be GameManager.Instance.Score += KillReward
-            GameManager.Instance.score += KillReward;
+            //GameManager.Instance.score += KillReward;
             
         }
 
