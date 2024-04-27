@@ -6,6 +6,14 @@ using UnityEngine.UIElements;
 public class Generator : MonoBehaviour
 {
 
+    //GameObject[] player = null;
+    //float playerZ;
+    
+    //float zMax;
+    //public float zMin;
+
+
+
     //used for the obstacles
     public GameObject chair;
     public GameObject stool;
@@ -30,9 +38,24 @@ public class Generator : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
+
     {
+        //player = GameObject.FindGameObjectsWithTag("Player");
         Coroutine EnGen = StartCoroutine(EnemyDrop());
         Coroutine PiGen = StartCoroutine(PickUp());
+        //zMin = 0;
+        //zMax = 0;
+
+    }
+
+    private void Update()
+    {
+        //playerZ = player[0].GetComponent<Transform>().position.z;
+       // zMin = playerZ + 20;
+        //zMax = playerZ + 40;
+       // Debug.Log(zMin);
+       // Debug.Log(zMax);
+
 
     }
 
@@ -86,7 +109,7 @@ public class Generator : MonoBehaviour
         {
             //Generates the postions within the ranges
             xPosE = Random.Range(-5, 6);
-            zPosE = Random.Range(-28, 9);
+            zPosE = Random.Range(0, 5);
             enemyID = Random.Range(1, 4);
 
             //Generates a chair obstacle
