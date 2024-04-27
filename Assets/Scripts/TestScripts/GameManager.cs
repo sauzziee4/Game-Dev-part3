@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
 
 
+    public int enemyCounting;
+    
+
+
     public static GameManager Instance { get; private set; }
 
     void Awake()
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
 
         scoreText.text = GameManager.Instance.score.ToString();
@@ -52,6 +57,25 @@ public class GameManager : MonoBehaviour
             //SceneManager.LoadSceneAsync("Level 2");
         }
     }
+
+    public void EnemySpawn()
+    {
+        enemyCounting += 1;
+        Debug.Log("There are" + enemyCounting);
+        Debug.Log("1 enemy has spawned");
+
+
+    }
+    public void EnemyDeath()
+    {
+        enemyCounting= enemyCounting - 1;
+        Debug.Log("There are" + enemyCounting);
+        Debug.Log("1 enemy has died");
+
+
+
+    }
+
 
 }
 

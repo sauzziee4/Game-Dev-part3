@@ -14,7 +14,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("playercollison");

@@ -9,12 +9,16 @@ public class EnemyHealth : MonoBehaviour
     public int damageTaken = 50;
     public int KillReward = 5;
     GameObject[] player = null;
+    public GameManager gm;
+    
 
 
     private void Awake()
     {
         health = 100;
         player = GameObject.FindGameObjectsWithTag("Player");
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
     }
 
     // Start is called before the first frame update
@@ -29,6 +33,9 @@ public class EnemyHealth : MonoBehaviour
         if (GetComponent<Transform>().position.z < player[0].GetComponent<Transform>().position.z)
         {
             GameManager.Instance.score += KillReward;
+            gm.EnemyDeath();
+            
+
             Destroy(gameObject);
 
 
