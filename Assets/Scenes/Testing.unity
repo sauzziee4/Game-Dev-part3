@@ -457,7 +457,6 @@ MonoBehaviour:
   zMin: 0
   enemyMax: 10
   enemyCount: 0
-  start: -7
 --- !u!1 &522891475
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c257e7679a6fd4892efff041d0afb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCounting: 0
+  totalEnemyCount: 0
   scoreDisplay: {fileID: 1788922913}
   score: 0
 --- !u!4 &533904406
@@ -978,11 +977,9 @@ GameObject:
   - component: {fileID: 1151771771}
   - component: {fileID: 1151771770}
   - component: {fileID: 1151771769}
-  - component: {fileID: 1151771768}
   - component: {fileID: 1151771767}
   - component: {fileID: 1151771773}
   - component: {fileID: 1151771774}
-  - component: {fileID: 1151771775}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -1005,21 +1002,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   player: {fileID: 1151771766}
-  gm: {fileID: 0}
---- !u!114 &1151771768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151771766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1d46ae2c85fce44a93cb93c1458cc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 6
-  jumpForce: 5
+  gm: {fileID: 533904405}
 --- !u!135 &1151771769
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1141,27 +1124,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151771766}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85992b8c4e195204e90c9772400d7463, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c32723ca6b8bbd44b3b557a2de9e011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
---- !u!114 &1151771775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151771766}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c257e7679a6fd4892efff041d0afb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCounting: 0
-  scoreDisplay: {fileID: 1788922913}
-  score: 0
+  movementSpeed: 6
+  jumpForce: 5
 --- !u!1 &1535148120
 GameObject:
   m_ObjectHideFlags: 0
