@@ -12,6 +12,11 @@ public class TestEnemyGen : MonoBehaviour
     public GameManager gm;
     GameObject[] position = null;
 
+    //
+    //GameObject[] boss = null;
+    public GameObject Boss;
+    public bool BossActive = false;
+
     
 
     float zMax;
@@ -27,6 +32,7 @@ public class TestEnemyGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //boss = GameObject.FindGameObjectsWithTag("Boss");
         
         player = GameObject.FindGameObjectsWithTag("Player");
 
@@ -74,6 +80,13 @@ public class TestEnemyGen : MonoBehaviour
 
         }
 
+        if(GameManager.Instance.score> 40)
+        {
+            StartCoroutine(SpawnBoss());
+            
+
+        }
+
     }
     IEnumerator EnemySpawn()
     {
@@ -93,17 +106,33 @@ public class TestEnemyGen : MonoBehaviour
             //when an enemy has spawned the gamemaster it notified
             gm.EnemySpawn();
             
-
-
-
-
+         
 
         }
         
+    }
+    IEnumerator SpawnBoss()
+    {
+        while(BossActive==false)
+        {
+            xPosE = Random.Range(-10, 10);
+            zPosE = Random.Range(zMin, zMax);
+            yPosE=1.5f;
+            Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+            BossActive = true;
+            Debug.Log("boss spawneed");
+        }
+        
+
+       
 
 
+
+
+        yield return new WaitForSeconds(5);
 
     }
+    
     
 
       

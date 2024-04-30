@@ -40,10 +40,20 @@ public class GameManager : MonoBehaviour
         //the value of score is used to show the score
         scoreText.text = GameManager.Instance.score.ToString();
         //Debug.Log(scoreText.text);
-        
 
+        //BossSpawn();
         GoToNextScene();
     }
+
+    ////public void BossSpawn()
+    //{
+        //if (GameManager.Instance.score >= 40)
+       // {
+
+
+        //}
+
+    //}
 
 
     //simply shows if you have won
@@ -55,7 +65,8 @@ public class GameManager : MonoBehaviour
            
 
         {
-            Debug.Log("Victory");
+
+            //Debug.Log("Victory");
             //SceneManager.LoadSceneAsync("Level 2");
         }
     }
@@ -64,8 +75,8 @@ public class GameManager : MonoBehaviour
     public void EnemySpawn()
     {
         totalEnemyCount += 1;
-        Debug.Log("There are" + totalEnemyCount);
-        Debug.Log("1 enemy has spawned");
+        //Debug.Log("There are" + totalEnemyCount);
+       // Debug.Log("1 enemy has spawned");
 
 
     }
@@ -73,8 +84,8 @@ public class GameManager : MonoBehaviour
     public void EnemyDeath()
     {
         totalEnemyCount = totalEnemyCount - 1;
-        Debug.Log("There are" + totalEnemyCount);
-        Debug.Log("1 enemy has died");
+        //Debug.Log("There are" + totalEnemyCount);
+        //Debug.Log("1 enemy has died");
 
 
 
