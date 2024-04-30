@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4768861462306148620}
   - component: {fileID: 1210153056039576856}
   - component: {fileID: 4952018127204050197}
-  - component: {fileID: -8714420887601360652}
   - component: {fileID: 2172822443570088807}
+  - component: {fileID: 3637979295060700633}
   m_Layer: 0
   m_Name: TestBoss
   m_TagString: Boss
@@ -124,22 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   awake: 0
---- !u!114 &-8714420887601360652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758701902456473070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05610fc23015d554a90a581ab1bebbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damageTaken: 50
-  KillReward: 5
-  gm: {fileID: 0}
+  obstacle: {fileID: 1689058927775452654, guid: b67c4fde516db69488b5e97228fa41d6, type: 3}
+  createObstacle: 0
 --- !u!54 &2172822443570088807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,5 +151,17 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3637979295060700633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758701902456473070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0869de79ae08b144b82588658da176d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

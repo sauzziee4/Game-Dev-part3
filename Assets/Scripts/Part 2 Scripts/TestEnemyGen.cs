@@ -120,7 +120,7 @@ public class TestEnemyGen : MonoBehaviour
             yPosE=1.5f;
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
             BossActive = true;
-            Debug.Log("boss spawneed");
+            //Debug.Log("boss spawneed");
         }
         
 

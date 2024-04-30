@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
         //makes it look like the player is died by making them invisble and disabling movement
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerMove2>().enabled = false;
 
         //If the player is dead the next scene which is the end screen is loaded
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
