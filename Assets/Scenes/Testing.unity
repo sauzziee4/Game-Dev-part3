@@ -253,10 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1291390356847284657, guid: 78a5bfa18c0788645b30591059200130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 122450626}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1918568640203918091, guid: 78a5bfa18c0788645b30591059200130, type: 3}
       insertIndex: -1
@@ -386,6 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 122450626}
   - component: {fileID: 122450625}
+  - component: {fileID: 122450627}
   - component: {fileID: 122450624}
   m_Layer: 0
   m_Name: Main Camera
@@ -462,12 +460,26 @@ Transform:
   m_GameObject: {fileID: 122450623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.074685365, y: 2.3060002, z: -5.405856}
+  m_LocalPosition: {x: -0.253, y: 3.0260003, z: -12.188856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 481857789}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &122450627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122450623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9c6d03da58db34283e7f9fa67f23ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 481857781}
+  offsetZ: 10
 --- !u!1 &479199698
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,13 +568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4cded103414bd49a1522efe57b3cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalInput: 0
-  speed: 1000
-  speed2: 5
-  jump: {x: 0, y: 0, z: 0}
-  jumpForce: 100
-  gravityScaleMultiplier: 30
-  laneDistance: 4
+  speed: 30
+  jumpForce: 20
+  gravityScaleMultiplier: 7
 --- !u!54 &481857783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -585,11 +593,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &481857784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,11 +635,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3591479, y: 0.74377775, z: 0.88397694}
   m_Center: {x: 0.27614897, y: 0.37188888, z: -0.27128267}
---- !u!4 &481857789 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1291390356847284657, guid: 78a5bfa18c0788645b30591059200130, type: 3}
-  m_PrefabInstance: {fileID: 85641041}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &522891475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,3 +1418,4 @@ SceneRoots:
   - {fileID: 533904406}
   - {fileID: 1535148121}
   - {fileID: 85641041}
+  - {fileID: 122450626}
