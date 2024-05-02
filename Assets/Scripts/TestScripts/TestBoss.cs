@@ -6,13 +6,16 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class TestBoss : MonoBehaviour 
 {
     public float _speed = 1f;
+
     float Spawnz;
     float Spawnx;
     public bool awake = false;
+
     float playerZ;
     float playerX;
     float playerY;
     float obstacleZ;
+
     GameObject[] player = null;
     float distanceDifferent;
 
@@ -66,22 +69,27 @@ public class TestBoss : MonoBehaviour
 
 
     }
+    //The boss simply moves forward
     void Movement()
     {
         transform.Translate(Vector3.forward * _speed* Time.deltaTime);
     }
+    //used to spwawn oibstacles in front of the player
     IEnumerator ObstacleSpawn()
     {
 
-        //new WaitForSeconds(5);
 
-        //while (obstacleCount<obstacleMax)
         
+            //fetches the players position
             playerZ = player[0].GetComponent<Transform>().position.z;
             playerX = player[0].GetComponent<Transform>().position.x;
             playerY = player[0].GetComponent<Transform>().position.y;
             bossZ = GetComponent<Transform>().position.z;
-            distanceDifferent = bossZ - playerZ;
+
+        
+            //distanceDifferent = bossZ - playerZ;
+            
+            //spawns the obstacle 5 feet in front of the player
             obstacleZ = playerZ + 5F;
             
             Debug.Log("in obstacle spawn");

@@ -12,8 +12,8 @@ public class TestEnemyGen : MonoBehaviour
     public GameManager gm;
     GameObject[] position = null;
 
-    //
-    //GameObject[] boss = null;
+    
+    
     public GameObject Boss;
     public bool BossActive = false;
 
@@ -23,7 +23,11 @@ public class TestEnemyGen : MonoBehaviour
     public float zMin;
 
     public float enemyMax;
+
+    //Enemy positions
+    float xPosEID;
     float xPosE;
+
     float zPosE;
     float yPosE;
      public float enemyCount;
@@ -54,23 +58,17 @@ public class TestEnemyGen : MonoBehaviour
 
 
 
-        //If the player has moved past the starting position the enmies spawn normally
-        if (position[0].GetComponent<Transform>().position.z < playerZ)
-        {
-            zMin = playerZ + 20;
-            zMax = playerZ + 40;
-            //Debug.Log("player has moved");
+       
+           
 
-        }
-        //if the player is in the starting position the enemies spawn closer, this is so the enmies dont spawn to far in front of the player before the levels have started to generate
-        else
-        {
+       
+        
             zMin = playerZ + 10;
             zMax = playerZ + 20;
             //Debug.Log("player spawned");
 
 
-        }
+        
         
         //compares the actual amount of enemies to the local enemycount varaible
         if(gm.totalEnemyCount < enemyCount)
@@ -95,7 +93,21 @@ public class TestEnemyGen : MonoBehaviour
         while (enemyCount < enemyMax)
         {
 
-            xPosE = Random.Range(-10, 10);
+            //basic spawning between three lanes
+            xPosEID = Random.Range(0, 3);
+            if (xPosEID == 0)
+            {
+                xPosE = -3;
+
+            }
+            if (xPosEID == 1)
+            {
+                xPosE = 0;
+            }
+            else
+            {
+                xPosE = 3;
+            }
             zPosE = Random.Range(zMin, zMax);
             //Debug.Log(enemyCount);
             //Debug.Log(enemyMax);

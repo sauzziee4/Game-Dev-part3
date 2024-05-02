@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8996641741950832215}
   - component: {fileID: 8847088785258381797}
   - component: {fileID: 8841053334855966429}
-  - component: {fileID: 5456330416121271073}
+  - component: {fileID: 1532904876327533028}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -125,6 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damageTaken: 50
+  KillReward: 5
+  gm: {fileID: 0}
 --- !u!114 &2710033496684790204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85992b8c4e195204e90c9772400d7463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5456330416121271073
+  scoreText: {fileID: 0}
+--- !u!114 &1532904876327533028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,6 +205,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8589295633850022690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820d32f79942c264bac4676febd7d4d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f94ed67c63c36249b4f0c84555ebea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

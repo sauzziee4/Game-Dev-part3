@@ -60,32 +60,32 @@
     <Analyzer Include="D:\2022.3.21f1-x86_64\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Part 2 Scripts\Pointsmanager.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\StartMenu.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\TestScripts\TestObstacle.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\GameManager.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\TestEnemyGen.cs" />
-    <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerControl2.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerLife.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\EndMenu.cs" />
     <Compile Include="Assets\Scripts\TestScripts\TestBoss.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\FollowPlayer.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\Destroyer.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\BackgroundDestroy.cs" />
     <Compile Include="Assets\Scripts\TestScripts\EnemyDeath.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\Pointsmanager.cs" />
+    <Compile Include="Assets\Scripts\TestScripts\GenerateLevel.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\Generator.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\Testdestroyer.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\GenerateLevel.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\PlayMove2.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\BackgroundDestroy.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Player\PlayerControl2.cs" />
     <Compile Include="Assets\Scripts\TestScripts\EnemyController.cs" />
-    <Compile Include="Assets\Scripts\SectionTrigger.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\PlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\ObjectMove.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\ObjectMove.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\SectionTrigger.cs" />
+    <Compile Include="Assets\Scripts\TestScripts\PlayMove2.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\TestScripts\Testdestroyer.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\ItemCollector.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Player\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\TestScripts\HitPlayer.cs" />
   </ItemGroup>
   <ItemGroup>

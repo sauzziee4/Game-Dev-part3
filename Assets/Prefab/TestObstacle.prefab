@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3952046732480169270}
   - component: {fileID: 6156419495706286822}
   - component: {fileID: 1964363380898867485}
+  - component: {fileID: 1155096455944642058}
   m_Layer: 0
   m_Name: TestObstacle
   m_TagString: Obstacle
@@ -166,3 +167,15 @@ MonoBehaviour:
   player: {fileID: 0}
   playerHealth: {fileID: 0}
   canAttack: 0
+--- !u!114 &1155096455944642058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689058927775452654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f94ed67c63c36249b4f0c84555ebea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
