@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
 
     public int totalEnemyCount;
-    public bool playerLive=false;
+    public bool playerLive;
     public bool objectMovement = true;
     
     
@@ -85,12 +85,18 @@ public class GameManager : MonoBehaviour
     public void PlayerSpawn()
     {
         playerLive=true;
+        Debug.Log("Player is alive");
+        Debug.Log(playerLive);
+
 
     }
     public void PlayerDeath()
     {
+        //the player has died so objects shoudl stop moving
         playerLive = false;
-        Debug.Log(playerLive);
+        objectMovement = false;
+        //Debug.Log("Player is dead");
+        //Debug.Log(playerLive);
 
 
     }

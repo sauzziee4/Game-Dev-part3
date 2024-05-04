@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        
+        gm.PlayerSpawn();
         
 
     }
@@ -55,15 +55,15 @@ public class PlayerHealth : MonoBehaviour
         {
             
             currentHealth = 0;
-           
-            
+            gm.PlayerDeath();
 
-            
-            
-            
-            
-            Die();
-            //Destroy(gameObject);
+
+
+
+
+
+            //Die();
+            Destroy(gameObject);
 
 
             //Debug.Log("Player died");
@@ -77,6 +77,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<PlayerMove2>().enabled = false;
+        gm.PlayerDeath();
         
 
         //If the player is dead the next scene which is the end screen is loaded
