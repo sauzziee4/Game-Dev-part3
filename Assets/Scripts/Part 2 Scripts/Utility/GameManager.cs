@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
 
     public int totalEnemyCount;
+    public bool playerLive=false;
+    public bool objectMovement = true;
     
     
 
@@ -77,6 +79,18 @@ public class GameManager : MonoBehaviour
         //Debug.Log("There are" + totalEnemyCount);
         //Debug.Log("1 enemy has died");
 
+
+
+    }
+    public void PlayerSpawn()
+    {
+        playerLive=true;
+
+    }
+    public void PlayerDeath()
+    {
+        playerLive = false;
+        Debug.Log(playerLive);
 
 
     }
