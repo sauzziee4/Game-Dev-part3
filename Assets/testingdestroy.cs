@@ -24,6 +24,7 @@ public class testingdestroy : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             GameManager.Instance.score += KillReward;
+            GameManager.Instance.enemyDeaths += 1;
             gm.EnemyDeath();
             Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);

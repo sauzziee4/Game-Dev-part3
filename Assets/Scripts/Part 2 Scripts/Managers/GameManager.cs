@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int totalEnemyCount;
     public bool playerLive;
     public bool bossDeath;
+    public int enemyDeaths;
     
     
     
@@ -26,21 +27,37 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    //shows the score
     [SerializeField] private GameObject scoreDisplay;
      public int score = 0;
 
-    [SerializeField] private GameObject StageDisplay;
+    //shows the stage
+    [SerializeField] private GameObject stageDisplay;
     public int stage = 0;
+
+    //shows how many enemies we have killed
+    [SerializeField] private GameObject enemyKillsDisplay;
+    public int kills = 0;
+    
+    //shows how many enemies are alive
+    [SerializeField] private GameObject currentEnemiesDisplay;
+    public int currentEnemies = 0;
 
 
     //public Text valText;
     TextMeshProUGUI scoreText;
 
     TextMeshProUGUI stageText;
+
+    TextMeshProUGUI enemykillsText;
+
+    TextMeshProUGUI currentenemiesText;
     void Start()
     {
         scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
-        stageText=StageDisplay.GetComponent<TextMeshProUGUI>();
+        stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
+        currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
+        enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
         
     }
 
@@ -49,8 +66,10 @@ public class GameManager : MonoBehaviour
 
     {
         //the value of score is used to show the score
-        scoreText.text ="Score :" +GameManager.Instance.score.ToString();
-        stageText.text ="Stage :"+ GameManager.Instance.stage.ToString();
+        scoreText.text ="Score : " +GameManager.Instance.score.ToString();
+        stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
+        enemykillsText.text ="Enemies defeated : " + GameManager.Instance.enemyDeaths.ToString();
+        currentenemiesText.text ="Current enemies: " + GameManager.Instance.totalEnemyCount.ToString();
         //Debug.Log(scoreText.text);
 
         //BossSpawn();
@@ -99,6 +118,7 @@ public class GameManager : MonoBehaviour
     public void EnemyDeath()
     {
         totalEnemyCount = totalEnemyCount - 1;
+        
         //Debug.Log("There are" + totalEnemyCount);
         //Debug.Log("1 enemy has died");
 
