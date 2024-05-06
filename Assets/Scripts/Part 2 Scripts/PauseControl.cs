@@ -7,13 +7,17 @@ public class PauseControl : MonoBehaviour
     public static bool gameIsPaused;
     public static bool PauseMenu;
     // Start is called before the first frame update
+
+    
     void Start()
     {
         
     }
     private void Awake()
     {
-        Debug.Log("pause control is live");
+        //does this reset the score on a new game
+        
+
     }
 
     // Update is called once per frame

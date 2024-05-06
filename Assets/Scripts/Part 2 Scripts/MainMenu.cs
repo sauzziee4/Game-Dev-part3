@@ -9,7 +9,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField]  GameObject menuD;
     TextMeshProUGUI menuSDText;
     public GameManager gm;
+
+    
     // Start is called before the first frame update
+
+
+    private void Awake()
+    {
+        //does this reset the score on a new game
+       
+
+    }
     void Start()
     {
         menuD.SetActive(false);
