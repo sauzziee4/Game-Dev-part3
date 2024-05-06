@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestBoss : MonoBehaviour 
 {
-    public float _speed = 1f;
+    public float _speed = 0.2f;
 
     float Spawnz;
     float Spawnx;
@@ -27,6 +27,8 @@ public class TestBoss : MonoBehaviour
 
     public bool createObstacle = false;
 
+    public GameManager gm;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +41,9 @@ public class TestBoss : MonoBehaviour
         Spawnx=GetComponent<Transform>().position.x;
         Spawnz=GetComponent<Transform>().position.z;
         awake = true;
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         //GameObject[] playerObject = GameObject.FindGameObjectsWithTag("Player");
-        
+
 
 
     }
@@ -64,7 +67,14 @@ public class TestBoss : MonoBehaviour
             
 
         }
-      
+        if ((GetComponent<Transform>().position.y <= -25))
+        {
+            gm.BossDeath();
+            Destroy(gameObject);
+        }
+
+
+
 
 
 

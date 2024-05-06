@@ -16,6 +16,7 @@ public class TestEnemyGen : MonoBehaviour
     
     public GameObject Boss;
     public bool BossActive = false;
+    
 
     
 
@@ -78,7 +79,7 @@ public class TestEnemyGen : MonoBehaviour
 
         }
 
-        if(GameManager.Instance.score> 40)
+        if(GameManager.Instance.stage==1)
         {
             StartCoroutine(SpawnBoss());
             
@@ -132,6 +133,7 @@ public class TestEnemyGen : MonoBehaviour
             yPosE=1.5f;
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
             BossActive = true;
+            gm.BossSpawn();
             //Debug.Log("boss spawneed");
         }
         

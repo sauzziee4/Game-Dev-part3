@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool playerLive;
+    public bool bossDeath;
     
     
     
@@ -26,13 +27,20 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject scoreDisplay;
-     public int score = 0;  
+     public int score = 0;
+
+    [SerializeField] private GameObject StageDisplay;
+    public int stage = 0;
+
 
     //public Text valText;
     TextMeshProUGUI scoreText;
+
+    TextMeshProUGUI stageText;
     void Start()
     {
         scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
+        stageText=StageDisplay.GetComponent<TextMeshProUGUI>();
         
     }
 
@@ -41,11 +49,26 @@ public class GameManager : MonoBehaviour
 
     {
         //the value of score is used to show the score
-        scoreText.text = GameManager.Instance.score.ToString();
+        scoreText.text ="Score :" +GameManager.Instance.score.ToString();
+        stageText.text ="Stage :"+ GameManager.Instance.stage.ToString();
         //Debug.Log(scoreText.text);
 
         //BossSpawn();
-        GoToNextScene();
+        NextStage();
+    }
+    public void NextStage()
+    {
+        //once the player has reached 40 score we go the stage once where the boss will be spawned
+        if (GameManager.Instance.score == 40)
+        {
+            GameManager.Instance.stage = 1;
+            
+        }
+        //once the boss is defeated we go to stage 2
+        if (GameManager.Instance.bossDeath ==true)
+        {
+            GameManager.Instance.stage = 2;
+        }
     }
 
     
@@ -98,6 +121,17 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Player is dead");
         //Debug.Log(playerLive);
 
+
+    }
+    public void BossSpawn()
+    {
+        bossDeath = false;
+        
+
+    }
+    public void BossDeath()
+    {
+        bossDeath=true;
 
     }
 
