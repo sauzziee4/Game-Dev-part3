@@ -127,7 +127,7 @@ public class TestEnemyGen : MonoBehaviour
     {
         while(BossActive==false)
         {
-            xPosE = Random.Range(-10, 10);
+            xPosE = 0f;
             zPosE = Random.Range(zMin, zMax);
             yPosE=1.5f;
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
