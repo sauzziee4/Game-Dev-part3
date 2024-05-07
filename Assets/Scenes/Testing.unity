@@ -1156,12 +1156,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
+  enemyCount: 0
+  enemyMax: 10
   gm: {fileID: 533904405}
   Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
   BossActive: 0
   zMin: 0
-  enemyMax: 5
-  enemyCount: 0
+  creatingEnemy: 0
 --- !u!1 &619585777
 GameObject:
   m_ObjectHideFlags: 0

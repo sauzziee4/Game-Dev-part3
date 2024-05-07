@@ -23,6 +23,12 @@ public class EnemyAttack : MonoBehaviour
             //could just use the attack method
             CanAttackPlayer();
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("collidided with another enemy");
+            Destroy(this.gameObject);
+
+        }
 
 
     }

@@ -136,8 +136,8 @@ public class GameManager : MonoBehaviour
     public void PlayerSpawn()
     {
         playerLive=true;
-        Debug.Log("Player is alive");
-        Debug.Log(playerLive);
+        //Debug.Log("Player is alive");
+        //Debug.Log(playerLive);
 
 
     }
