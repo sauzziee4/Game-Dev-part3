@@ -79,7 +79,7 @@ public class TestEnemyGen : MonoBehaviour
 
         }
 
-        if(GameManager.Instance.stage==1)
+        if(GameManager.Instance.stage==2)
         {
             StartCoroutine(SpawnBoss());
             

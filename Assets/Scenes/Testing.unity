@@ -699,7 +699,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479199700}
-  - component: {fileID: 479199701}
   m_Layer: 0
   m_Name: Utility
   m_TagString: Untagged
@@ -722,25 +721,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &479199701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479199698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa017be1c6d43d44997ca9623cf1982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
-  gm: {fileID: 533904405}
-  Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
-  BossActive: 0
-  zMin: 0
-  enemyMax: 5
-  enemyCount: 0
 --- !u!1 &481857781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1918568640203918091, guid: 78a5bfa18c0788645b30591059200130, type: 3}
@@ -1090,6 +1070,7 @@ GameObject:
   - component: {fileID: 533904405}
   - component: {fileID: 533904407}
   - component: {fileID: 533904408}
+  - component: {fileID: 533904409}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GM
@@ -1162,6 +1143,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuD: {fileID: 619585777}
   gm: {fileID: 533904405}
+--- !u!114 &533904409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa017be1c6d43d44997ca9623cf1982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
+  gm: {fileID: 533904405}
+  Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
+  BossActive: 0
+  zMin: 0
+  enemyMax: 5
+  enemyCount: 0
 --- !u!1 &619585777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 899674347}
   - component: {fileID: 899674350}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ReloadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1490,8 +1490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuD: {fileID: 0}
-  gm: {fileID: 0}
+  menuD: {fileID: 619585777}
+  gm: {fileID: 533904405}
 --- !u!1 &942067668
 GameObject:
   m_ObjectHideFlags: 0

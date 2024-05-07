@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
         PauseControl.gameIsPaused = false;
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        menuD.SetActive(false);
         //Time.timeScale = 1f;
         //PauseControl.gameIsPaused=false;
     }

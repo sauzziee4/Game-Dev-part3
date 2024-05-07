@@ -23,8 +23,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //ensures there id only one gamemanger class ata time
-        if (Instance == null) { Instance = this; } else if (Instance != this) { Destroy(this); }
+        if (Instance == null) 
+        {
+            Instance = this; 
+        }
+        else if (Instance != this) 
+        { 
+            Destroy(this);
+        }
         DontDestroyOnLoad(gameObject);
+        stage = 1;
     }
 
     //shows the score
@@ -80,13 +88,13 @@ public class GameManager : MonoBehaviour
         //once the player has reached 40 score we go the stage once where the boss will be spawned
         if (GameManager.Instance.score == 40)
         {
-            GameManager.Instance.stage = 1;
+            GameManager.Instance.stage = 2;
             
         }
         //once the boss is defeated we go to stage 2
         if (GameManager.Instance.bossDeath ==true)
         {
-            GameManager.Instance.stage = 2;
+            GameManager.Instance.stage = 3;
         }
     }
 
