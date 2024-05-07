@@ -11,6 +11,8 @@ public class EnemyAttack : MonoBehaviour
     public PlayerHealth playerHealth;
     public bool canAttack = false;
 
+    public GameManager gm;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,8 +27,10 @@ public class EnemyAttack : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            
             Debug.Log("collidided with another enemy");
             Destroy(this.gameObject);
+            //gm.EnemyDeath();
 
         }
 
@@ -48,6 +52,7 @@ public class EnemyAttack : MonoBehaviour
                 playerHealth = pl.GetComponent<PlayerHealth>();
             }
         }
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
 
     }
@@ -55,7 +60,8 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame

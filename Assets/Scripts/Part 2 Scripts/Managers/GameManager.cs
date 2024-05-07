@@ -13,10 +13,7 @@ public class GameManager : MonoBehaviour
     public bool playerLive;
     public bool bossDeath;
     public int enemyDeaths;
-    
-    
-    
-
+   
 
     public static GameManager Instance { get; private set; }
 
@@ -76,9 +73,10 @@ public class GameManager : MonoBehaviour
         //the value of score is used to show the score
         scoreText.text ="Score : " +GameManager.Instance.score.ToString();
         stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
-        enemykillsText.text ="Enemies defeated : " + GameManager.Instance.enemyDeaths.ToString();
-        currentenemiesText.text ="Current enemies: " + GameManager.Instance.totalEnemyCount.ToString();
+        enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
+        //currentenemiesText.text ="Current enemies: " + GameManager.Instance.to.ToString();
         //Debug.Log(scoreText.text);
+       
 
         //BossSpawn();
         NextStage();
@@ -116,7 +114,10 @@ public class GameManager : MonoBehaviour
     //handles an enemy being spawned, if an enemy is spawned the enemy count is increased by 1
     public void EnemySpawn()
     {
-        totalEnemyCount += 1;
+        //EnemyCount();
+        
+        
+            
         //Debug.Log("There are" + totalEnemyCount);
        // Debug.Log("1 enemy has spawned");
 
@@ -125,8 +126,8 @@ public class GameManager : MonoBehaviour
     //handles the enemy being killed, if an enemy dies the enemy count is reduced by 1
     public void EnemyDeath()
     {
-        totalEnemyCount = totalEnemyCount - 1;
-        
+       
+
         //Debug.Log("There are" + totalEnemyCount);
         //Debug.Log("1 enemy has died");
 
@@ -162,6 +163,7 @@ public class GameManager : MonoBehaviour
         bossDeath=true;
 
     }
+   
 
 
 }
