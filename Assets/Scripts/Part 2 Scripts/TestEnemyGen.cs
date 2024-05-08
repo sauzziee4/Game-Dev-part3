@@ -10,11 +10,14 @@ public class TestEnemyGen : MonoBehaviour
     float playerZ;
 
     //for the enemy
-    public GameObject Enemy;
+    public GameObject Enemy1;
+    public GameObject Enemy2;
+    public GameObject Enemy3;
+    public GameObject Enemy4;
+    float enemyID;
+
     //Enemy positions
     float xPosEID;
-
-
     float xPosE;
     float zPosE;
     float yPosE;
@@ -134,7 +137,28 @@ public class TestEnemyGen : MonoBehaviour
             //if the position crated is not in the map then that postiton is used to generate a enemy
             if (!positions.Contains(posti))
             {
-                Instantiate(Enemy, posti, Quaternion.identity);
+                enemyID=Random.Range(0, 4);
+                if (enemyID == 0)
+                {
+                    Instantiate(Enemy1, posti, Quaternion.identity);
+
+                }
+                if (enemyID==1)
+                {
+                    Instantiate(Enemy2, posti, Quaternion.identity);
+
+                }
+                if (enemyID==2)
+                {
+                    Instantiate(Enemy3, posti, Quaternion.identity);
+
+                }
+                if(enemyID==3)
+                {
+                    Instantiate(Enemy4, posti, Quaternion.identity);
+
+                }
+                
 
                //Debug.Log(posti.ToString());
 

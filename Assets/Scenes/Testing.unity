@@ -1067,6 +1067,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2368102130556676096, guid: 66275bf2728d7234fa500f2fd7828eed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368102130556676096, guid: 66275bf2728d7234fa500f2fd7828eed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1216,7 +1220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa017be1c6d43d44997ca9623cf1982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
+  Enemy1: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
+  Enemy2: {fileID: 8589295633850022690, guid: 4f51030dc91342b469cac19d297a8550, type: 3}
+  Enemy3: {fileID: 8589295633850022690, guid: eb080e738ad85d347a0469094ee3eb2b, type: 3}
+  Enemy4: {fileID: 8589295633850022690, guid: fab964dbd8442c548876692b3e39b47e, type: 3}
   enemyCount: 0
   enemyMax: 4
   stage2Enemymax: 0
@@ -2058,6 +2065,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2368102130556676096, guid: 66275bf2728d7234fa500f2fd7828eed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2368102130556676096, guid: 66275bf2728d7234fa500f2fd7828eed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
