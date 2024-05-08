@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestBoss : MonoBehaviour 
 {
-    public float _speed = 0.2f;
+    public float _speed = 0.05f;
 
     float Spawnz;
     float Spawnx;
@@ -82,7 +82,8 @@ public class TestBoss : MonoBehaviour
     //The boss simply moves forward
     void Movement()
     {
-        transform.Translate(Vector3.forward * _speed* Time.deltaTime);
+        transform.position += new Vector3(0, 0, -1) * Time.deltaTime;
+        //transform.Translate(Vector3.forward * _speed* Time.deltaTime);
     }
     //used to spwawn oibstacles in front of the player
     IEnumerator ObstacleSpawn()

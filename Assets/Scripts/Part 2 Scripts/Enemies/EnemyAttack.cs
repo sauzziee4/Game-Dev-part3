@@ -33,6 +33,12 @@ public class EnemyAttack : MonoBehaviour
             //gm.EnemyDeath();
 
         }
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("collided with obstacle");
+            Destroy(this.gameObject);    
+
+        }
 
 
     }

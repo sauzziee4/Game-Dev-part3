@@ -9,6 +9,7 @@ public class SectionTrigger : MonoBehaviour
     
     public GameObject[] roadSection;
     public int secNum;
+    int platformCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +17,19 @@ public class SectionTrigger : MonoBehaviour
         secNum = Random.Range(0, 3);
         if (other.gameObject.CompareTag("Trigger"))
         {
-            Instantiate(roadSection[secNum], new Vector3(0, 0, 14), Quaternion.identity);
+            if (platformCount == 0)
+            {
+                Instantiate(roadSection[secNum], new Vector3(0, 0, 40), Quaternion.identity);
+                platformCount++;
+
+            }
+            else
+            {
+                Instantiate(roadSection[secNum], new Vector3(0, 0, 18), Quaternion.identity);
+                platformCount++;
+
+            }
+            
         }
 
         
