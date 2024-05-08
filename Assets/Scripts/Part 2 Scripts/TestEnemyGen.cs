@@ -21,6 +21,7 @@ public class TestEnemyGen : MonoBehaviour
 
     public float enemyCount;
     public float enemyMax;
+    public float stage2Enemymax;
 
 
    
@@ -31,12 +32,12 @@ public class TestEnemyGen : MonoBehaviour
     
     //for the boss
     public GameObject Boss;
-    public bool BossActive = false;
+     bool BossActive = false;
     
 
 
     float zMax;
-    public float zMin;
+    float zMin;
 
 
     //public Vector3[] spawns;
@@ -45,9 +46,7 @@ public class TestEnemyGen : MonoBehaviour
     //a hash map, 
     private HashSet<Vector3> positions;
 
-    public bool creatingEnemy = false;
-
-    public int i;
+    
 
 
 
@@ -59,16 +58,10 @@ public class TestEnemyGen : MonoBehaviour
         //boss = GameObject.FindGameObjectsWithTag("Boss");
         
         player = GameObject.FindGameObjectsWithTag("Player");
-
-        
-
         Coroutine EnGene = StartCoroutine(EnemySpawn());
-
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        //position = GameObject.FindGameObjectsWithTag("utility");
-        //Coroutine PiGen = StartCoroutine(PickUp());
+        stage2Enemymax = enemyMax - 2;
        
-
     }
     private void Awake()
     {
@@ -84,36 +77,29 @@ public class TestEnemyGen : MonoBehaviour
         playerZ = player[0].GetComponent<Transform>().position.z;
 
 
-            zMin = playerZ + 10;
-            zMax = playerZ + 20;
-            //Debug.Log("player spawned");
+        zMin = playerZ + 10;
+        zMax = playerZ + 20;
+            
 
         //compares the actual amount of enemies to the local enemycount varaible
         
-        
-            
+        if(GameManager.Instance.stage==1)
+        {
             StartCoroutine(EnemySpawn());
 
-        
-
+        }
+         
         if(GameManager.Instance.stage==2)
         {
+            enemyMax = stage2Enemymax;
+            StartCoroutine(EnemySpawn());
             StartCoroutine(SpawnBoss());
             
-
         }
 
         
-        
-
     }
-    public void EnemyCount()
-    {
-        
-        
-
-
-    }
+    
     IEnumerator EnemySpawn()
     {
        new WaitForSeconds(5);

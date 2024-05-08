@@ -27,7 +27,7 @@ public class ObjectMove : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(0, 0, -2) * Time.deltaTime;
+            transform.position += new Vector3(0, 0, -4) * Time.deltaTime;
 
         }
 
