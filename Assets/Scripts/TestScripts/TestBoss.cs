@@ -104,7 +104,7 @@ public class TestBoss : MonoBehaviour
             obstacleZ = playerZ + 5F;
             
             //Debug.Log("in obstacle spawn");
-            Instantiate(obstacle,new Vector3(playerX,playerY,obstacleZ), Quaternion.identity);
+            Instantiate(obstacle,new Vector3(playerX,1,obstacleZ), Quaternion.identity);
             obstacleCount++;
             yield return new WaitForSeconds(2);
             createObstacle = false;

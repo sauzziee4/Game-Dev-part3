@@ -11,13 +11,17 @@ public class TestEnemyGen : MonoBehaviour
 
     //for the enemy
     public GameObject Enemy1;
+    float e1Count;
     public GameObject Enemy2;
+    float e2Count;
     public GameObject Enemy3;
+    float e3count;
     public GameObject Enemy4;
+    float e4Count;
     float enemyID;
 
     //Enemy positions
-    float xPosEID;
+    float xPosID;
     float xPosE;
     float zPosE;
     float yPosE;
@@ -88,19 +92,101 @@ public class TestEnemyGen : MonoBehaviour
         
         if(GameManager.Instance.stage==1)
         {
-            StartCoroutine(EnemySpawn());
+            StartCoroutine(EnemySpawn2());
 
         }
          
         if(GameManager.Instance.stage==2)
         {
             enemyMax = stage2Enemymax;
-            StartCoroutine(EnemySpawn());
+            StartCoroutine(EnemySpawn2());
             StartCoroutine(SpawnBoss());
             
         }
 
         
+    }
+    IEnumerator EnemySpawn2()
+    {
+        while (enemylist.Length < enemyMax)
+        {
+           
+
+            //These values are not dependent on the type of enemy
+            zPosE = Random.Range(zMin, zMax);
+            xPosID = Random.Range(0, 3);
+            if (xPosID == 0)
+            {
+                xPosE = -3f;
+
+            }
+            if (xPosID == 1)
+            {
+                xPosE = 0f;
+            }
+            else if (xPosID == 2)
+            {
+                xPosE = 3f;
+            }
+            yPosE = 1;
+
+            enemyID = Random.Range(0, 4);
+
+            if (enemyID == 0)
+            {
+                
+                Instantiate(Enemy1, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+                //e1Count++;
+            }
+            if (enemyID == 1)
+            {
+              
+                xPosID = Random.Range(0, 2);
+                if (xPosID == 0)
+                {
+                    xPosE = -3f;
+
+                }
+                if (xPosID == 1)
+                {
+                    xPosE = 3f;
+                }
+               
+                Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+                //e2Count++;
+
+            }
+            if (enemyID == 2)
+            {
+                yPosE = 2;
+                //posti = new Vector3(xPosE, 2, zPosE);
+                Instantiate(Enemy3, new Vector3(xPosE,yPosE,zPosE), Quaternion.identity);
+                //e3count++;
+
+            }
+            if (enemyID == 3)
+            {
+                Instantiate(Enemy4, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+                //e4Count++;
+            }
+            yield return new WaitForSeconds(0.1f);
+            enemyCount++;
+            //Debug.Log(enemyCount);
+            //when an enemy has spawned the gamemaster it notified
+            gm.EnemySpawn();
+
+            
+            enemylist = GameObject.FindGameObjectsWithTag("Enemy");
+            enemyCount = enemylist.Length;
+
+
+        }
+
+
+
+
+        yield return new WaitForSeconds(0.1f);
+
     }
     
     IEnumerator EnemySpawn()
@@ -111,20 +197,23 @@ public class TestEnemyGen : MonoBehaviour
 
         while (enemylist.Length < enemyMax)
         {
+
+            enemyID = Random.Range(0, 4);
             //Debug.Log(enemylist.Length);
 
+
             //basic spawning between three lanes
-            xPosEID = Random.Range(0, 3);
-            if (xPosEID == 0)
+            xPosID = Random.Range(0, 3);
+            if (xPosID == 0)
             {
                 xPosE = -3f;
 
             }
-            if (xPosEID == 1)
+            if (xPosID == 1)
             {
                 xPosE = 0f;
             }
-            else if (xPosEID == 2)
+            else if (xPosID == 2)
             {
                 xPosE = 3f;
             }
@@ -135,9 +224,9 @@ public class TestEnemyGen : MonoBehaviour
             posti = new Vector3(xPosE, 1, zPosE);
             
             //if the position crated is not in the map then that postiton is used to generate a enemy
-            if (!positions.Contains(posti))
-            {
-                enemyID=Random.Range(0, 4);
+            //if (!positions.Contains(posti))
+            //{
+                
                 if (enemyID == 0)
                 {
                     Instantiate(Enemy1, posti, Quaternion.identity);
@@ -150,6 +239,7 @@ public class TestEnemyGen : MonoBehaviour
                 }
                 if (enemyID==2)
                 {
+                    posti =new Vector3(xPosE,2, zPosE);
                     Instantiate(Enemy3, posti, Quaternion.identity);
 
                 }
@@ -172,7 +262,7 @@ public class TestEnemyGen : MonoBehaviour
                 enemylist = GameObject.FindGameObjectsWithTag("Enemy");
                 enemyCount =enemylist.Length;
 
-            }
+            //}
             //Debug.Log(xPosE);
 
         }
