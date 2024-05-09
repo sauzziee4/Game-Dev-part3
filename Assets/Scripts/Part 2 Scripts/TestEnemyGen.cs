@@ -59,6 +59,9 @@ public class TestEnemyGen : MonoBehaviour
 
     GameObject[] enemylist = null;
 
+
+    public float fixUpdateCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +109,10 @@ public class TestEnemyGen : MonoBehaviour
 
         
     }
+    private void FixedUpdate()
+    {
+        fixUpdateCount++;
+    }
     IEnumerator EnemySpawn2()
     {
         while (enemylist.Length < enemyMax)
@@ -141,16 +148,7 @@ public class TestEnemyGen : MonoBehaviour
             if (enemyID == 1)
             {
               
-                xPosID = Random.Range(0, 2);
-                if (xPosID == 0)
-                {
-                    xPosE = -3f;
-
-                }
-                if (xPosID == 1)
-                {
-                    xPosE = 3f;
-                }
+                
                
                 Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e2Count++;
