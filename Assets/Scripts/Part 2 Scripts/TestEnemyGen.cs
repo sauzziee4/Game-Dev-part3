@@ -68,7 +68,7 @@ public class TestEnemyGen : MonoBehaviour
         //boss = GameObject.FindGameObjectsWithTag("Boss");
         
         player = GameObject.FindGameObjectsWithTag("Player");
-        Coroutine EnGene = StartCoroutine(EnemySpawn());
+        Coroutine EnGene = StartCoroutine(EnemySpawn2());
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         stage2Enemymax = enemyMax - 2;
        
@@ -187,85 +187,28 @@ public class TestEnemyGen : MonoBehaviour
 
     }
     
-    IEnumerator EnemySpawn()
-    {
-       new WaitForSeconds(5);
+    
+    
+       
         
 
 
-        while (enemylist.Length < enemyMax)
-        {
+       
+        
 
-            enemyID = Random.Range(0, 4);
-            //Debug.Log(enemylist.Length);
-
-
-            //basic spawning between three lanes
-            xPosID = Random.Range(0, 3);
-            if (xPosID == 0)
-            {
-                xPosE = -3f;
-
-            }
-            if (xPosID == 1)
-            {
-                xPosE = 0f;
-            }
-            else if (xPosID == 2)
-            {
-                xPosE = 3f;
-            }
-            zPosE = Random.Range(zMin, zMax);
-            //Debug.Log(xPosE);
-
-            //Debug.Log(xPosEID);
-            posti = new Vector3(xPosE, 1, zPosE);
-            
-            //if the position crated is not in the map then that postiton is used to generate a enemy
-            //if (!positions.Contains(posti))
-            //{
+          
                 
-                if (enemyID == 0)
-                {
-                    Instantiate(Enemy1, posti, Quaternion.identity);
+              
 
-                }
-                if (enemyID==1)
-                {
-                    Instantiate(Enemy2, posti, Quaternion.identity);
-
-                }
-                if (enemyID==2)
-                {
-                    posti =new Vector3(xPosE,2, zPosE);
-                    Instantiate(Enemy3, posti, Quaternion.identity);
-
-                }
-                if(enemyID==3)
-                {
-                    Instantiate(Enemy4, posti, Quaternion.identity);
-
-                }
                 
 
-               //Debug.Log(posti.ToString());
-
-                yield return new WaitForSeconds(0.1f);
-                enemyCount++;
-                //Debug.Log(enemyCount);
-                //when an enemy has spawned the gamemaster it notified
-                gm.EnemySpawn();
-
-                positions.Add(posti);
-                enemylist = GameObject.FindGameObjectsWithTag("Enemy");
-                enemyCount =enemylist.Length;
 
             //}
             //Debug.Log(xPosE);
 
-        }
-        Debug.Log(enemylist.Length);
-    }
+        
+        
+    
     IEnumerator SpawnBoss()
     {
         while(BossActive==false)
