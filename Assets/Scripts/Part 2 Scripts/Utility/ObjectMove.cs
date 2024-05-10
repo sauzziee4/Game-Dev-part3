@@ -27,6 +27,8 @@ public class ObjectMove : MonoBehaviour
         }
         else
         {
+            
+            //needs to be -4 for acttual game
             transform.position += new Vector3(0, 0, -4) * Time.deltaTime;
 
         }

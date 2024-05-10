@@ -39,11 +39,11 @@ public class EnemyAttack : MonoBehaviour
             Destroy(this.gameObject);    
 
         }
-        if(collision.gameObject.CompareTag("Boss"))
-        {
-            Destroy(this.gameObject);
+        //if(collision.gameObject.CompareTag("Boss"))
+        //{
+            //Destroy(this.gameObject);
 
-        }
+        //}
 
 
     }

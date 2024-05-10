@@ -55,18 +55,18 @@ public class TestBoss : MonoBehaviour
 
 
 
-        if (awake== true) 
-        {
-            Movement();
+        
+        
+            
 
             if (createObstacle == false)
             {
                 createObstacle = true;
-                StartCoroutine(ObstacleSpawn());
+                //StartCoroutine(ObstacleSpawn());
             }
             
 
-        }
+        
         if ((GetComponent<Transform>().position.y <= -25))
         {
             gm.BossDeath();
@@ -80,11 +80,8 @@ public class TestBoss : MonoBehaviour
 
     }
     //The boss simply moves forward
-    void Movement()
-    {
-        transform.position += new Vector3(0, 0, -1) * Time.deltaTime;
-        //transform.Translate(Vector3.forward * _speed* Time.deltaTime);
-    }
+   
+    
     //used to spwawn oibstacles in front of the player
     IEnumerator ObstacleSpawn()
     {

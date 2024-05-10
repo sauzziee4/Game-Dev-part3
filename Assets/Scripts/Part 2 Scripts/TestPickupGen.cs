@@ -8,6 +8,7 @@ public class TestPickupGen : MonoBehaviour
 {
     public GameObject pickup;
 
+    //the x,y and z positon
     float xPosP;
     float zPosP;
     float yPosP;
@@ -36,10 +37,12 @@ public class TestPickupGen : MonoBehaviour
         {
             //xPosID = Random.Range(0, 3);
 
+            //we assign the values
             xPosP = 3;
             yPosP = 1;
             zPosP = 0;
 
+            //we spawn the pickup
             Instantiate(pickup, new Vector3(xPosP, yPosP, zPosP), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             pickupCount++;

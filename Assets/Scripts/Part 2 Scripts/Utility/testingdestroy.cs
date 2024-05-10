@@ -28,6 +28,7 @@ public class testingdestroy : MonoBehaviour
             
             Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);
+            //Debug.Log(other.gameObject.name);
         }
         
         if (other.gameObject.CompareTag("Boss"))
@@ -39,8 +40,8 @@ public class testingdestroy : MonoBehaviour
         }
         else
         {
-            Debug.Log("other destroyed");
-            Destroy(other.gameObject);
+            //Debug.Log("other destroyed");
+            //Destroy(other.gameObject);
 
         }
     }

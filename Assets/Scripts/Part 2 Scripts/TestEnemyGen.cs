@@ -11,13 +11,19 @@ public class TestEnemyGen : MonoBehaviour
 
     //for the enemy
     public GameObject Enemy1;
-    float e1Count;
+    
     public GameObject Enemy2;
-    float e2Count;
+    
     public GameObject Enemy3;
-    float e3count;
+    
     public GameObject Enemy4;
-    float e4Count;
+    
+
+
+    GameObject[] enemylist = null;
+    GameObject[] enemy1List = null;
+
+
     float enemyID;
 
     //Enemy positions
@@ -25,6 +31,11 @@ public class TestEnemyGen : MonoBehaviour
     float xPosE;
     float zPosE;
     float yPosE;
+
+    public float xLane1;
+    public float xLane2;
+    public float xLane3;
+
 
     public float enemyCount;
     public float enemyMax;
@@ -57,7 +68,7 @@ public class TestEnemyGen : MonoBehaviour
 
 
 
-    GameObject[] enemylist = null;
+    
 
 
     public float fixUpdateCount;
@@ -83,6 +94,30 @@ public class TestEnemyGen : MonoBehaviour
     void Update()
     {
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        for (int i = 0; i < enemylist.Length; i++)
+        {
+            if (enemylist[i].transform.position.x == -3)
+            {
+                xLane1++;
+
+            }
+            if (enemylist[i].transform.position.x == 0)
+            {
+                xLane2++;
+            }
+            if (enemylist[i].transform.position.x == 3)
+            {
+
+                xLane3++;
+            }
+            if (enemylist[i].name=="Enemy1 (clone)")
+            {
+                Debug.Log("hello");
+            }
+        }
+           
+        
 
         playerZ = player[0].GetComponent<Transform>().position.z;
 
