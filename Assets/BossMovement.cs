@@ -11,7 +11,10 @@ public class BossMovement : MonoBehaviour
     public float movementDifference;
     float bossZ;
     float bossX;
+    float bossXTemp;
     float EnemyX;
+    bool moveRight = false;
+    bool moveLeft = false;
     bool potCol=false;
     // Start is called before the first frame update
     void Start()
@@ -29,12 +32,20 @@ public class BossMovement : MonoBehaviour
         
         if (potCol==false)
         {
+            Debug.Log("potcal is false and we are going into Movment check");
             MovementCheck();
 
         }
-        if(potCol==true)
+        if( moveRight==true)
         {
-            MovementChange();
+            Debug.Log("In update, moveright is" + moveRight);
+            MoveRight();
+            //MovementChange(bossXTemp);
+        }
+        if ( moveLeft==true)
+        {
+            Debug.Log("In update moveleft is"+moveLeft);
+            MoveLeft();
         }
             
 
@@ -48,6 +59,7 @@ public class BossMovement : MonoBehaviour
     }
     void MovementCheck()
     {
+        Debug.Log("In movment check");
         bossZ= GetComponent<Transform>().position.z;
         bossX= GetComponent<Transform>().position.x;
         movementDifference = 2;
@@ -69,9 +81,10 @@ public class BossMovement : MonoBehaviour
                 //if the enemys z position is within 3 int of the boses z positonj we enter if
                 if (bossZ -enemy2List[i].transform.position.z <movementDifference )
                 {
-                    Debug.Log("checking if the boss is about to collide");
+                    Debug.Log("We are in movment check and are going to call movment change");
                     //we tell the boss to change movment as it is about to collide
-                    MovementChange();
+                    bossXTemp = bossX;
+                    MovementChange(bossXTemp);
                     potCol = true;
                 }
                 
@@ -96,19 +109,24 @@ public class BossMovement : MonoBehaviour
         transform.position += new Vector3(0, 0, -1) * _speed * Time.deltaTime;
 
     }
-    void MovementChange()
+    void MovementChange(float bossXTemp)
     {
-        Debug.Log("in movment change");
+        Debug.Log("in movement change");
         bossX = GetComponent<Transform>().position.x;
-        if (bossX<0)
+        if (bossXTemp==-3)
         {
             MoveRight();
             
             
         }
-        if (bossX>0)
+        if (bossXTemp==0)
         {
-            MoveLeft();
+            potCol = false;
+        }
+        if (bossXTemp==3)
+        {
+            Debug.Log("bossXTemp is" + bossXTemp);
+            //MoveLeft();
 
         }
         //if(bossX==0)
@@ -126,24 +144,29 @@ public class BossMovement : MonoBehaviour
     }
     private void MoveRight()
     {
+        moveRight = true;
         Debug.Log("Moving right");
         transform.position += new Vector3(3, 0, -6) * Time.deltaTime;
-        bossX= bossX = GetComponent<Transform>().position.x;
-        if (bossX==0)
+        bossX= GetComponent<Transform>().position.x;
+        if (bossX>0)
         {
             potCol = false;
+            moveRight = false;
+           
         }
 
 
     }
     void MoveLeft()
     {
+        moveLeft= true;
         Debug.Log("Moving left");
         transform.position += new Vector3(-3, 0, -6) * Time.deltaTime;
-        bossX = bossX = GetComponent<Transform>().position.x;
+        bossX = GetComponent<Transform>().position.x;
         if (bossX == 0)
         {
             potCol = false;
+            moveLeft= false;
         }
 
     }

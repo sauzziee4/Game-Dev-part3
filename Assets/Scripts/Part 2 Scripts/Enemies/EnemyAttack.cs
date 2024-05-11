@@ -28,14 +28,14 @@ public class EnemyAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             
-            Debug.Log("collidided with another enemy");
+            //Debug.Log("collidided with another enemy");
             Destroy(this.gameObject);
             //gm.EnemyDeath();
 
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("collided with obstacle");
+            //Debug.Log("collided with obstacle");
             Destroy(this.gameObject);    
 
         }

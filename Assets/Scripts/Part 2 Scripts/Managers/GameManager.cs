@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     public void NextStage()
     {
         //once the player has reached 40 score we go the stage once where the boss will be spawned
-        if (GameManager.Instance.score == 200)
+        if (GameManager.Instance.score == 0)
         {
             GameManager.Instance.stage = 2;
             

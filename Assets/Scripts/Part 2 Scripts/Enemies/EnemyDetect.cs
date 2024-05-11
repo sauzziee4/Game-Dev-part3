@@ -12,7 +12,7 @@ public class EnemyDetect : MonoBehaviour
          if (other.gameObject.CompareTag("Enemy"))
         {
             
-            Debug.Log("Hit the back of an enemy");
+            //Debug.Log("Hit the back of an enemy");
             Destroy(other.gameObject);
             
         }
