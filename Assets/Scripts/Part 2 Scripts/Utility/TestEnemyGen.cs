@@ -51,6 +51,7 @@ public class TestEnemyGen : MonoBehaviour
     //for the boss
     public GameObject Boss;
      bool BossActive = false;
+    float bossXID;
     
 
 
@@ -248,7 +249,16 @@ public class TestEnemyGen : MonoBehaviour
     {
         while(BossActive==false)
         {
-            xPosE = -3f;
+            bossXID = Random.Range(0, 2);
+            if(bossXID == 0)
+            {
+                xPosE = -1;
+            }
+            if (bossXID == 1)
+            {
+                xPosE = 1;
+            }
+            
             zPosE = Random.Range(zMin, zMax);
             yPosE=1.5f;
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);

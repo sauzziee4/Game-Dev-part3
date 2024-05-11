@@ -51,7 +51,7 @@ public class TestBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Movement();
 
 
 
@@ -80,6 +80,10 @@ public class TestBoss : MonoBehaviour
 
     }
     //The boss simply moves forward
+    void Movement()
+    {
+        transform.position += new Vector3(0, 0, -1) * Time.deltaTime;
+    }
    
     
     //used to spwawn oibstacles in front of the player
