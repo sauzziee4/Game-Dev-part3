@@ -40,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
             Takedamage(20);
             
 
-
         }
         
     }
@@ -57,31 +56,14 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             gm.PlayerDeath();
 
-
-
-
-
-
-            //Die();
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
 
-            //Debug.Log("Player died");
+
 
         }
 
     }
-    private void Die()
-    {
-        //makes it look like the player is died by making them invisble and disabling movement
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<PlayerMove2>().enabled = false;
-        gm.PlayerDeath();
-        
-
-        //If the player is dead the next scene which is the end screen is loaded
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-    }
+    
 }

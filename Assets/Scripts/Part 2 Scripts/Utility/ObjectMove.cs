@@ -21,9 +21,7 @@ public class ObjectMove : MonoBehaviour
         //If the player is died and obstacles should not move then the objects dont move
         if(gm.playerLive==false || PauseControl.gameIsPaused == true) 
         {
-
-            
-                
+    
         }
         else
         {
@@ -34,20 +32,6 @@ public class ObjectMove : MonoBehaviour
         }
 
         
-
-
-
-
-
-
-        //used to make the level anfd enemies move
-        //transform.position += new Vector3(0, 0, -2) * Time.deltaTime;
-
-
-
-
-
-
 
     }
    

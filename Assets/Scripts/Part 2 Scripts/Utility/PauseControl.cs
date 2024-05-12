@@ -30,7 +30,6 @@ public class PauseControl : MonoBehaviour
             gameIsPaused = !gameIsPaused;
             PauseGame();
 
-
         }
 
 

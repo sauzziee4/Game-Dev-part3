@@ -18,12 +18,8 @@ public class TestEnemyGen : MonoBehaviour
     
     public GameObject Enemy4;
     
-
-
    public GameObject[] enemylist = null;
    
-
-
     float enemyID;
 
     //Enemy positions
@@ -41,12 +37,7 @@ public class TestEnemyGen : MonoBehaviour
     public float enemyMax;
     public float stage2Enemymax;
 
-
-   
-
     public GameManager gm;
-    
-
     
     //for the boss
     public GameObject Boss;
@@ -57,8 +48,6 @@ public class TestEnemyGen : MonoBehaviour
 
     float zMax;
     float zMin;
-
-
 
     public float fixUpdateCount;
 
@@ -73,11 +62,7 @@ public class TestEnemyGen : MonoBehaviour
         stage2Enemymax = enemyMax - 2;
        
     }
-    private void Awake()
-    {
-        
-
-    }
+   
 
     // Update is called once per frame
     void Update()
@@ -198,17 +183,12 @@ public class TestEnemyGen : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             enemyCount++;
             
-            
-
-            
+    
             enemylist = GameObject.FindGameObjectsWithTag("Enemy");
             enemyCount = enemylist.Length;
 
 
         }
-
-
-
 
         yield return new WaitForSeconds(0.1f);
 

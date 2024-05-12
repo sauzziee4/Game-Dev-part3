@@ -17,9 +17,6 @@ public class testingdestroy : MonoBehaviour
             Debug.Log("player has died");
             Destroy(other.gameObject);
             
-
-
-
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -38,12 +35,7 @@ public class testingdestroy : MonoBehaviour
             Destroy(other.gameObject);
 
         }
-        else
-        {
-            //Debug.Log("other destroyed");
-            //Destroy(other.gameObject);
-
-        }
+         
     }
 
     private void Awake()
@@ -51,15 +43,5 @@ public class testingdestroy : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

@@ -19,6 +19,7 @@ public class SectionTrigger : MonoBehaviour
         {
             if (platformCount == 0)
             {
+                //the first platform is generated further away as the sarting plafrom is bigger so the enemies dont fall off the map when spawning
                 Instantiate(roadSection[secNum], new Vector3(0, 0, 40), Quaternion.identity);
                 platformCount++;
 
