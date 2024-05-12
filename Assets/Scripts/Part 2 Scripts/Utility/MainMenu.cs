@@ -50,8 +50,8 @@ public class MainMenu : MonoBehaviour
     //does not work
     public void ReloadLevel()
     {
-        Time.timeScale = 1f;
-        PauseControl.gameIsPaused = false;
+        //Time.timeScale = 1f;
+        //PauseControl.gameIsPaused = false;
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         menuD.SetActive(false);

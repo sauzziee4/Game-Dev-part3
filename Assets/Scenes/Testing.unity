@@ -389,7 +389,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1291390356847284657, guid: 78a5bfa18c0788645b30591059200130, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 533904406}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1918568640203918091, guid: 78a5bfa18c0788645b30591059200130, type: 3}
       insertIndex: -1
@@ -848,6 +851,11 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &481857807 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1291390356847284657, guid: 78a5bfa18c0788645b30591059200130, type: 3}
+  m_PrefabInstance: {fileID: 85641041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &522891475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,11 +1142,11 @@ GameObject:
   - component: {fileID: 533904406}
   - component: {fileID: 533904405}
   - component: {fileID: 533904407}
-  - component: {fileID: 533904408}
-  - component: {fileID: 533904409}
   - component: {fileID: 533904410}
   - component: {fileID: 533904411}
   - component: {fileID: 533904412}
+  - component: {fileID: 533904414}
+  - component: {fileID: 533904413}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GM
@@ -1159,7 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalEnemyCount: 1
-  playerLive: 0
+  playerLive: 1
   bossDeath: 0
   enemyDeaths: 0
   scoreDisplay: {fileID: 1788922913}
@@ -1179,12 +1187,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533904404}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.462881, y: 17.957638, z: -12.518162}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.790566, y: 17.237638, z: -6.2581615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 481857807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &533904407
 MonoBehaviour:
@@ -1198,46 +1206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c108c9586dd021e459e4fb82f9040cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &533904408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533904404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuD: {fileID: 619585777}
-  gm: {fileID: 533904405}
---- !u!114 &533904409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533904404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa017be1c6d43d44997ca9623cf1982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy1: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
-  Enemy2: {fileID: 8589295633850022690, guid: 4f51030dc91342b469cac19d297a8550, type: 3}
-  Enemy3: {fileID: 8589295633850022690, guid: eb080e738ad85d347a0469094ee3eb2b, type: 3}
-  Enemy4: {fileID: 8589295633850022690, guid: fab964dbd8442c548876692b3e39b47e, type: 3}
-  enemylist: []
-  xLane1: 0
-  xLane2: 0
-  xLane3: 0
-  enemyCount: 0
-  enemyMax: 6
-  stage2Enemymax: 0
-  gm: {fileID: 533904405}
-  Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
-  fixUpdateCount: 0
 --- !u!114 &533904410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,6 +1247,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   speedBuffClip: {fileID: 0}
+--- !u!114 &533904413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa017be1c6d43d44997ca9623cf1982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy1: {fileID: 8589295633850022690, guid: e5baa2482f7bbd04884091ed732f6674, type: 3}
+  Enemy2: {fileID: 8589295633850022690, guid: 4f51030dc91342b469cac19d297a8550, type: 3}
+  Enemy3: {fileID: 8589295633850022690, guid: eb080e738ad85d347a0469094ee3eb2b, type: 3}
+  Enemy4: {fileID: 8589295633850022690, guid: fab964dbd8442c548876692b3e39b47e, type: 3}
+  enemylist: []
+  xLane1: 0
+  xLane2: 0
+  xLane3: 0
+  enemyCount: 0
+  enemyMax: 6
+  stage2Enemymax: 0
+  gm: {fileID: 533904405}
+  Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
+  fixUpdateCount: 0
+--- !u!114 &533904414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuD: {fileID: 619585777}
+  gm: {fileID: 533904405}
 --- !u!1 &619585777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2758,6 @@ SceneRoots:
   - {fileID: 522891479}
   - {fileID: 99217675}
   - {fileID: 479199700}
-  - {fileID: 533904406}
   - {fileID: 1535148121}
   - {fileID: 85641041}
   - {fileID: 122450626}
