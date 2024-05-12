@@ -15,6 +15,8 @@ public class PlayerControl2 : MonoBehaviour
     private float gravityScaleMultiplier = 50;
     private float target;
 
+    private float originalJumpForce;
+
     private bool IsGrounded()
     {
         //Will not allow for the user to double jump
@@ -24,6 +26,8 @@ public class PlayerControl2 : MonoBehaviour
     void Start()
     {
         objRb = GetComponent<Rigidbody>();
+
+        originalJumpForce = jumpForce;
     }
 
     // Update is called once per frame
@@ -56,5 +60,15 @@ public class PlayerControl2 : MonoBehaviour
         objRb.MovePosition(movePos);
         //Home made gravity to control jump fall
         objRb.AddForce(Gravity * gravityScaleMultiplier * Vector3.up, ForceMode.Acceleration);
+    }
+
+    public void IncreaseJump()
+    {
+        jumpForce *= 1.5f;
+    }
+
+    public void ResetJump()
+    {
+        jumpForce = originalJumpForce;
     }
 }

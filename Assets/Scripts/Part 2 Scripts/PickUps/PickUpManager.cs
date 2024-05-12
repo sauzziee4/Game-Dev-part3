@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpManager : MonoBehaviour
 {
-
+    public static PickUpManager Instance {  get; private set; }
     public static bool checkPower { get; set; }
     public float duration = 5f;
     // public PowerUpEffects powerUpEffect;
@@ -19,7 +19,17 @@ public class PickUpManager : MonoBehaviour
 
     [Header("Audio clips")]
     public AudioClip speedBuffClip;
-
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void Update()
     {
         Debug.Log(checkPower + "checkPower");
@@ -77,11 +87,7 @@ public class PickUpManager : MonoBehaviour
 
         // Post-Routine Cleanup
         DeactivateSpeedBoost(player);
-        
-
       
-           
-        
         Debug.Log("After effect");
         
         //yield return new WaitForSeconds(2f);
@@ -102,4 +108,18 @@ public class PickUpManager : MonoBehaviour
         //powerUpEffect.RemoveEffect(player);
 
     }
+
+    public void JumpBoost(PlayerControl2 playerControl)
+    {
+        StartCoroutine(JumpBoostCoroutine(playerControl));
+    }
+
+    private IEnumerator JumpBoostCoroutine(PlayerControl2 playerControl)
+    {
+        playerControl.IncreaseJump();
+        yield return new WaitForSeconds(5);
+        playerControl.ResetJump();
+
+    }
+
 }
