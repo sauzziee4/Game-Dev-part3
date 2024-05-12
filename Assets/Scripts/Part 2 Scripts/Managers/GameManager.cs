@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI enemykillsText;
 
     TextMeshProUGUI currentenemiesText;
+
+    public GameObject[] enemylist = null;
     void Start()
     {
         scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
@@ -68,72 +70,35 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-
     {
+        enemylist = GameObject.FindGameObjectsWithTag("Enemy");
+
+
         //the value of score is used to show the score
         scoreText.text ="Score : " +GameManager.Instance.score.ToString();
         stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
         enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
-        //currentenemiesText.text ="Current enemies: " + GameManager.Instance.to.ToString();
+        currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
         //Debug.Log(scoreText.text);
        
 
         //BossSpawn();
-        NextStage();
+       NextStage();
     }
     public void NextStage()
     {
-        //once the player has reached 40 score we go the stage once where the boss will be spawned
-        if (GameManager.Instance.score == 0)
-        {
-            GameManager.Instance.stage = 2;
-            
-        }
+          
+        
         //once the boss is defeated we go to stage 2
         if (GameManager.Instance.bossDeath ==true)
         {
+            //Victory
             GameManager.Instance.stage = 3;
         }
+        
     }
 
     
-    public void GoToNextScene()
-    {
-        
-
-        if (GameManager.Instance.score >= 40)
-           
-
-        {
-
-            //Debug.Log("Victory");
-            //SceneManager.LoadSceneAsync("Level 2");
-        }
-    }
-
-    //handles an enemy being spawned, if an enemy is spawned the enemy count is increased by 1
-    public void EnemySpawn()
-    {
-        //EnemyCount();
-        
-        
-            
-        //Debug.Log("There are" + totalEnemyCount);
-       // Debug.Log("1 enemy has spawned");
-
-
-    }
-    //handles the enemy being killed, if an enemy dies the enemy count is reduced by 1
-    public void EnemyDeath()
-    {
-       
-
-        //Debug.Log("There are" + totalEnemyCount);
-        //Debug.Log("1 enemy has died");
-
-
-
-    }
     public void PlayerSpawn()
     {
         playerLive=true;

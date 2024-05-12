@@ -14,14 +14,9 @@ public class EnemyDetect : MonoBehaviour
             
             //Debug.Log("Hit the back of an enemy");
             Destroy(other.gameObject);
-            
         }
-        
-
-        
+         
     }
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +25,5 @@ public class EnemyDetect : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

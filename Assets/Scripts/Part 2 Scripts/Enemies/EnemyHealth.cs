@@ -35,29 +35,13 @@ public class EnemyHealth : MonoBehaviour
         // If the enemy falls off the map it is destroyed
         if ((GetComponent<Transform>().position.y <= -25))
         {
-            gm.EnemyDeath();
+           
             Destroy(gameObject);
         }
-
-
             // If the enemy falls off the map it is destroyed
 
-
-
-
-
     }
-    //serves no purpose at the moment
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0f)
-        {
-            // It might be GameManager.Instance.Score += KillReward
-            //GameManager.Instance.score += KillReward;
-            
-        }
-
-    }
+    
+   
     
 }

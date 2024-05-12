@@ -20,8 +20,8 @@ public class TestEnemyGen : MonoBehaviour
     
 
 
-    GameObject[] enemylist = null;
-    GameObject[] enemy1List = null;
+   public GameObject[] enemylist = null;
+   
 
 
     float enemyID;
@@ -59,18 +59,6 @@ public class TestEnemyGen : MonoBehaviour
     float zMin;
 
 
-    //public Vector3[] spawns;
-    
-    private Vector3 posti;
-    //a hash map, 
-    private HashSet<Vector3> positions;
-
-    
-
-
-
-    
-
 
     public float fixUpdateCount;
 
@@ -87,7 +75,7 @@ public class TestEnemyGen : MonoBehaviour
     }
     private void Awake()
     {
-        positions = new HashSet<Vector3>();
+        
 
     }
 
@@ -139,7 +127,7 @@ public class TestEnemyGen : MonoBehaviour
         {
             enemyMax = stage2Enemymax;
             StartCoroutine(EnemySpawn2());
-            StartCoroutine(SpawnBoss());
+            
             
         }
 
@@ -148,6 +136,12 @@ public class TestEnemyGen : MonoBehaviour
     private void FixedUpdate()
     {
         fixUpdateCount++;
+        if (fixUpdateCount == 5000)
+        {
+            StartCoroutine(SpawnBoss());
+            GameManager.Instance.stage = 2;
+
+        }
     }
     IEnumerator EnemySpawn2()
     {
@@ -184,8 +178,6 @@ public class TestEnemyGen : MonoBehaviour
             if (enemyID == 1)
             {
               
-                
-               
                 Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e2Count++;
 
@@ -205,9 +197,8 @@ public class TestEnemyGen : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
             enemyCount++;
-            //Debug.Log(enemyCount);
-            //when an enemy has spawned the gamemaster it notified
-            gm.EnemySpawn();
+            
+            
 
             
             enemylist = GameObject.FindGameObjectsWithTag("Enemy");
@@ -224,26 +215,6 @@ public class TestEnemyGen : MonoBehaviour
     }
     
     
-    
-       
-        
-
-
-       
-        
-
-          
-                
-              
-
-                
-
-
-            //}
-            //Debug.Log(xPosE);
-
-        
-        
     
     IEnumerator SpawnBoss()
     {
@@ -272,10 +243,5 @@ public class TestEnemyGen : MonoBehaviour
 
     }
     
-    
-
-      
-        
-
 
 }
