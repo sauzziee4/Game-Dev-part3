@@ -9,7 +9,7 @@ public class testingdestroy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("in collison");
+        //Debug.Log("in collison");
 
         //when the player collects a collectible the counter goes up by one
         if (other.gameObject.CompareTag("Player"))

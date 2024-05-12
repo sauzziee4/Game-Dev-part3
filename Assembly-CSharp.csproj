@@ -66,8 +66,10 @@
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\TestScripts\TestObstacle.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\PauseControl.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PickUpManager.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerLife.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PK2Collid.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyDetect.cs" />
     <Compile Include="Assets\BossMovement.cs" />
     <Compile Include="Assets\Scripts\TestScripts\Pause.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\Part 1 Scripts\Destroyer.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\BackgroundDestroy.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PK3Collid.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\TestScripts\EnemyDeath.cs" />
     <Compile Include="Assets\Scripts\TestScripts\GenerateLevel.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\TestEnemyGen.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Player\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\TestScripts\HitPlayer.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PK4Collid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
