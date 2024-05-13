@@ -5,14 +5,14 @@ using UnityEngine;
 public class ObjectMove : MonoBehaviour
 {
     public GameManager gm;
-    public PickUpManager pm;
+    
     
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        pm= GameObject.FindGameObjectWithTag("GM").GetComponent<PickUpManager>();
+        
 
 
     }

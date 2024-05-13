@@ -86,7 +86,18 @@ public class EnemyAttack : MonoBehaviour
     //at the moment this method does not do much 
     public bool CanAttackPlayer()
     {
-        canAttack = true;
+        if(PickUpManager.invincible==false)
+        {
+            canAttack = true;
+
+        }
+        if (PickUpManager.invincible == true)
+        {
+            Destroy(this.gameObject);
+            canAttack= false;
+
+        }
+        
        
 
 

@@ -23,7 +23,8 @@ public class PK3Collid : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            PickUpManager.pk3 = true;
+            PickUpManager.Instance.InvincibleMethod();
+            Destroy(this.gameObject);
 
         }
     }

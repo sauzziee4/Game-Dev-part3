@@ -25,6 +25,7 @@ public class PK2Collid : MonoBehaviour
         {
 
             PickUpManager.Instance.SpeedIncrese();
+            Destroy(this.gameObject);
 
         }
     }

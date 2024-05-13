@@ -13,6 +13,7 @@ public class PickUpManager : MonoBehaviour
     //pickup 2
     
     public static bool speedUp;
+    public static bool invincible;
     //pickup 3
     public static bool pk3;
     //pickup4
@@ -40,10 +41,7 @@ public class PickUpManager : MonoBehaviour
             StartCoroutine(SpeedRoutine());
         
         }
-        //if(speedPIckUP==true)
-        //{
-            Debug.Log("picup2 two has been hit");
-            //StartCoroutine(Pickup2());
+        
 
         //}
         if (pk3 == true)
@@ -63,8 +61,10 @@ public class PickUpManager : MonoBehaviour
     }
     public IEnumerator Pickup3()
     {
-        //the code for the third pickup woill go in here
-        yield return new WaitForSeconds(1f);
+        invincible = true;
+        yield return new WaitForSeconds(5);
+        invincible = false;
+        
     }
     
 
@@ -130,6 +130,11 @@ public class PickUpManager : MonoBehaviour
     {
         StartCoroutine(Pickup2());
     }
-  
+    public void InvincibleMethod()
+    {
+        StartCoroutine(Pickup3());
+        
+    }
+
 
 }
