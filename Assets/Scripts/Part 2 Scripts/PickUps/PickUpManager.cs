@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PickUpManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class PickUpManager : MonoBehaviour
     // public PowerUpEffects powerUpEffect;
 
     //pickup 2
-    public static bool pk2;
+    
+    public static bool speedUp;
     //pickup 3
     public static bool pk3;
     //pickup4
@@ -38,12 +40,12 @@ public class PickUpManager : MonoBehaviour
             StartCoroutine(SpeedRoutine());
         
         }
-        if(pk2==true)
-        {
+        //if(speedPIckUP==true)
+        //{
             Debug.Log("picup2 two has been hit");
-            StartCoroutine(Pickup2());
+            //StartCoroutine(Pickup2());
 
-        }
+        //}
         if (pk3 == true)
         {
             Debug.Log("pickup3 has been hit");
@@ -53,8 +55,11 @@ public class PickUpManager : MonoBehaviour
     }
     public IEnumerator Pickup2()
     {
+        speedUp = true;
+        yield return new WaitForSeconds(5);
+        speedUp = false;
         //the code for the second pickup will go in here
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
     }
     public IEnumerator Pickup3()
     {
@@ -121,5 +126,10 @@ public class PickUpManager : MonoBehaviour
         playerControl.ResetJump();
 
     }
+    public void SpeedIncrese()
+    {
+        StartCoroutine(Pickup2());
+    }
+  
 
 }

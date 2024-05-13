@@ -23,7 +23,8 @@ public class PK2Collid : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            PickUpManager.pk2 = true;
+
+            PickUpManager.Instance.SpeedIncrese();
 
         }
     }
