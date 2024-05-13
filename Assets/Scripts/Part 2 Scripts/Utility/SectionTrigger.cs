@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class SectionTrigger : MonoBehaviour
 {
     
-    public GameObject[] roadSection;
+    public GameObject roadSection;
     public int secNum;
     int platformCount = 0;
 
@@ -20,13 +20,13 @@ public class SectionTrigger : MonoBehaviour
             if (platformCount == 0)
             {
                 //the first platform is generated further away as the sarting plafrom is bigger so the enemies dont fall off the map when spawning
-                Instantiate(roadSection[secNum], new Vector3(0, 0, 40), Quaternion.identity);
+                Instantiate(roadSection, new Vector3(0, 0, 40), Quaternion.identity);
                 platformCount++;
 
             }
             else
             {
-                Instantiate(roadSection[secNum], new Vector3(0, 0, 18), Quaternion.identity);
+                Instantiate(roadSection, new Vector3(0, 0, 40), Quaternion.identity);
                 platformCount++;
 
             }

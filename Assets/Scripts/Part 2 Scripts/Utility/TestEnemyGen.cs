@@ -69,27 +69,7 @@ public class TestEnemyGen : MonoBehaviour
     {
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
         
-        for (int i = 0; i < enemylist.Length; i++)
-        {
-            if (enemylist[i].transform.position.x == -3)
-            {
-                xLane1++;
 
-            }
-            if (enemylist[i].transform.position.x == 0)
-            {
-                xLane2++;
-            }
-            if (enemylist[i].transform.position.x == 3)
-            {
-
-                xLane3++;
-            }
-            if (enemylist[i].name=="Enemy1 (clone)")
-            {
-                Debug.Log("hello");
-            }
-        }
            
         
 
@@ -156,20 +136,20 @@ public class TestEnemyGen : MonoBehaviour
 
             if (enemyID == 0)
             {
-                
+                //table best y is 1
                 Instantiate(Enemy1, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e1Count++;
             }
             if (enemyID == 1)
             {
-              
+              //bed  best y is 1
                 Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e2Count++;
 
             }
             if (enemyID == 2)
             {
-                yPosE = 2;
+                
                 //posti = new Vector3(xPosE, 2, zPosE);
                 Instantiate(Enemy3, new Vector3(xPosE,yPosE,zPosE), Quaternion.identity);
                 //e3count++;
