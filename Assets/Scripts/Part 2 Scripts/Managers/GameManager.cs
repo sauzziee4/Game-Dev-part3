@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject currentEnemiesDisplay;
     public int currentEnemies = 0;
 
+    [SerializeField] private GameObject pickupEffectdisplayDisplay;
+    public bool pickupEffect = false;
+
+    TextMeshProUGUI pKEffectText;
 
     //public Text valText;
     TextMeshProUGUI scoreText;
@@ -65,6 +69,7 @@ public class GameManager : MonoBehaviour
         stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
         currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
         enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
+        pKEffectText= pickupEffectdisplayDisplay.GetComponent<TextMeshProUGUI>();
         
     }
 
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
         stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
         enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
         currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
+        pKEffectText.text ="Pickup effect: " +GameManager.Instance.pickupEffect.ToString();
         //Debug.Log(scoreText.text);
        
 

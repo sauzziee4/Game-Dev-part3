@@ -18,6 +18,7 @@ public class PickUpManager : MonoBehaviour
     public static bool pk3;
     //pickup4
     public static bool pk4;
+    
 
 
     [Header("Audio clips")]
@@ -53,18 +54,22 @@ public class PickUpManager : MonoBehaviour
     }
     public IEnumerator Pickup2()
     {
+        GameManager.Instance.pickupEffect = true;
         speedUp = true;
         yield return new WaitForSeconds(5);
         speedUp = false;
+        GameManager.Instance.pickupEffect = false;
         //the code for the second pickup will go in here
         //yield return new WaitForSeconds(1f);
     }
     public IEnumerator Pickup3()
     {
+        GameManager.Instance.pickupEffect = true;
         invincible = true;
         yield return new WaitForSeconds(5);
         invincible = false;
-        
+        GameManager.Instance.pickupEffect = false;
+
     }
     
 
@@ -121,9 +126,11 @@ public class PickUpManager : MonoBehaviour
 
     private IEnumerator JumpBoostCoroutine(PlayerControl2 playerControl)
     {
+        GameManager.Instance.pickupEffect = true;
         playerControl.IncreaseJump();
         yield return new WaitForSeconds(5);
         playerControl.ResetJump();
+        GameManager.Instance.pickupEffect = false;
 
     }
     public void SpeedIncrese()
