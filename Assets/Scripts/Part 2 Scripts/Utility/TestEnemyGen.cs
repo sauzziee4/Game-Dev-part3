@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestEnemyGen : MonoBehaviour
@@ -28,9 +29,7 @@ public class TestEnemyGen : MonoBehaviour
     float zPosE;
     float yPosE;
 
-    public float xLane1;
-    public float xLane2;
-    public float xLane3;
+    
 
 
     public float enemyCount;
@@ -43,7 +42,15 @@ public class TestEnemyGen : MonoBehaviour
     public GameObject Boss;
      bool BossActive = false;
     float bossXID;
-    
+
+
+    public GameObject pickup1;
+    public GameObject pickup2;
+    public GameObject pickup3;
+    public GameObject[] pickuplist = null;
+    public float pickupMax;
+    float pickupID;
+
 
 
     float zMax;
@@ -60,7 +67,8 @@ public class TestEnemyGen : MonoBehaviour
         Coroutine EnGene = StartCoroutine(EnemySpawn2());
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         stage2Enemymax = enemyMax - 2;
-       
+        StartCoroutine(PickupSpawn());
+
     }
    
 
@@ -68,16 +76,16 @@ public class TestEnemyGen : MonoBehaviour
     void Update()
     {
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
-        
 
-           
-        
+        pickuplist = GameObject.FindGameObjectsWithTag("Pickup");
+
+
 
         playerZ = player[0].GetComponent<Transform>().position.z;
 
-
+        StartCoroutine (PickupSpawn());
         zMin = playerZ + 10;
-        zMax = playerZ + 20;
+        zMax = playerZ + 30;
             
 
         //compares the actual amount of enemies to the local enemycount varaible
@@ -108,6 +116,54 @@ public class TestEnemyGen : MonoBehaviour
 
         }
     }
+
+    IEnumerator PickupSpawn()
+    {
+        while (pickuplist.Length < pickupMax)
+        {
+            zPosE = Random.Range(zMin, zMax);
+            xPosID = Random.Range(0, 3);
+            if (xPosID == 0)
+            {
+                xPosE = -3f;
+
+            }
+            if (xPosID == 1)
+            {
+                xPosE = 0f;
+            }
+            else if (xPosID == 2)
+            {
+                xPosE = 3f;
+            }
+            yPosE = 1;
+
+            pickupID = Random.Range(0, 3);
+            if (pickupID == 0)
+            {
+                Instantiate(pickup1, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+
+            }
+            if (pickupID == 1)
+            {
+                Instantiate(pickup2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+
+            }
+            if (pickupID == 2)
+            {
+                Instantiate(pickup3, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+
+            }
+            pickuplist = GameObject.FindGameObjectsWithTag("Pickup");
+
+
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+    }
+
+
     IEnumerator EnemySpawn2()
     {
         while (enemylist.Length < enemyMax)
@@ -161,7 +217,7 @@ public class TestEnemyGen : MonoBehaviour
                 //e4Count++;
             }
             yield return new WaitForSeconds(0.1f);
-            enemyCount++;
+            
             
     
             enemylist = GameObject.FindGameObjectsWithTag("Enemy");

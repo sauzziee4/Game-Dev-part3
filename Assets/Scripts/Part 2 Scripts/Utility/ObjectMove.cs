@@ -32,7 +32,7 @@ public class ObjectMove : MonoBehaviour
             transform.position += new Vector3(0, 0, -6) * Time.deltaTime;
 
         }
-        if(PickUpManager.speedUp==false)
+        if(PickUpManager.speedUp==false & gm.playerLive==true)
         {
             Debug.Log("normal speed");
             transform.position += new Vector3(0, 0, -4) * Time.deltaTime;
