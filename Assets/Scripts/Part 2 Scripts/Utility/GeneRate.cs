@@ -17,8 +17,7 @@ public class GeneRate : MonoBehaviour
 
     public GameObject Enemy4;
     public GameObject Enemy5;
-    public GameObject Enemy6;
-    public GameObject Enemy7;
+    
 
     public GameObject[] enemylist = null;
 
@@ -51,6 +50,7 @@ public class GeneRate : MonoBehaviour
     public GameObject[] pickuplist = null;
     public float pickupMax;
     float pickupID;
+    float pickupInterval = 50;
 
 
 
@@ -80,11 +80,8 @@ public class GeneRate : MonoBehaviour
 
         pickuplist = GameObject.FindGameObjectsWithTag("Pickup");
 
-
-
         playerZ = player[0].GetComponent<Transform>().position.z;
 
-        StartCoroutine(PickupSpawn());
         zMin = playerZ + 20;
         zMax = playerZ + 40;
 
@@ -102,6 +99,14 @@ public class GeneRate : MonoBehaviour
             enemyMax = stage2Enemymax;
             StartCoroutine(EnemySpawn2());
 
+
+        }
+        if (GameManager.Instance.score==pickupInterval)
+        {
+            //Debug.Log("score equals pickupInterval" + pickupInterval);
+            pickupInterval += 50;
+            //Debug.Log("pickup interval should have increased by 5o" + pickupInterval);
+            StartCoroutine(PickupSpawn());
 
         }
 
@@ -236,39 +241,8 @@ public class GeneRate : MonoBehaviour
                 Instantiate(Enemy5, new Vector3(xPosE, yPosE, zPosE), armchair);
 
             }
-            if (enemyID == 5)
-            {
-                xPosID = Random.Range(0, 2);
-                if (xPosID == 0)
-                {
-                    xPosE = -3f;
-
-                }
-                if (xPosID == 1)
-                {
-                    xPosE = 3f;
-                }
-
-                yPosE = 4;
-                Instantiate(Enemy6, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
-
-            }
-            if (enemyID == 6)
-            {
-                xPosID = Random.Range(0, 2);
-                if (xPosID == 0)
-                {
-                    xPosE = -3.8f;
-
-                }
-                if (xPosID == 1)
-                {
-                    xPosE = 3.6f;
-                }
-                yPosE = 4;
-                Instantiate(Enemy7, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
-
-            }
+           
+           
             yield return new WaitForSeconds(0.1f);
 
 

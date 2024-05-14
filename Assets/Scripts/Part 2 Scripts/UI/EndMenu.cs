@@ -12,13 +12,14 @@ public class EndMenu : MonoBehaviour
 
     private void Start()
     {
-        //endScoreText.text = "";
+        endScoreText.text = "";
     }
 
      void Update()
     {
         //uses the score from level 1 for the end score
-        //endScoreText.text = Destroyer.score;
+        endScoreText.text = "Score : " + GameManager.Instance.score.ToString();
+        
 
     }
     public void QuitGame()

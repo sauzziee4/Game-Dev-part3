@@ -86,11 +86,12 @@ public class GameManager : MonoBehaviour
         currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
         pKEffectText.text ="Pickup effect: " +GameManager.Instance.pickupEffect.ToString();
         //Debug.Log(scoreText.text);
+        
        
 
-        //BossSpawn();
        NextStage();
     }
+    
     public void NextStage()
     {
           
