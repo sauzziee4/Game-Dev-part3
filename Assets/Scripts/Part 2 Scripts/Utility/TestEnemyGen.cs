@@ -18,6 +18,9 @@ public class TestEnemyGen : MonoBehaviour
     public GameObject Enemy3;
     
     public GameObject Enemy4;
+    public GameObject Enemy5;
+    public GameObject Enemy6;
+    public GameObject Enemy7;
     
    public GameObject[] enemylist = null;
    
@@ -66,7 +69,7 @@ public class TestEnemyGen : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player");
         Coroutine EnGene = StartCoroutine(EnemySpawn2());
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        stage2Enemymax = enemyMax - 2;
+        stage2Enemymax = enemyMax - 4;
         StartCoroutine(PickupSpawn());
 
     }
@@ -84,8 +87,8 @@ public class TestEnemyGen : MonoBehaviour
         playerZ = player[0].GetComponent<Transform>().position.z;
 
         StartCoroutine (PickupSpawn());
-        zMin = playerZ + 10;
-        zMax = playerZ + 30;
+        zMin = playerZ + 20;
+        zMax = playerZ + 40;
             
 
         //compares the actual amount of enemies to the local enemycount varaible
@@ -188,26 +191,39 @@ public class TestEnemyGen : MonoBehaviour
             }
             yPosE = 1;
 
-            enemyID = Random.Range(0, 4);
+            enemyID = Random.Range(0, 5);
 
             if (enemyID == 0)
             {
+                yPosE = 0.5f;
                 //table best y is 1
                 Instantiate(Enemy1, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e1Count++;
             }
             if (enemyID == 1)
             {
-              //bed  best y is 1
-                Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+                xPosID = Random.Range(0, 2);
+                if (xPosID == 0)
+                {
+                    xPosE = -3f;
+
+                }
+                if (xPosID == 1)
+                {
+                    xPosE = 3f;
+                }
+                //bed  best y is 1
+                Quaternion bed = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), bed);
                 //e2Count++;
 
             }
             if (enemyID == 2)
             {
-                
+
                 //posti = new Vector3(xPosE, 2, zPosE);
-                Instantiate(Enemy3, new Vector3(xPosE,yPosE,zPosE), Quaternion.identity);
+                Quaternion bed = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy3, new Vector3(xPosE,yPosE,zPosE),bed);
                 //e3count++;
 
             }
@@ -215,6 +231,45 @@ public class TestEnemyGen : MonoBehaviour
             {
                 Instantiate(Enemy4, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
                 //e4Count++;
+            }
+            if (enemyID == 4)
+            {
+                Quaternion armchair = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy5,new Vector3(xPosE,yPosE,zPosE), armchair);
+
+            }
+            if (enemyID == 5)
+            {
+                xPosID = Random.Range(0, 2);
+                if (xPosID == 0)
+                {
+                    xPosE = -3f;
+
+                }
+                if (xPosID == 1)
+                {
+                    xPosE = 3f;
+                }
+               
+                yPosE = 4;
+                Instantiate(Enemy6, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+
+            }
+            if(enemyID == 6)
+            {
+                xPosID = Random.Range(0, 2);
+                if (xPosID == 0)
+                {
+                    xPosE = -3.8f;
+
+                }
+                if (xPosID == 1)
+                {
+                    xPosE = 3.6f;
+                }
+                yPosE = 4;
+                Instantiate(Enemy7, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+
             }
             yield return new WaitForSeconds(0.1f);
             

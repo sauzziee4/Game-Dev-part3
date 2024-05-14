@@ -687,8 +687,8 @@ Transform:
   m_GameObject: {fileID: 181525398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.36, y: 1.07, z: -8.96}
-  m_LocalScale: {x: 1.8620001, y: 1, z: 1}
+  m_LocalPosition: {x: 3.6619, y: -1.564, z: -10.08}
+  m_LocalScale: {x: 1.2823595, y: 3.7084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1244,11 +1244,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy1: {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
   Enemy2: {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
-  Enemy3: {fileID: 7974264584822747971, guid: 7e09ed329cdac964892d0943c6dcc1fb, type: 3}
+  Enemy3: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
   Enemy4: {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
+  Enemy5: {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
+  Enemy6: {fileID: 9074849558782612933, guid: ad25a1bd4df60944280d15a3f66f1443, type: 3}
+  Enemy7: {fileID: 6060921041398618712, guid: 87d29219cf1f4c042a4e66692bbee0f0, type: 3}
   enemylist: []
   enemyCount: 0
-  enemyMax: 7
+  enemyMax: 8
   stage2Enemymax: 0
   gm: {fileID: 533904405}
   Boss: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
@@ -2437,7 +2440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -166.70001, y: -31.3}
+  m_AnchoredPosition: {x: -147.4, y: -31.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1955727960
