@@ -13,6 +13,10 @@ public class NewBehaviourScript : MonoBehaviour
             PickUpManager.Instance.JumpBoost(other.GetComponent<PlayerControl2>());
             Destroy(this.gameObject);
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject);
+        }
     }
   
 }

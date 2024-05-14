@@ -39,6 +39,13 @@ public class EnemyAttack : MonoBehaviour
             Destroy(this.gameObject);    
 
         }
+        if (collision.gameObject.CompareTag("Pickup"))
+        {
+            //Debug.Log("collided with obstacle");
+            Destroy(this.gameObject);
+
+        }
+        
       
     }
 

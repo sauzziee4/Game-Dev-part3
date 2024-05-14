@@ -50,7 +50,7 @@ public class GeneRate : MonoBehaviour
     public GameObject[] pickuplist = null;
     public float pickupMax;
     float pickupID;
-    float pickupInterval = 50;
+    float pickupInterval = 0;
 
 
 
@@ -101,10 +101,10 @@ public class GeneRate : MonoBehaviour
 
 
         }
-        if (GameManager.Instance.score==pickupInterval)
+        if (GameManager.Instance.score>pickupInterval)
         {
             //Debug.Log("score equals pickupInterval" + pickupInterval);
-            pickupInterval += 50;
+            pickupInterval +=50;
             //Debug.Log("pickup interval should have increased by 5o" + pickupInterval);
             StartCoroutine(PickupSpawn());
 
@@ -115,7 +115,7 @@ public class GeneRate : MonoBehaviour
     private void FixedUpdate()
     {
         fixUpdateCount++;
-        if (fixUpdateCount == 5000)
+        if (fixUpdateCount == 6000)
         {
             StartCoroutine(SpawnBoss());
             GameManager.Instance.stage = 2;
@@ -274,8 +274,10 @@ public class GeneRate : MonoBehaviour
             }
 
             zPosE = Random.Range(zMin, zMax);
-            yPosE = 1.5f;
-            Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
+            yPosE = 1;
+            Quaternion boss = Quaternion.Euler(0, 90, 0);
+            Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE),boss);
+
             BossActive = true;
             gm.BossSpawn();
             //Debug.Log("boss spawneed");

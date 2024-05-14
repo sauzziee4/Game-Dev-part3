@@ -28,5 +28,13 @@ public class PK2Collid : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+       
+        
+            Destroy(this.gameObject);
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }

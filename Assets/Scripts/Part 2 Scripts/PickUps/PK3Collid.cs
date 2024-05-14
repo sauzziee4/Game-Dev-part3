@@ -27,5 +27,9 @@ public class PK3Collid : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+        
+        
+            Destroy(this.gameObject);
+        
     }
 }
