@@ -141,9 +141,6 @@ PrefabInstance:
       addedObject: {fileID: -4329159005726676268}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd5f35fe99ef66b4696fa0bead0b4f4b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4213057069900348333}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd5f35fe99ef66b4696fa0bead0b4f4b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8733703873763425137}
   m_SourcePrefab: {fileID: 100100000, guid: dd5f35fe99ef66b4696fa0bead0b4f4b, type: 3}
 --- !u!4 &1672686713926207565 stripped
@@ -203,25 +200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  attackCooldown: 1.5
   player: {fileID: 0}
   playerHealth: {fileID: 0}
   canAttack: 0
-  gm: {fileID: 0}
---- !u!114 &4213057069900348333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052870778304991991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05610fc23015d554a90a581ab1bebbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damageTaken: 50
   gm: {fileID: 0}
 --- !u!54 &8733703873763425137
 Rigidbody:

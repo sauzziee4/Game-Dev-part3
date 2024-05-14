@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]  GameObject menuD;
-    TextMeshProUGUI menuSDText;
+    
     public GameManager gm;
 
     
@@ -16,12 +16,13 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        //does this reset the score on a new game
+        
        
 
     }
     void Start()
     {
+        //on start the pause menu is not activated
         menuD.SetActive(false);
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
@@ -31,6 +32,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if pause control tells main menu the pausemenu is true then the pause menu is activated
         if (PauseControl.PauseMenu==true )
         {
             menuD.SetActive(true);
@@ -42,7 +44,7 @@ public class MainMenu : MonoBehaviour
 
         
     }
-    //not implmented
+    
     public void QuitGame()
     {
         Application.Quit();
@@ -50,13 +52,11 @@ public class MainMenu : MonoBehaviour
     //does not work
     public void ReloadLevel()
     {
-        //Time.timeScale = 1f;
-        //PauseControl.gameIsPaused = false;
+        
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         menuD.SetActive(false);
-        //Time.timeScale = 1f;
-        //PauseControl.gameIsPaused=false;
+        
     }
 }
 

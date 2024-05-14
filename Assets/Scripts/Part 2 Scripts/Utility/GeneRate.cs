@@ -8,22 +8,20 @@ public class GeneRate : MonoBehaviour
     GameObject[] player = null;
     float playerZ;
 
-    //for the enemy
+    //used to assign the enemy objects
     public GameObject Enemy1;
-
     public GameObject Enemy2;
-
     public GameObject Enemy3;
-
     public GameObject Enemy4;
     public GameObject Enemy5;
     
-
+    //the enemy are put in a list
     public GameObject[] enemylist = null;
 
+    //used to randomly spawn enemies
     float enemyID;
 
-    //Enemy positions
+    //positions used for spawning
     float xPosID;
     float xPosE;
     float zPosE;
@@ -31,7 +29,7 @@ public class GeneRate : MonoBehaviour
 
 
 
-
+    //used to keep track of the enemies
     public float enemyCount;
     public float enemyMax;
     public float stage2Enemymax;
@@ -43,17 +41,22 @@ public class GeneRate : MonoBehaviour
     bool BossActive = false;
     float bossXID;
 
-
+    //used to assign the picups
     public GameObject pickup1;
     public GameObject pickup2;
     public GameObject pickup3;
+
+    //the picups are placed in a list
     public GameObject[] pickuplist = null;
+
     public float pickupMax;
     float pickupID;
-    float pickupInterval = 0;
+
+    
+    
 
 
-
+    //used so the objects dont spawn to close or to far from the player
     float zMax;
     float zMin;
 
@@ -67,6 +70,8 @@ public class GeneRate : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player");
         Coroutine EnGene = StartCoroutine(EnemySpawn2());
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+        //when the boss spawns the number of enemies that are spawned is reduced by four
         stage2Enemymax = enemyMax - 4;
         StartCoroutine(PickupSpawn());
 
@@ -76,24 +81,30 @@ public class GeneRate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //all enemies are added to the enenmy list
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
 
+        //all picups are added to the pickup list
         pickuplist = GameObject.FindGameObjectsWithTag("Pickup");
 
         playerZ = player[0].GetComponent<Transform>().position.z;
 
+        //the minimum distance an object can spawn
         zMin = playerZ + 20;
+
+        //the maximum distance an object can spawn
         zMax = playerZ + 40;
 
 
-        //compares the actual amount of enemies to the local enemycount varaible
-
+        
+        //if we are in stage 1 enemy spawning starts
         if (GameManager.Instance.stage == 1)
         {
             StartCoroutine(EnemySpawn2());
 
         }
 
+        //if we are in stage 2 the maximum amount of enemies is adjusted
         if (GameManager.Instance.stage == 2)
         {
             enemyMax = stage2Enemymax;
@@ -101,19 +112,14 @@ public class GeneRate : MonoBehaviour
 
 
         }
-        if (GameManager.Instance.score>pickupInterval)
-        {
-            //Debug.Log("score equals pickupInterval" + pickupInterval);
-            pickupInterval +=50;
-            //Debug.Log("pickup interval should have increased by 5o" + pickupInterval);
-            StartCoroutine(PickupSpawn());
-
-        }
+        
+       
 
 
     }
     private void FixedUpdate()
     {
+        //used for spawning th eboss
         fixUpdateCount++;
         if (fixUpdateCount == 6000)
         {
@@ -125,9 +131,13 @@ public class GeneRate : MonoBehaviour
 
     IEnumerator PickupSpawn()
     {
+        //while the list length is less then the maximum amount of picups
         while (pickuplist.Length < pickupMax)
         {
+            //used for the z position of the pickup
             zPosE = Random.Range(zMin, zMax);
+
+            //used to select which of the three lanes a pickup will spawn
             xPosID = Random.Range(0, 3);
             if (xPosID == 0)
             {
@@ -144,6 +154,7 @@ public class GeneRate : MonoBehaviour
             }
             yPosE = 1;
 
+            //used to random choose the pickup that will spawn
             pickupID = Random.Range(0, 3);
             if (pickupID == 0)
             {
@@ -165,7 +176,7 @@ public class GeneRate : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(10);
 
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PK3Collid : MonoBehaviour
 {
+    //used for the third pickup
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class PK3Collid : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        //if the player collides with the pickup the pickup manager is notified and the object is destroyed
         if (other.gameObject.CompareTag("Player"))
         {
             PickUpManager.Instance.InvincibleMethod();
@@ -29,7 +32,7 @@ public class PK3Collid : MonoBehaviour
         }
         
         
-            Destroy(this.gameObject);
+            
         
     }
 }

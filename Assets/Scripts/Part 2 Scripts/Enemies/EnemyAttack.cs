@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    //used for the when the player collides with the enemy
 
     public int attackDamage = 10;
-    public float attackCooldown = 1.5f;
+    
+    //the player position
     public Transform player;
     public PlayerHealth playerHealth;
     public bool canAttack = false;
@@ -16,32 +18,32 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("collision");
+       
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("playercollison");
+            
             
             //if the enemy collides with the player the canattack method is called 
-            //could just use the attack method
+            //
             CanAttackPlayer();
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             
-            //Debug.Log("collidided with another enemy");
+            //if the enemy collides with another enemy it destroys itself
             Destroy(this.gameObject);
             //gm.EnemyDeath();
 
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //Debug.Log("collided with obstacle");
+           //if the enemy collides with an obstacles it destroys itself
             Destroy(this.gameObject);    
 
         }
         if (collision.gameObject.CompareTag("Pickup"))
         {
-            //Debug.Log("collided with obstacle");
+            //if the enemy collides with a pickup it destoys itself
             Destroy(this.gameObject);
 
         }
@@ -93,11 +95,13 @@ public class EnemyAttack : MonoBehaviour
     //at the moment this method does not do much 
     public bool CanAttackPlayer()
     {
+        //if the player is not invincible the enemy can attack the player
         if(PickUpManager.invincible==false)
         {
             canAttack = true;
 
         }
+        //if the player is invincible the enemy can not attack the player and the enmy is destoyed
         if (PickUpManager.invincible == true)
         {
             Destroy(this.gameObject);

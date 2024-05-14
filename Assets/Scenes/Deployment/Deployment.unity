@@ -792,7 +792,6 @@ GameObject:
   m_Component:
   - component: {fileID: 533904406}
   - component: {fileID: 533904405}
-  - component: {fileID: 533904411}
   - component: {fileID: 533904412}
   - component: {fileID: 533904414}
   - component: {fileID: 533904415}
@@ -816,10 +815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c257e7679a6fd4892efff041d0afb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalEnemyCount: 1
   playerLive: 1
   bossDeath: 0
-  enemyDeaths: 0
   scoreDisplay: {fileID: 1788922913}
   score: 0
   stageDisplay: {fileID: 1459161127}
@@ -847,18 +844,6 @@ Transform:
   - {fileID: 1169748069}
   m_Father: {fileID: 481857807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &533904411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533904404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733717f563c34b5408aed8a2d53b5545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &533904412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,7 +856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ababc39dc405f2478159b3612f4ca12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
   speedBuffClip: {fileID: 0}
 --- !u!114 &533904414
 MonoBehaviour:

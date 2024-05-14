@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class SectionTrigger : MonoBehaviour
 {
+    //used to spawn new platforms
     
     public GameObject roadSection;
     public int secNum;
@@ -26,6 +27,7 @@ public class SectionTrigger : MonoBehaviour
             }
             else
             {
+                //the platforms get spawned
                 Instantiate(roadSection, new Vector3(0, 0, 40), Quaternion.identity);
                 platformCount++;
 

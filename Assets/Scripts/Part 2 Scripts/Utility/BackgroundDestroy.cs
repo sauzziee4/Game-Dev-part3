@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BackgroundDestroy : MonoBehaviour
 {
+    //if an object is behind the player by a certain distance they are destroyed
     GameObject[] player = null;
+
     float playerZ;
     float objectZ;
     float zDistance;
@@ -18,9 +20,15 @@ public class BackgroundDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //the object z
         objectZ = GetComponent<Transform>().position.z;
+
+        //the players z
         playerZ = player[0].GetComponent<Transform>().position.z;
+
+        //the distance between the player and the object
         zDistance = objectZ + playerZ;
+        //if that distance is greater then 30 the object is destroyed
         if (zDistance <-30)
         {
             Destroy(gameObject);

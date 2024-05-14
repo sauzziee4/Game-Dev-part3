@@ -5,25 +5,27 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestBoss : MonoBehaviour 
 {
-    public float _speed = 0.05f;
-
-    float Spawnz;
-    float Spawnx;
+    
     public bool awake = false;
 
+    //player position
     float playerZ;
     float playerX;
-    float playerY;
+    
+    //the z position of the obstacles that the boss spawns
     float obstacleZ;
 
     GameObject[] player = null;
-    float distanceDifferent;
+    
 
     public GameObject obstacle;
 
+    //the bosses position
     float bossZ;
+
+    //counting the obstacles
     float obstacleCount;
-    float obstacleMax = 5f;
+    
 
     public bool createObstacle = false;
 
@@ -38,13 +40,10 @@ public class TestBoss : MonoBehaviour
     }
     private void Awake()
     {
-        Spawnx=GetComponent<Transform>().position.x;
-        Spawnz=GetComponent<Transform>().position.z;
+        
         awake = true;
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         //GameObject[] playerObject = GameObject.FindGameObjectsWithTag("Player");
-
-
 
     }
 
@@ -52,12 +51,6 @@ public class TestBoss : MonoBehaviour
     void Update()
     {
         Movement();
-
-
-
-        
-        
-            
 
             if (createObstacle == false)
             {
@@ -74,10 +67,6 @@ public class TestBoss : MonoBehaviour
         }
 
 
-
-
-
-
     }
     //The boss simply moves forward
     void Movement()
@@ -90,17 +79,12 @@ public class TestBoss : MonoBehaviour
     IEnumerator ObstacleSpawn()
     {
 
-
-        
             //fetches the players position
             playerZ = player[0].GetComponent<Transform>().position.z;
             playerX = player[0].GetComponent<Transform>().position.x;
-            playerY = player[0].GetComponent<Transform>().position.y;
+            
             bossZ = GetComponent<Transform>().position.z;
 
-        
-            //distanceDifferent = bossZ - playerZ;
-            
             //spawns the obstacle 5 feet in front of the player
             obstacleZ = playerZ + 5F;
             
@@ -111,14 +95,5 @@ public class TestBoss : MonoBehaviour
             createObstacle = false;
             new WaitForSeconds(5);
             
-            
-
-
-        
-        
-
-
-
-
     }
 }

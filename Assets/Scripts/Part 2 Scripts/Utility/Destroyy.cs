@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Destroyy : MonoBehaviour
 {
+
+    //this is used for the collideer behind the player 
     public GameManager gm;
+    //the value the score goes up by when an enemy is killed
     public int KillReward = 5;
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("in collison");
+        
 
-        //when the player collects a collectible the counter goes up by one
+        
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("player has died");
@@ -20,17 +23,18 @@ public class Destroyy : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            //if an enemy hits the collider behind the player the gamemanger is told to increase the score and the killcount
             GameManager.Instance.score += KillReward;
             GameManager.Instance.kills += 1;
 
             Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);
-            //Debug.Log(other.gameObject.name);
+            
         }
 
         if (other.gameObject.CompareTag("Boss"))
         {
-            Debug.Log("boss has been killed");
+            //if the boss hit the collider the game manager is notified and the boss is destroyed
             gm.BossDeath();
             Destroy(other.gameObject);
 
