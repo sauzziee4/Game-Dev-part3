@@ -61,21 +61,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\SectionTrigger.cs" />
-    <Compile Include="Assets\Scripts\Part 1 Scripts\StartMenu.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\TestScripts\TestObstacle.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\Boss\TestBoss.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PickUpManager.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\PauseControl.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\PlayerLife.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PK2Collid.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyDetect.cs" />
     <Compile Include="Assets\Scripts\TestScripts\Pause.cs" />
-    <Compile Include="Assets\Scripts\Part 1 Scripts\EndMenu.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\UI\EndMenu.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\testingdestroy.cs" />
     <Compile Include="Assets\Scripts\TestScripts\BossMovement.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\TestBoss.cs" />
     <Compile Include="Assets\Scripts\Part 1 Scripts\Destroyer.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\BackgroundDestroy.cs" />
@@ -87,10 +87,10 @@
     <Compile Include="Assets\Scripts\Part 2 Scripts\PickUps\PickUpScript.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Player\PlayerControl2.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Managers\Pointsmanager.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Part 2 Scripts\UI\StartMenu.cs" />
     <Compile Include="Assets\Scripts\TestScripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\ObjectMove.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\PauseControl.cs" />
-    <Compile Include="Assets\Scripts\Part 2 Scripts\Utility\MainMenu.cs" />
     <Compile Include="Assets\Scripts\TestScripts\PlayMove2.cs" />
     <Compile Include="Assets\Scripts\Part 2 Scripts\Enemies\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\TestScripts\Testdestroyer.cs" />
