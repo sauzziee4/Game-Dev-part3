@@ -7,7 +7,7 @@ public class NewBehaviourScript : MonoBehaviour
     //public AudioSource pickUpFX;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             //pickUpFX.Play();
             PickUpManager.Instance.JumpBoost(other.GetComponent<PlayerControl2>());
