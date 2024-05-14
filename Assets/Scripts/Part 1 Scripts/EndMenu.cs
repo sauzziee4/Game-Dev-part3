@@ -12,7 +12,7 @@ public class EndMenu : MonoBehaviour
 
     private void Start()
     {
-        endScoreText.text = "";
+        //endScoreText.text = "";
     }
 
      void Update()

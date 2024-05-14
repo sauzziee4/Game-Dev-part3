@@ -2685,7 +2685,7 @@ PrefabInstance:
       objectReference: {fileID: 533904405}
     - target: {fileID: 1531056727396142178, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.77
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1531056727396142178, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2693,7 +2693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531056727396142178, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.31
+      value: -3.54
       objectReference: {fileID: 0}
     - target: {fileID: 1531056727396142178, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2731,11 +2731,16 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4360474074659758843, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8741612484824023400, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
       propertyPath: pickUpFX
       value: 
       objectReference: {fileID: 1169748070}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -708286742310605836, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
