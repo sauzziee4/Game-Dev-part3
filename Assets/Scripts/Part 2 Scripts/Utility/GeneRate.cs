@@ -1,10 +1,8 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class TestEnemyGen : MonoBehaviour
+public class GeneRate : MonoBehaviour
 {
     //For the player
     GameObject[] player = null;
@@ -12,18 +10,18 @@ public class TestEnemyGen : MonoBehaviour
 
     //for the enemy
     public GameObject Enemy1;
-    
+
     public GameObject Enemy2;
-    
+
     public GameObject Enemy3;
-    
+
     public GameObject Enemy4;
     public GameObject Enemy5;
     public GameObject Enemy6;
     public GameObject Enemy7;
-    
-   public GameObject[] enemylist = null;
-   
+
+    public GameObject[] enemylist = null;
+
     float enemyID;
 
     //Enemy positions
@@ -32,7 +30,7 @@ public class TestEnemyGen : MonoBehaviour
     float zPosE;
     float yPosE;
 
-    
+
 
 
     public float enemyCount;
@@ -40,10 +38,10 @@ public class TestEnemyGen : MonoBehaviour
     public float stage2Enemymax;
 
     public GameManager gm;
-    
+
     //for the boss
     public GameObject Boss;
-     bool BossActive = false;
+    bool BossActive = false;
     float bossXID;
 
 
@@ -65,7 +63,7 @@ public class TestEnemyGen : MonoBehaviour
     void Start()
     {
         //boss = GameObject.FindGameObjectsWithTag("Boss");
-        
+
         player = GameObject.FindGameObjectsWithTag("Player");
         Coroutine EnGene = StartCoroutine(EnemySpawn2());
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
@@ -73,7 +71,7 @@ public class TestEnemyGen : MonoBehaviour
         StartCoroutine(PickupSpawn());
 
     }
-   
+
 
     // Update is called once per frame
     void Update()
@@ -86,28 +84,28 @@ public class TestEnemyGen : MonoBehaviour
 
         playerZ = player[0].GetComponent<Transform>().position.z;
 
-        StartCoroutine (PickupSpawn());
+        StartCoroutine(PickupSpawn());
         zMin = playerZ + 20;
         zMax = playerZ + 40;
-            
+
 
         //compares the actual amount of enemies to the local enemycount varaible
-        
-        if(GameManager.Instance.stage==1)
+
+        if (GameManager.Instance.stage == 1)
         {
             StartCoroutine(EnemySpawn2());
 
         }
-         
-        if(GameManager.Instance.stage==2)
+
+        if (GameManager.Instance.stage == 2)
         {
             enemyMax = stage2Enemymax;
             StartCoroutine(EnemySpawn2());
-            
-            
+
+
         }
 
-        
+
     }
     private void FixedUpdate()
     {
@@ -171,7 +169,7 @@ public class TestEnemyGen : MonoBehaviour
     {
         while (enemylist.Length < enemyMax)
         {
-           
+
 
             //These values are not dependent on the type of enemy
             zPosE = Random.Range(zMin, zMax);
@@ -223,7 +221,7 @@ public class TestEnemyGen : MonoBehaviour
 
                 //posti = new Vector3(xPosE, 2, zPosE);
                 Quaternion bed = Quaternion.Euler(0, 180, 0);
-                Instantiate(Enemy3, new Vector3(xPosE,yPosE,zPosE),bed);
+                Instantiate(Enemy3, new Vector3(xPosE, yPosE, zPosE), bed);
                 //e3count++;
 
             }
@@ -235,7 +233,7 @@ public class TestEnemyGen : MonoBehaviour
             if (enemyID == 4)
             {
                 Quaternion armchair = Quaternion.Euler(0, 180, 0);
-                Instantiate(Enemy5,new Vector3(xPosE,yPosE,zPosE), armchair);
+                Instantiate(Enemy5, new Vector3(xPosE, yPosE, zPosE), armchair);
 
             }
             if (enemyID == 5)
@@ -250,12 +248,12 @@ public class TestEnemyGen : MonoBehaviour
                 {
                     xPosE = 3f;
                 }
-               
+
                 yPosE = 4;
                 Instantiate(Enemy6, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
 
             }
-            if(enemyID == 6)
+            if (enemyID == 6)
             {
                 xPosID = Random.Range(0, 2);
                 if (xPosID == 0)
@@ -272,9 +270,9 @@ public class TestEnemyGen : MonoBehaviour
 
             }
             yield return new WaitForSeconds(0.1f);
-            
-            
-    
+
+
+
             enemylist = GameObject.FindGameObjectsWithTag("Enemy");
             enemyCount = enemylist.Length;
 
@@ -284,15 +282,15 @@ public class TestEnemyGen : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
     }
-    
-    
-    
+
+
+
     IEnumerator SpawnBoss()
     {
-        while(BossActive==false)
+        while (BossActive == false)
         {
             bossXID = Random.Range(0, 2);
-            if(bossXID == 0)
+            if (bossXID == 0)
             {
                 xPosE = -1;
             }
@@ -300,19 +298,20 @@ public class TestEnemyGen : MonoBehaviour
             {
                 xPosE = 1;
             }
-            
+
             zPosE = Random.Range(zMin, zMax);
-            yPosE=1.5f;
+            yPosE = 1.5f;
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
             BossActive = true;
             gm.BossSpawn();
             //Debug.Log("boss spawneed");
         }
-        
+
 
         yield return new WaitForSeconds(5);
 
     }
-    
+
 
 }
+

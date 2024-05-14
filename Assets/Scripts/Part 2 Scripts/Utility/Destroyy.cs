@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testingdestroy : MonoBehaviour
+public class Destroyy : MonoBehaviour
 {
     public GameManager gm;
     public int KillReward = 5;
@@ -16,18 +16,18 @@ public class testingdestroy : MonoBehaviour
         {
             Debug.Log("player has died");
             Destroy(other.gameObject);
-            
+
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
             GameManager.Instance.score += KillReward;
             GameManager.Instance.kills += 1;
-            
+
             Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);
             //Debug.Log(other.gameObject.name);
         }
-        
+
         if (other.gameObject.CompareTag("Boss"))
         {
             Debug.Log("boss has been killed");
@@ -35,7 +35,7 @@ public class testingdestroy : MonoBehaviour
             Destroy(other.gameObject);
 
         }
-         
+
     }
 
     private void Awake()
@@ -43,5 +43,5 @@ public class testingdestroy : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
 
-   
+
 }
