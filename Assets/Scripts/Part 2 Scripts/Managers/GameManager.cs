@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //in the hierarchy the game manager is on an empty object which is nested under the player
 
 
     
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        //ensures there id only one gamemanger class ata time
+        //ensures there id only one gamemanger class at a time
         if (Instance == null) 
         {
             Instance = this; 
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ensure the list accounts for enemies dieing ans spawning
+        //ensure the list accounts for enemies dieing and spawning
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
 
 

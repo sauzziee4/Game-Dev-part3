@@ -5,6 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TestBoss : MonoBehaviour 
 {
+    //even tho the script has test in the name this is the script used for the boss
     
     public bool awake = false;
 

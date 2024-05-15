@@ -10,7 +10,7 @@ public class SectionTrigger : MonoBehaviour
     
     public GameObject roadSection;
     public int secNum;
-    int platformCount = 0;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,21 +18,10 @@ public class SectionTrigger : MonoBehaviour
         secNum = Random.Range(0, 3);
         if (other.gameObject.CompareTag("Trigger"))
         {
-            if (platformCount == 0)
-            {
-                //the first platform is generated further away as the sarting plafrom is bigger so the enemies dont fall off the map when spawning
-                Instantiate(roadSection, new Vector3(0, 0, 40), Quaternion.identity);
-                platformCount++;
-
-            }
-            else
-            {
-                //the platforms get spawned
-                Instantiate(roadSection, new Vector3(0, 0, 40), Quaternion.identity);
-                platformCount++;
-
-            }
             
+            //where the platform is spawned
+           Instantiate(roadSection, new Vector3(0, 0, 39), Quaternion.identity);
+                
         }
 
         

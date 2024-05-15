@@ -30,7 +30,7 @@ public class GeneRate : MonoBehaviour
 
 
     //used to keep track of the enemies
-    public float enemyCount;
+    
     public float enemyMax;
     public float stage2Enemymax;
 
@@ -65,7 +65,7 @@ public class GeneRate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //boss = GameObject.FindGameObjectsWithTag("Boss");
+        
 
         player = GameObject.FindGameObjectsWithTag("Player");
         Coroutine EnGene = StartCoroutine(EnemySpawn2());
@@ -175,20 +175,23 @@ public class GeneRate : MonoBehaviour
 
 
         }
-
+        // ensures that there is a time delay between each pickup being spawned
         yield return new WaitForSeconds(10);
 
     }
 
-
+    //used to spawn enemies
     IEnumerator EnemySpawn2()
     {
+        // ensures there are not more enemies then the maximum
         while (enemylist.Length < enemyMax)
         {
 
 
-            //These values are not dependent on the type of enemy
+            //used for the z position of the enemies
             zPosE = Random.Range(zMin, zMax);
+
+            //used to select which of the three lanes an enemy will spawn
             xPosID = Random.Range(0, 3);
             if (xPosID == 0)
             {
@@ -205,17 +208,18 @@ public class GeneRate : MonoBehaviour
             }
             yPosE = 1;
 
+            //used to random choose the enemy that will spawn
             enemyID = Random.Range(0, 5);
-
             if (enemyID == 0)
             {
                 yPosE = 0.5f;
-                //table best y is 1
+                
                 Instantiate(Enemy1, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
-                //e1Count++;
+                
             }
             if (enemyID == 1)
             {
+                //this enemy is only allowed to spawn in the two of the three lanes
                 xPosID = Random.Range(0, 2);
                 if (xPosID == 0)
                 {
@@ -226,30 +230,31 @@ public class GeneRate : MonoBehaviour
                 {
                     xPosE = 3f;
                 }
-                //bed  best y is 1
-                Quaternion bed = Quaternion.Euler(0, 180, 0);
-                Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), bed);
-                //e2Count++;
+                //the enemy needs to be rotated when it spawns
+                Quaternion enemyRot = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy2, new Vector3(xPosE, yPosE, zPosE), enemyRot);
+                
 
             }
             if (enemyID == 2)
             {
 
-                //posti = new Vector3(xPosE, 2, zPosE);
-                Quaternion bed = Quaternion.Euler(0, 180, 0);
-                Instantiate(Enemy3, new Vector3(xPosE, yPosE, zPosE), bed);
+                //the enemy needs to be rotated when it spawns, 
+                Quaternion enemyRot = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy3, new Vector3(xPosE, yPosE, zPosE), enemyRot);
                 //e3count++;
 
             }
             if (enemyID == 3)
             {
                 Instantiate(Enemy4, new Vector3(xPosE, yPosE, zPosE), Quaternion.identity);
-                //e4Count++;
+                
             }
             if (enemyID == 4)
             {
-                Quaternion armchair = Quaternion.Euler(0, 180, 0);
-                Instantiate(Enemy5, new Vector3(xPosE, yPosE, zPosE), armchair);
+                //the enemy needs to be rotated when it spawns
+                Quaternion enemyRot = Quaternion.Euler(0, 180, 0);
+                Instantiate(Enemy5, new Vector3(xPosE, yPosE, zPosE), enemyRot);
 
             }
            
@@ -257,9 +262,11 @@ public class GeneRate : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
 
-
+            //ensures the enemies are added to the enemylist
             enemylist = GameObject.FindGameObjectsWithTag("Enemy");
-            enemyCount = enemylist.Length;
+
+            
+            
 
 
         }
@@ -272,8 +279,10 @@ public class GeneRate : MonoBehaviour
 
     IEnumerator SpawnBoss()
     {
+        //at the moment there will only be one boss active at a time
         while (BossActive == false)
         {
+            //the boss spawns in between the lanes
             bossXID = Random.Range(0, 2);
             if (bossXID == 0)
             {
@@ -286,12 +295,19 @@ public class GeneRate : MonoBehaviour
 
             zPosE = Random.Range(zMin, zMax);
             yPosE = 1;
+
+            //the boss need to be rotated
             Quaternion boss = Quaternion.Euler(0, 90, 0);
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE),boss);
 
-            BossActive = true;
+            //the gamemanager is told that a boss has spawned
             gm.BossSpawn();
-            //Debug.Log("boss spawneed");
+            
+            //exits the while loop
+            BossActive = true;
+
+            
+            
         }
 
 
