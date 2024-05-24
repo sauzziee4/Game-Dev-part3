@@ -38,7 +38,7 @@ public class ObjectMove : MonoBehaviour
         //if the player has not collected the speedup and the player is alive then the object move normally
         if(PickUpManager.speedUp==false & gm.playerLive==true)
         {
-            Debug.Log("normal speed");
+            
             transform.position += new Vector3(0, 0, -4) * Time.deltaTime;
 
         }

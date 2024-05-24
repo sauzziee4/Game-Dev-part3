@@ -15,7 +15,7 @@ public class EndMenu : MonoBehaviour
         endScoreText.text = "";
     }
 
-     void Update()
+    void Update()
     {
         //uses the score from level 1 for the end score
         endScoreText.text = "Score : " + GameManager.Instance.score.ToString();

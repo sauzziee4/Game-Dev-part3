@@ -23,6 +23,7 @@ public class Destroyy : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            EventManager.Instance.ObstaclePassed();
             //if an enemy hits the collider behind the player the gamemanger is told to increase the score and the killcount
             GameManager.Instance.score += KillReward;
             GameManager.Instance.kills += 1;

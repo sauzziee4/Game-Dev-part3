@@ -36,6 +36,7 @@ public class TestBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager.Instance.BossSpawned();
         player = GameObject.FindGameObjectsWithTag("Player");
 
     }
@@ -46,6 +47,10 @@ public class TestBoss : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         //GameObject[] playerObject = GameObject.FindGameObjectsWithTag("Player");
 
+    }
+    private void OnDestroy()
+    {
+        EventManager.Instance.BossBeaten();
     }
 
     // Update is called once per frame

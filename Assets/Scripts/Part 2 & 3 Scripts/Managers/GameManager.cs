@@ -10,28 +10,83 @@ public class GameManager : MonoBehaviour
     //in the hierarchy the game manager is on an empty object which is nested under the player
 
 
-    
+
     public bool playerLive;
     public bool bossDeath;
-    
-   
+    public int ObstaclePassed { get; private set; }
+
+
 
     public static GameManager Instance { get; private set; }
 
     void Awake()
     {
         //ensures there id only one gamemanger class at a time
-        if (Instance == null) 
+        if (Instance == null)
         {
-            Instance = this; 
+            Instance = this;
         }
-        else if (Instance != this) 
-        { 
+        else if (Instance != this)
+        {
             Destroy(this);
         }
         DontDestroyOnLoad(gameObject);
         stage = 1;
     }
+    private void OnEnable()
+    {
+        EventManager.Instance.OnObstaclePassed += HandleObstaclePassed;
+        EventManager.Instance.OnPickup1Activated += HandlePickup1Activated;
+        EventManager.Instance.OnPickup2Activated += HandlePickup2Activated;
+        EventManager.Instance.OnPickup3Activated += HandlePickup3Activated;
+        EventManager.Instance.OnBossSpawned += HandleBossSpawned;
+        EventManager.Instance.OnBossBeaten += HandleBossBeaten;
+
+
+
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.OnObstaclePassed -= HandleObstaclePassed;
+        EventManager.Instance.OnPickup1Activated -= HandlePickup1Activated;
+        EventManager.Instance.OnPickup2Activated -= HandlePickup2Activated;
+        EventManager.Instance.OnPickup3Activated -= HandlePickup3Activated;
+        EventManager.Instance.OnBossSpawned -= HandleBossSpawned;
+        EventManager.Instance.OnBossBeaten -= HandleBossBeaten;
+
+    }
+    private void HandleObstaclePassed()
+    {
+        ObstaclePassed++;
+
+    }
+    private void HandlePickup1Activated()
+    {
+        Debug.Log("Pickup 1 activated ");
+
+    }
+    private void HandlePickup2Activated()
+    {
+        Debug.Log("Pickup 2 activated ");
+
+    }
+    private void HandlePickup3Activated()
+    {
+        Debug.Log("Pickup 3 activated ");
+
+
+    }
+    private void HandleBossSpawned()
+    {
+        Debug.Log("Boss spawned ");
+
+    }
+    private void HandleBossBeaten()
+    {
+        Debug.Log("Boss beaten ");
+
+    }
+
 
     //shows the score
     [SerializeField] private GameObject scoreDisplay;
