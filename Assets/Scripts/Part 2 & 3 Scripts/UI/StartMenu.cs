@@ -10,4 +10,14 @@ public class StartMenu : MonoBehaviour
         //loads the next scene which is level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+
+    }
+    public void ViewMetrics()
+    {
+        Debug.Log("Viewing metrics");
+
+    }
 }

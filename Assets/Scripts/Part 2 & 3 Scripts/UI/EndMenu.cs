@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class EndMenu : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI metricsText;
+
 
     [SerializeField] TextMeshProUGUI endScoreText;
     
@@ -13,6 +15,8 @@ public class EndMenu : MonoBehaviour
     private void Start()
     {
         endScoreText.text = "";
+
+        metricsText.text = "obstacles Passed:" + GameManager.Instance.ObstaclePassed;
     }
 
     void Update()
@@ -29,7 +33,7 @@ public class EndMenu : MonoBehaviour
     public void ReloadLevel()
     {
         //Loads level1
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -2);
     }
 
 }

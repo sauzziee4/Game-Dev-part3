@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    //does not work
+    
     public void ReloadLevel()
     {
         

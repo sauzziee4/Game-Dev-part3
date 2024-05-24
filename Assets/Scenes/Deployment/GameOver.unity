@@ -441,7 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85992b8c4e195204e90c9772400d7463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadCounter: 0
   scoreText: {fileID: 0}
 --- !u!1 &790400979
 GameObject:
@@ -909,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29626fde325b57141b6ea2bef923d1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  metricsText: {fileID: 0}
   endScoreText: {fileID: 0}
 --- !u!1 &1696984296
 GameObject:
@@ -1135,7 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29626fde325b57141b6ea2bef923d1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScoreText: {fileID: 1740005331}
+  metricsText: {fileID: 1740005331}
+  endScoreText: {fileID: 0}
 --- !u!1 &1901129282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29626fde325b57141b6ea2bef923d1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  metricsText: {fileID: 0}
   endScoreText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
