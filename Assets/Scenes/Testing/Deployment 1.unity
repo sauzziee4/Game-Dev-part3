@@ -603,6 +603,9 @@ GameObject:
   - component: {fileID: 533904415}
   - component: {fileID: 533904416}
   - component: {fileID: 533904417}
+  - component: {fileID: 533904420}
+  - component: {fileID: 533904419}
+  - component: {fileID: 533904418}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GM
@@ -671,7 +674,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533904404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
   m_Name: 
@@ -685,7 +688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533904404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c108c9586dd021e459e4fb82f9040cd8, type: 3}
   m_Name: 
@@ -730,6 +733,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2fd2946aa83c942a381b077250b0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &533904418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba5bc560cd1df84fab755e365ea285e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &533904419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c1ccb81eccb014c9afaeeaa048d75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &533904420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533904404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577ff27b0e032b34bb728985d37282f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 619585777}
+  scoreText: {fileID: 1788922914}
 --- !u!1 &619585777
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +966,6 @@ GameObject:
   - component: {fileID: 899674349}
   - component: {fileID: 899674348}
   - component: {fileID: 899674347}
-  - component: {fileID: 899674350}
   m_Layer: 5
   m_Name: ReloadButton
   m_TagString: Untagged
@@ -997,9 +1037,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 899674350}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ReloadLevel
+      - m_Target: {fileID: 533904405}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1047,20 +1087,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899674345}
   m_CullTransparentMesh: 1
---- !u!114 &899674350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899674345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuD: {fileID: 619585777}
-  gm: {fileID: 533904405}
 --- !u!1 &1169748068
 GameObject:
   m_ObjectHideFlags: 0

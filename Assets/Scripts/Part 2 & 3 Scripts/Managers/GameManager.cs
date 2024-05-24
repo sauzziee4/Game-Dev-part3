@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         stage = 1;
     }
+    
 
     //shows the score
     [SerializeField] private GameObject scoreDisplay;
@@ -73,8 +74,34 @@ public class GameManager : MonoBehaviour
         currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
         enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
         pKEffectText= pickupEffectdisplayDisplay.GetComponent<TextMeshProUGUI>();
-        
+
+
+        UIManager.Instance.Initialize();
+        LevelManager.Instance.Initialize();
+        InputManager.Instance.Initialize();
+
     }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        EventManager.TriggerEvent("OnGameRestart");
+        LevelManager.Instance.RestartLevel();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        UIManager.Instance.ShowPauseMenu();
+        EventManager.TriggerEvent("OnGamePaused");
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        UIManager.Instance.HidePauseMenu();
+        EventManager.TriggerEvent("OnGameResumed");
+    }
+
 
     // Update is called once per frame
     void Update()

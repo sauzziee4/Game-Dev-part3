@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventManager : MonoBehaviour
 {
@@ -11,6 +13,36 @@ public class EventManager : MonoBehaviour
     public event Action OnPickupActivated;
     public event Action OnBossSpawned;
     public event Action OnBossBeaten;
+
+    private static Dictionary<string, UnityEvent> eventDictionary = new Dictionary<string, UnityEvent>();
+
+    public static void StartListening(string eventname, UnityAction listener)
+    {
+        if (eventDictionary.TryGetValue(eventname,out UnityEvent thisEvent))
+        {
+            thisEvent.AddListener(listener);
+        }
+        else
+        {
+            thisEvent = new UnityEvent();
+            thisEvent.AddListener(listener);
+            eventDictionary.Add(eventname, thisEvent);
+        }
+    }
+    public static void Stoplistening(string eventname, UnityAction listener)
+    {
+        if (eventDictionary.TryGetValue(eventname, out UnityEvent thisEvent))
+        {
+            thisEvent.RemoveListener(listener);
+        }
+    }
+    public static void TriggerEvent(string eventName)
+    {
+        if (eventDictionary.TryGetValue(eventName, out UnityEvent thisEvent))
+        {
+            thisEvent.Invoke();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

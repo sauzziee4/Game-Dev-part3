@@ -21,10 +21,10 @@ public class EnemyAttack : MonoBehaviour
        
         if (collision.gameObject.CompareTag("Player"))
         {
-            
-            
+
+
             //if the enemy collides with the player the canattack method is called 
-            //
+            Debug.Log("enemy has hit the player");
             CanAttackPlayer();
         }
         if (collision.gameObject.CompareTag("Enemy"))
