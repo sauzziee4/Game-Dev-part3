@@ -7,6 +7,11 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
+    public string Level1Name = "Level1";
+    public string Level2Name = "Level2";
+
+    public string currentLevelName;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +24,8 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
     public void Initialize()
     {
         // Initialize UI elements if needed
@@ -34,9 +41,32 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    private void Start()
+    {
+        LoadFirstLevel();
+    }
+
+    public void LoadFirstLevel()
+    {
+        currentLevelName = Level1Name;
+        SceneManager.LoadScene(Level1Name);
+    }
+
+    public void LoadSecondLevel()
+    {
+        currentLevelName = Level2Name;
+        SceneManager.LoadScene(Level2Name);
+    }
+
     public void LoadNextLevel()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentIndex + 1);
+        if (currentLevelName == Level1Name)
+        {
+            LoadSecondLevel();
+        }
+        else
+        {
+            LoadFirstLevel();
+        }
     }
 }
