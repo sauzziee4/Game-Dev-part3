@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,10 +13,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject pauseMenu;
 
-
-
-    //public GameObject ScoreDisplay;
-
+    public float menuNum = 0;
+    
     private TextMeshProUGUI scoreText;
     
 
@@ -37,8 +36,18 @@ public class UIManager : MonoBehaviour
 
         // Subscribe to GameManager events
         GameManager.Instance.OnObstaclePassed.AddListener(UpdateScore);
-        
 
+        //PauseMenuReference();
+        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
+        Debug.LogWarning("Pause panel initialized.");
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+            
+            Debug.LogWarning("Pause panel state: " + pauseMenu.activeSelf);
+        }
+
+        //TogglePauseMenu();
 
 
     }
@@ -61,6 +70,11 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogWarning("Score text GameObject not found with tag: ScoreText");
         }
+
+    }
+    private void PauseMenuReference()
+    {
+        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
 
     }
 
@@ -94,22 +108,88 @@ public class UIManager : MonoBehaviour
         }
 
     }
+    public void TogglePauseMenu()
+    {
+        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
+        
+        if (pauseMenu == null)
+        {
+            PauseMenuReference();
+            Debug.LogWarning("Pause panel is null.");
+
+        }
+
+        bool isActive = pauseMenu.activeSelf;
+
+        if (pauseMenu != null)
+        {
+
+            Debug.LogWarning("Created Pause panel.");
+            Debug.Log(isActive);
+            
+            if (isActive==false)
+            {
+                HidePauseMenu();
+            }
+            else if(isActive==true)
+            {
+                ShowPauseMenu();
+            }
+
+        }
+        else
+        {
+            Debug.LogWarning("Pause panel is null, cannot toggle active state.");
+
+        }
+       
+    }
+
     
+
+
 
 
 
 
     public void ShowPauseMenu()
     {
-        pauseMenu.SetActive(true);
+        
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(true);
+           
+            
+
+        }
+        
+        
     }
 
     public void HidePauseMenu()
     {
-        pauseMenu.SetActive(false);
+        if (pauseMenu == null)
+        {
+            PauseMenuReference();
+
+        }
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+
+        }
+        
     }
 
+    public void HideInitialPauseMenu()
+    {
+        bool isActive = pauseMenu.activeSelf;
+        pauseMenu.SetActive(false);
+
+
+    }
     
 
-    
+
+
 }

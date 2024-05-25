@@ -27,17 +27,17 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UIManager.Instance.ShowPauseMenu();
+           
 
             if (Time.timeScale==0f)
             {
-                UIManager.Instance.HidePauseMenu();
+                
                 GameManager.Instance.ResumeGame();
 
             }
             else
             {
-                UIManager.Instance.ShowPauseMenu();
+               
                 GameManager.Instance.PauseGame();
 
             }
