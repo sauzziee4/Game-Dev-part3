@@ -9,12 +9,12 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
 
-    public event Action OnObstaclePassed;
-    public event Action OnPickup1Activated;
-    public event Action OnPickup2Activated;
-    public event Action OnPickup3Activated;
-    public event Action OnBossSpawned;
-    public event Action OnBossBeaten;
+    public UnityEvent OnObstaclePassed;
+    public UnityEvent OnPickup1Activated;
+    public UnityEvent OnPickup2Activated;
+    public UnityEvent OnPickup3Activated;
+    public UnityEvent OnBossSpawned;
+    public UnityEvent OnBossBeaten;
 
     private static Dictionary<string, UnityEvent> eventDictionary = new Dictionary<string, UnityEvent>();
 
@@ -56,6 +56,7 @@ public class EventManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -64,6 +65,7 @@ public class EventManager : MonoBehaviour
     }
     public void ObstaclePassed()
     { 
+        
         OnObstaclePassed?.Invoke();
     }
     public void Pickup1Activated()

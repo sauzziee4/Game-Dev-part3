@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     //in the hierarchy the game manager is on an empty object which is nested under the player
 
-
+    public UnityEvent OnObstaclePassed;
     
+
+
+    private int obstaclesPassedScore = 0;
+
     public bool playerLive;
     public bool bossDeath;
     
@@ -32,110 +37,47 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         
-        stage = 1;
+        //stage = 1;
     }
-    
+    public void IncrementObstaclesPassedScore()
+    {
+        obstaclesPassedScore++;
+        Debug.Log("Obstacles Passed: " + obstaclesPassedScore);
+
+        OnObstaclePassed.Invoke();
+    }
+
 
     //shows the score
-    
-     public int score = 0;
+
+    public int score = 0;
 
     //shows the stage
-    [SerializeField] private GameObject stageDisplay;
-    public int stage = 0;
-
-    //shows how many enemies we have killed
-    [SerializeField] private GameObject enemyKillsDisplay;
-    public int kills = 0;
-    
-    //shows how many enemies are alive
-    [SerializeField] private GameObject currentEnemiesDisplay;
-    public int currentEnemies = 0;
-
-    //shows where the player is affected by a picup
-    [SerializeField] private GameObject pickupEffectdisplayDisplay;
-    public bool pickupEffect = false;
-
-    //the text elements
-    TextMeshProUGUI pKEffectText;
-
-    
-
-    TextMeshProUGUI stageText;
-
-    TextMeshProUGUI enemykillsText;
-
-    TextMeshProUGUI currentenemiesText;
-
-    //used to get the current amount of enemies
+    //[Serialize
     public GameObject[] enemylist = null;
     void Start()
     {
+        if (OnObstaclePassed == null) OnObstaclePassed = new UnityEvent();
         
-        stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
-        currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
-        enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
-        pKEffectText= pickupEffectdisplayDisplay.GetComponent<TextMeshProUGUI>();
+
+        //stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
+        //currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
+        //enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
+        //pKEffectText= pickupEffectdisplayDisplay.GetComponent<TextMeshProUGUI>();
 
 
-        UIManager.Instance.Initialize();
-        LevelManager.Instance.Initialize();
-        InputManager.Instance.Initialize();
+        //UIManager.Instance.Initialize();
+        //LevelManager.Instance.Initialize();
+        //InputManager.Instance.Initialize();
 
     }
-    private void OnEnable()
+    public int GetObstaclesPassedScore()
     {
-        EventManager.Instance.OnObstaclePassed += HandleObstaclePassed;
-        EventManager.Instance.OnPickup1Activated += HandlePickup1Activated;
-        EventManager.Instance.OnPickup1Activated += HandlePickup2Activated;
-        EventManager.Instance.OnPickup1Activated += HandlePickup3Activated;
-        EventManager.Instance.OnBossSpawned += HandleBossSpawned;
-        EventManager.Instance.OnBossBeaten += HandleBossBeaten;
-    }
-    private void OnDisable()
-    {
-        EventManager.Instance.OnObstaclePassed -= HandleObstaclePassed;
-        EventManager.Instance.OnPickup2Activated -= HandlePickup2Activated;
-        EventManager.Instance.OnPickup3Activated -= HandlePickup2Activated;
-        EventManager.Instance.OnBossSpawned -= HandleBossSpawned;
-        EventManager.Instance.OnBossBeaten -= HandleBossBeaten;
+        return obstaclesPassedScore;
     }
 
-    private void HandleObstaclePassed()
-    {
-        IncreaseScore(10);
-        
-        
-    }
-    public void IncreaseScore(int amount)
-    {
-        score += amount;
-        UIManager.Instance.UpdateScore(score);
-    }
 
-    private void HandlePickup1Activated()
-    {
-        Debug.Log("Pick-Up Activated!");
-    }
-    private void HandlePickup2Activated()
-    {
-        Debug.Log("Pick-Up Activated!");
-    }
-    private void HandlePickup3Activated()
-    {
-        Debug.Log("Pick-Up Activated!");
-    }
 
-    private void HandleBossSpawned()
-    {
-        Debug.Log("Boss Spawned!");
-    }
-
-    private void HandleBossBeaten()
-    {
-        
-        
-    }
     public void RestartGame()
     {
         Time.timeScale = 1f;
@@ -168,10 +110,10 @@ public class GameManager : MonoBehaviour
 
         
         
-        stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
-        enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
-        currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
-        pKEffectText.text ="Pickup effect: " +GameManager.Instance.pickupEffect.ToString();
+        //stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
+        //enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
+        //currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
+        //pKEffectText.text ="Pickup effect: " +GameManager.Instance.pickupEffect.ToString();
         
         
        
@@ -187,7 +129,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.Instance.bossDeath ==true)
         {
             //Victory
-            GameManager.Instance.stage = 3;
+            //GameManager.Instance.stage = 3;
         }
         
     }

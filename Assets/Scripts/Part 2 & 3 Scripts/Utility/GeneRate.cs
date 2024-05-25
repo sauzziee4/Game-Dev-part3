@@ -98,20 +98,19 @@ public class GeneRate : MonoBehaviour
 
         
         //if we are in stage 1 enemy spawning starts
-        if (GameManager.Instance.stage == 1)
-        {
+        
+        
             StartCoroutine(EnemySpawn2());
 
-        }
+        
 
         //if we are in stage 2 the maximum amount of enemies is adjusted
-        if (GameManager.Instance.stage == 2)
-        {
-            enemyMax = stage2Enemymax;
-            StartCoroutine(EnemySpawn2());
+        
+        
+            
 
 
-        }
+        
         
        
 
@@ -124,7 +123,7 @@ public class GeneRate : MonoBehaviour
         if (fixUpdateCount == 6000)
         {
             StartCoroutine(SpawnBoss());
-            GameManager.Instance.stage = 2;
+            
 
         }
     }

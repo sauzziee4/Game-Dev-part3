@@ -78,6 +78,6 @@ public class SpawnManager : MonoBehaviour
         }
 
         Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-        Debug.Log("Enemy spawned at " + spawnPoints[spawnIndex].position);
+        //Debug.Log("Enemy spawned at " + spawnPoints[spawnIndex].position);
     }
 }

@@ -23,9 +23,12 @@ public class Destroyy : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("In destroy the enemy has collided with the wall");
+            GameManager.Instance.IncrementObstaclesPassedScore();
+
             //if an enemy hits the collider behind the player the gamemanger is told to increase the score and the killcount
             GameManager.Instance.score += KillReward;
-            GameManager.Instance.kills += 1;
+            //GameManager.Instance.kills += 1;
 
             Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);

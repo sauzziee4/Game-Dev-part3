@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
     public GameObject pauseMenu;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI stageText;
-    public TextMeshProUGUI enemyKilssLabel;
 
-    public GameObject ScoreDisplay;
+
+
+    //public GameObject ScoreDisplay;
+
+    private TextMeshProUGUI scoreText;
     
 
     private void Awake()
@@ -29,7 +33,41 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        scoreText=ScoreDisplay.GetComponent<TextMeshProUGUI>();
+        UpdateScoreTextReference();
+
+        // Subscribe to GameManager events
+        GameManager.Instance.OnObstaclePassed.AddListener(UpdateScore);
+        
+
+
+
+    }
+    private void UpdateScoreTextReference()
+    {
+        GameObject scoreObject = GameObject.FindGameObjectWithTag("Level1Score");
+        if (scoreObject != null)
+        {
+            scoreText = scoreObject.GetComponent<TextMeshProUGUI>();
+            if (scoreText != null)
+            {
+                Debug.Log("Score text found: " + scoreText.gameObject.name);
+            }
+            else
+            {
+                Debug.LogWarning("Score text component not found on GameObject with tag: ScoreText");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Score text GameObject not found with tag: ScoreText");
+        }
+
+    }
+
+    public void Startgame()
+    {
+
+        SceneManager.LoadScene("Level1");
     }
 
     public void Initialize()
@@ -37,9 +75,24 @@ public class UIManager : MonoBehaviour
         // Initialize UI elements if needed
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+        UpdateScoreTextReference();
+
+
+        if (scoreText.text != null)
+        {
+            Debug.Log("lets see if work" +GameManager.Instance.GetObstaclesPassedScore().ToString());
+            scoreText.text = "Obstacles Passed: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+            
+            Debug.Log("Score text updated: " + scoreText.text); // Log the updated text value
+        }
+        else
+        {
+            Debug.LogWarning("Score text is null");
+            
+        }
+
     }
     
 
