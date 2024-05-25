@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject pauseMenu;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI stageText;
+    public TextMeshProUGUI enemyKilssLabel;
+
+    public GameObject ScoreDisplay;
     
 
     private void Awake()
@@ -23,6 +27,10 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        scoreText=ScoreDisplay.GetComponent<TextMeshProUGUI>();
+    }
 
     public void Initialize()
     {
@@ -31,10 +39,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int score)
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + score.ToString();
     }
+    
 
-   
+
+
 
     public void ShowPauseMenu()
     {

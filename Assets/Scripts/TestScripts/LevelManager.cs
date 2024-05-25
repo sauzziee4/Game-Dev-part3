@@ -69,4 +69,8 @@ public class LevelManager : MonoBehaviour
             LoadFirstLevel();
         }
     }
+    public void PlayerDied()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 }

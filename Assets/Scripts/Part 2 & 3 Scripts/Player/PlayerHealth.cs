@@ -54,16 +54,21 @@ public class PlayerHealth : MonoBehaviour
         {
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
-            gm.PlayerDeath();
+            Die();
+            //gm.PlayerDeath();
 
-            Destroy(gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //Destroy(gameObject);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
 
 
 
         }
 
+    }
+    private void Die()
+    {
+        LevelManager.Instance.PlayerDied();
     }
     
 }

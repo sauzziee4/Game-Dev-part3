@@ -18,24 +18,26 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
-    void Awake()
+     private void Awake()
     {
         //ensures there id only one gamemanger class at a time
         if (Instance == null) 
         {
-            Instance = this; 
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this) 
-        { 
-            Destroy(this);
+        {
+            Debug.Log("hello");
+            Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        
         stage = 1;
     }
     
 
     //shows the score
-    [SerializeField] private GameObject scoreDisplay;
+    
      public int score = 0;
 
     //shows the stage
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
     //the text elements
     TextMeshProUGUI pKEffectText;
 
-    TextMeshProUGUI scoreText;
+    
 
     TextMeshProUGUI stageText;
 
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemylist = null;
     void Start()
     {
-        scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
+        
         stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
         currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
         enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
@@ -80,6 +82,59 @@ public class GameManager : MonoBehaviour
         LevelManager.Instance.Initialize();
         InputManager.Instance.Initialize();
 
+    }
+    private void OnEnable()
+    {
+        EventManager.Instance.OnObstaclePassed += HandleObstaclePassed;
+        EventManager.Instance.OnPickup1Activated += HandlePickup1Activated;
+        EventManager.Instance.OnPickup1Activated += HandlePickup2Activated;
+        EventManager.Instance.OnPickup1Activated += HandlePickup3Activated;
+        EventManager.Instance.OnBossSpawned += HandleBossSpawned;
+        EventManager.Instance.OnBossBeaten += HandleBossBeaten;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.OnObstaclePassed -= HandleObstaclePassed;
+        EventManager.Instance.OnPickup2Activated -= HandlePickup2Activated;
+        EventManager.Instance.OnPickup3Activated -= HandlePickup2Activated;
+        EventManager.Instance.OnBossSpawned -= HandleBossSpawned;
+        EventManager.Instance.OnBossBeaten -= HandleBossBeaten;
+    }
+
+    private void HandleObstaclePassed()
+    {
+        IncreaseScore(10);
+        
+        
+    }
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        UIManager.Instance.UpdateScore(score);
+    }
+
+    private void HandlePickup1Activated()
+    {
+        Debug.Log("Pick-Up Activated!");
+    }
+    private void HandlePickup2Activated()
+    {
+        Debug.Log("Pick-Up Activated!");
+    }
+    private void HandlePickup3Activated()
+    {
+        Debug.Log("Pick-Up Activated!");
+    }
+
+    private void HandleBossSpawned()
+    {
+        Debug.Log("Boss Spawned!");
+    }
+
+    private void HandleBossBeaten()
+    {
+        
+        
     }
     public void RestartGame()
     {
@@ -112,7 +167,7 @@ public class GameManager : MonoBehaviour
 
 
         
-        scoreText.text ="Score : " +GameManager.Instance.score.ToString();
+        
         stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
         enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
         currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
