@@ -43,23 +43,23 @@ public class PickUpManager : MonoBehaviour
     //the couroutine for the speed up
     public IEnumerator Pickup2()
     {
-        GameManager.Instance.pickupEffect = true;
+        //GameManager.Instance.pickupEffect = true;
         speedUp = true;
         yield return new WaitForSeconds(5);
         //after 5 seconds the pickup effect stops
         speedUp = false;
-        GameManager.Instance.pickupEffect = false;
+        //GameManager.Instance.pickupEffect = false;
         
     }
     //the couroutine for the invincible powerup
     public IEnumerator Pickup3()
     {
-        GameManager.Instance.pickupEffect = true;
+        //GameManager.Instance.pickupEffect = true;
         invincible = true;
         yield return new WaitForSeconds(5);
         //after 5 seconds the pickup effect stops
         invincible = false;
-        GameManager.Instance.pickupEffect = false;
+        //GameManager.Instance.pickupEffect = false;
 
     }
     
@@ -73,12 +73,12 @@ public class PickUpManager : MonoBehaviour
     //the couroutine for the jump boost
     private IEnumerator JumpBoostCoroutine(PlayerControl2 playerControl)
     {
-        GameManager.Instance.pickupEffect = true;
+        //GameManager.Instance.pickupEffect = true;
         playerControl.IncreaseJump();
         yield return new WaitForSeconds(5);
         //after 5 seconds the pickup effect stops
         playerControl.ResetJump();
-        GameManager.Instance.pickupEffect = false;
+        //GameManager.Instance.pickupEffect = false;
 
     }
     public void SpeedIncrese()
