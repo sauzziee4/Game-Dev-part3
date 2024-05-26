@@ -27,7 +27,7 @@ public class PK2Collid : MonoBehaviour
         //if the player collides with the pickup the pickup manager is notified and the object is destroyed
         if (other.gameObject.CompareTag("Player"))
         {
-            EventManager.Instance.Pickup2Activated();
+            GameManager.Instance.ActivatePickup2();
             PickUpManager.Instance.SpeedIncrese();
             Destroy(this.gameObject);
 

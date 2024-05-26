@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
     }
     public void DefeatBoss()
     {
+        levelsBeaten++;
         OnBossBeaten.Invoke();
 
     }

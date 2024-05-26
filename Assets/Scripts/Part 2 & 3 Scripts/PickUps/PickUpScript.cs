@@ -12,7 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
         //if the player collides with the pickup the pickup manager is notified and the object is destroyed
         if (other.gameObject.CompareTag("Player"))
         {
-            EventManager.Instance.Pickup1Activated();
+            GameManager.Instance.ActivatePickup1();
             //pickUpFX.Play();
             PickUpManager.Instance.JumpBoost(other.GetComponent<PlayerControl2>());
             Destroy(this.gameObject);

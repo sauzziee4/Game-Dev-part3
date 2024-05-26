@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public float menuNum = 0;
     
     private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI levelsBeatenText;
 
 
     private CanvasGroup pausePanelCanvasGroup;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
 
         // Subscribe to GameManager events
         GameManager.Instance.OnObstaclePassed.AddListener(UpdateScore);
+        GameManager.Instance.OnBossBeaten.AddListener(UpdateLevelsBeaten);
 
         GameObject pausePanel = GameObject.FindGameObjectWithTag("Level1PausePanel");
         pausePanelCanvasGroup = pausePanel.GetComponent<CanvasGroup>();
@@ -68,6 +70,17 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("Score text GameObject not found with tag: ScoreText");
         }
 
+    }
+    public void UpdateLevelsBeatenTextReference()
+    {
+        
+        GameObject levelsBeatenObject = GameObject.FindGameObjectWithTag("Level1LevelsBeaten");
+        levelsBeatenText=levelsBeatenObject.GetComponent<TextMeshProUGUI>();
+
+    }
+    public void UpdateLevelsBeaten()
+    {
+        levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
     }
    
 
