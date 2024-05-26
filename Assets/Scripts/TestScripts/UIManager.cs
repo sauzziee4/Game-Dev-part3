@@ -80,6 +80,8 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateLevelsBeaten()
     {
+        GameObject levelsBeatenObject = GameObject.FindGameObjectWithTag("Level1LevelsBeaten");
+        levelsBeatenText = levelsBeatenObject.GetComponent<TextMeshProUGUI>();
         levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
     }
    
