@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
         if (scoreText.text != null)
         {
             Debug.Log("lets see if work" +GameManager.Instance.GetObstaclesPassedScore().ToString());
-            scoreText.text = "Obstacles Passed: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+            scoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
             
             Debug.Log("Score text updated: " + scoreText.text); // Log the updated text value
         }

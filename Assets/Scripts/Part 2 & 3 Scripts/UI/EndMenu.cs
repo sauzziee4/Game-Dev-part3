@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class EndMenu : MonoBehaviour
 {
 
-    //[SerializeField] TextMeshProUGUI endScoreText;
+    [SerializeField] TextMeshProUGUI endScoreText;
     
 
     private void Start()
@@ -17,9 +17,9 @@ public class EndMenu : MonoBehaviour
 
      void Update()
     {
-        //uses the score from level 1 for the end score
-        //endScoreText.text = "Score : " + GameManager.Instance.score.ToString();
         
+        endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+
 
     }
     public void QuitGame()
