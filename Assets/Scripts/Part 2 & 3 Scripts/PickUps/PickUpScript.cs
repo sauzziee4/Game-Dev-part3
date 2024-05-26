@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(this.gameObject);
+            Destroy(other.gameObject);
         }
     }
   

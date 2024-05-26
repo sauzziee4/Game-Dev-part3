@@ -20,4 +20,15 @@ public class BossDefeatButton : MonoBehaviour
     {
         GameManager.Instance.DefeatBoss();
     }
+    public void Pickup1()
+    {
+        GameManager.Instance.ActivatePickup1();
+    }
+    public void Pickup2()
+    { GameManager.Instance.ActivatePickup2();
+    
+    }
+    public void Pickup3()
+    { GameManager.Instance.ActivatePickup3();
+    }
 }

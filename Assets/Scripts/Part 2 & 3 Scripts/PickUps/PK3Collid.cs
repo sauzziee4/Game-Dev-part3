@@ -27,7 +27,7 @@ public class PK3Collid : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.ActivatePickup3();
-            PickUpManager.Instance.InvincibleMethod();
+            
             Destroy(this.gameObject);
 
         }

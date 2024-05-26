@@ -28,7 +28,7 @@ public class PK2Collid : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.ActivatePickup2();
-            PickUpManager.Instance.SpeedIncrese();
+            
             Destroy(this.gameObject);
 
         }

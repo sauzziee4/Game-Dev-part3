@@ -1780,6 +1780,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ababc39dc405f2478159b3612f4ca12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupPrefab1:
+  - {fileID: 2194580506314217176, guid: 720404ff6a0df7f49bedfc178cf8a5ee, type: 3}
+  pickupPrefab2:
+  - {fileID: 8023497581094855389, guid: 1262622a80d6a0c459740dcccc7e4c1b, type: 3}
+  pickupPrefab3:
+  - {fileID: 1152608811770120373, guid: 7ad3fc36f57d3dd4b9aa8a8ef8533360, type: 3}
+  spawnPoints:
+  - {fileID: 858637129}
+  - {fileID: 1218004629}
+  - {fileID: 1272740569}
   speedBuffClip: {fileID: 0}
 --- !u!4 &1600357380
 Transform:
@@ -1972,7 +1982,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1771608037}
         m_TargetAssemblyTypeName: BossDefeatButton, Assembly-CSharp
-        m_MethodName: Bossdefeatmethod
+        m_MethodName: Pickup3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
