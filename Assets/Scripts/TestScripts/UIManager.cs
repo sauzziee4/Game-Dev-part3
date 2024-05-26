@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     
     private TextMeshProUGUI scoreText;
 
+
     private CanvasGroup pausePanelCanvasGroup;
     private bool isPausePanelVisible = false;
     

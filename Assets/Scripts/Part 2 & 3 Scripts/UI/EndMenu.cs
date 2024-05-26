@@ -8,6 +8,7 @@ public class EndMenu : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI endScoreText;
+    [SerializeField] TextMeshProUGUI levelsBeatenText;
     
 
     private void Start()
@@ -17,7 +18,7 @@ public class EndMenu : MonoBehaviour
 
      void Update()
     {
-        
+        levelsBeatenText.text ="Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
         endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
 
 

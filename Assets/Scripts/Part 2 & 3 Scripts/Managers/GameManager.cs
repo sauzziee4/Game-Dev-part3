@@ -11,10 +11,18 @@ public class GameManager : MonoBehaviour
     //in the hierarchy the game manager is on an empty object which is nested under the player
 
     public UnityEvent OnObstaclePassed;
+    public UnityEvent OnPickup1Activated;
+    public UnityEvent OnPickup2Activated;
+    public UnityEvent OnPickup3Activated;
+    public UnityEvent OnBossSpawned;
+    public UnityEvent OnBossBeaten;
     
 
 
+
+
     private int obstaclesPassedScore = 0;
+    private int levelsBeaten = 0;
 
     public bool playerLive;
     public bool bossDeath;
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         OnObstaclePassed.Invoke();
     }
+    
 
 
     //shows the score
@@ -58,12 +67,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (OnObstaclePassed == null) OnObstaclePassed = new UnityEvent();
+        if (OnPickup1Activated == null) OnPickup1Activated = new UnityEvent();
+        if(OnPickup2Activated == null) OnPickup2Activated = new UnityEvent();
+        if(OnPickup3Activated == null) OnPickup3Activated = new UnityEvent();
+        if (OnBossSpawned == null) OnBossSpawned = new UnityEvent();
+        if(OnBossBeaten == null) OnBossBeaten = new UnityEvent();
         
 
-        //stageText=  stageDisplay.GetComponent<TextMeshProUGUI>();
-        //currentenemiesText= currentEnemiesDisplay.GetComponent<TextMeshProUGUI>();
-        //enemykillsText =enemyKillsDisplay.GetComponent<TextMeshProUGUI>();
-        //pKEffectText= pickupEffectdisplayDisplay.GetComponent<TextMeshProUGUI>();
+        
 
 
         //UIManager.Instance.Initialize();
@@ -74,6 +85,36 @@ public class GameManager : MonoBehaviour
     public int GetObstaclesPassedScore()
     {
         return obstaclesPassedScore;
+    }
+    public int GetLevelsBeaten()
+    {
+        return levelsBeaten;
+
+    }
+    public void ActivatePickup1()
+    {
+        OnPickup1Activated.Invoke();
+
+    }
+    public void ActivatePickup2()
+    {
+        OnPickup2Activated.Invoke();
+
+    }
+    public void ActivatePickup3()
+    {
+        OnPickup3Activated.Invoke();
+
+    }
+    public void SpawnBoss()
+    {
+        OnBossSpawned.Invoke();
+
+    }
+    public void DefeatBoss()
+    {
+        OnBossBeaten.Invoke();
+
     }
 
 
@@ -108,15 +149,6 @@ public class GameManager : MonoBehaviour
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
 
 
-        
-        
-        //stageText.text ="Stage : "+ GameManager.Instance.stage.ToString();
-        //enemykillsText.text ="Enemies defeated : " + GameManager.Instance.kills.ToString();
-        //currentenemiesText.text ="Current enemies: " + enemylist.Length.ToString();
-        //pKEffectText.text ="Pickup effect: " +GameManager.Instance.pickupEffect.ToString();
-        
-        
-       
 
        NextStage();
     }
