@@ -88,14 +88,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        UIManager.Instance.TogglePauseMenu();
+        UIManager.Instance.TogglePausePanel();
         EventManager.TriggerEvent("OnGamePaused");
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
-        UIManager.Instance.TogglePauseMenu();
+        UIManager.Instance.TogglePausePanel ();
         EventManager.TriggerEvent("OnGameResumed");
     }
 

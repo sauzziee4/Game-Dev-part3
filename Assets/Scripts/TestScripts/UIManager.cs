@@ -11,11 +11,14 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public GameObject pauseMenu;
+    public GameObject pause;
 
     public float menuNum = 0;
     
     private TextMeshProUGUI scoreText;
+
+    private CanvasGroup pausePanelCanvasGroup;
+    private bool isPausePanelVisible = false;
     
 
     private void Awake()
@@ -37,15 +40,8 @@ public class UIManager : MonoBehaviour
         // Subscribe to GameManager events
         GameManager.Instance.OnObstaclePassed.AddListener(UpdateScore);
 
-        //PauseMenuReference();
-        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
-        Debug.LogWarning("Pause panel initialized.");
-        if (pauseMenu != null)
-        {
-            pauseMenu.SetActive(false);
-            
-            Debug.LogWarning("Pause panel state: " + pauseMenu.activeSelf);
-        }
+        GameObject pausePanel = GameObject.FindGameObjectWithTag("Level1PausePanel");
+        pausePanelCanvasGroup = pausePanel.GetComponent<CanvasGroup>();
 
         //TogglePauseMenu();
 
@@ -72,11 +68,7 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    private void PauseMenuReference()
-    {
-        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
-
-    }
+   
 
     public void Startgame()
     {
@@ -108,86 +100,58 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    public void TogglePauseMenu()
+    public void TogglePausePanel()
     {
-        pauseMenu = GameObject.FindGameObjectWithTag("Level1PausePanel");
-        
-        if (pauseMenu == null)
+        GameObject pausePanel = GameObject.FindGameObjectWithTag("Level1PausePanel");
+        pausePanelCanvasGroup = pausePanel.GetComponent<CanvasGroup>();
+        if (pausePanelCanvasGroup == null)
         {
-            PauseMenuReference();
-            Debug.LogWarning("Pause panel is null.");
-
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot toggle visibility.");
+            return;
         }
 
-        bool isActive = pauseMenu.activeSelf;
-
-        if (pauseMenu != null)
+        isPausePanelVisible = !isPausePanelVisible;
+        if (isPausePanelVisible)
         {
-
-            Debug.LogWarning("Created Pause panel.");
-            Debug.Log(isActive);
-            
-            if (isActive==false)
-            {
-                HidePauseMenu();
-            }
-            else if(isActive==true)
-            {
-                ShowPauseMenu();
-            }
-
+            ShowPauseMenu();
         }
         else
         {
-            Debug.LogWarning("Pause panel is null, cannot toggle active state.");
-
+            HidePauseMenu();
         }
-       
     }
-
-    
-
-
-
-
-
 
     public void ShowPauseMenu()
     {
-        
-        if (pauseMenu != null)
+        if (pausePanelCanvasGroup != null)
         {
-            pauseMenu.SetActive(true);
-           
-            
-
+            pausePanelCanvasGroup.alpha = 1f;
+            pausePanelCanvasGroup.interactable = true;
+            pausePanelCanvasGroup.blocksRaycasts = true;
+            Debug.Log("Pause menu shown.");
         }
-        
-        
+        else
+        {
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot show pause menu.");
+        }
     }
 
     public void HidePauseMenu()
     {
-        if (pauseMenu == null)
+        if (pausePanelCanvasGroup != null)
         {
-            PauseMenuReference();
-
+            pausePanelCanvasGroup.alpha = 0f;
+            pausePanelCanvasGroup.interactable = false;
+            pausePanelCanvasGroup.blocksRaycasts = false;
+            Debug.Log("Pause menu hidden.");
         }
-        if (pauseMenu != null)
+        else
         {
-            pauseMenu.SetActive(false);
-
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot hide pause menu.");
         }
-        
     }
 
-    public void HideInitialPauseMenu()
-    {
-        bool isActive = pauseMenu.activeSelf;
-        pauseMenu.SetActive(false);
-
-
-    }
+   
     
 
 
