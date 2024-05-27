@@ -36,4 +36,9 @@ public class BossDefeatButton : MonoBehaviour
     public void Pickup3()
     { GameManager.Instance.ActivatePickup3();
     }
+    public void NextLevelmethod()
+    {
+        LevelManager.Instance.LoadNextLevel();
+
+    }
 }
