@@ -1267,6 +1267,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.003196459, y: 0.0046899607, z: 0.0018274882}
     m_Extent: {x: 0.0018282656, y: 0.0041455524, z: 0.0010314933}
   m_DirtyAABB: 0
+--- !u!1 &2068819145675762915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2761094909702657911}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2761094909702657911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068819145675762915}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.319, y: 0.6280551, z: -0.262}
+  m_LocalScale: {x: 0.81900066, y: 0.81900084, z: 0.81900066}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6535966611668304912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2150993146954464417
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,6 +7050,7 @@ Transform:
   m_Children:
   - {fileID: 1579473592600866957}
   - {fileID: 6465190660663693353}
+  - {fileID: 2761094909702657911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2952597783961106557
@@ -7054,11 +7086,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416284cec3a9a2f4ba1ed64476778b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.05
   awake: 0
   obstacle: {fileID: 4552400477338065601, guid: b5ea8fedcc81ef040bb131fe070610a2, type: 3}
   createObstacle: 0
   gm: {fileID: 0}
+  throwInterval: 2
+  throwPoint: {fileID: 2761094909702657911}
 --- !u!114 &6420838155967557116
 MonoBehaviour:
   m_ObjectHideFlags: 0

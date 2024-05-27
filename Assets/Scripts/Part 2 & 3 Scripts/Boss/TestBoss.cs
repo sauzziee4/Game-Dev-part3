@@ -16,7 +16,7 @@ public class TestBoss : MonoBehaviour
     //the z position of the obstacles that the boss spawns
     float obstacleZ;
 
-    GameObject[] player = null;
+     public GameObject[] player = null;
     
 
     public GameObject obstacle;
@@ -32,12 +32,17 @@ public class TestBoss : MonoBehaviour
 
     public GameManager gm;
 
+    public float throwInterval = 2f;
+    private float throwTimer = 0f;
+    public Transform throwPoint;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.Instance.BossSpawned();
+        
         player = GameObject.FindGameObjectsWithTag("Player");
+       
 
     }
     private void Awake()
@@ -48,15 +53,19 @@ public class TestBoss : MonoBehaviour
         //GameObject[] playerObject = GameObject.FindGameObjectsWithTag("Player");
 
     }
-    private void OnDestroy()
-    {
-        EventManager.Instance.BossBeaten();
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+
+        throwTimer =+Time.deltaTime;
+        if (throwTimer>= throwInterval)
+        {
+            ThrowProjectileAtPlayer();
+            throwTimer = 0f;
+        }
 
             if (createObstacle == false)
             {
@@ -74,10 +83,22 @@ public class TestBoss : MonoBehaviour
 
 
     }
+
+    private void ThrowProjectileAtPlayer()
+    {
+        Debug.Log("in new obstacle spawn");
+        Instantiate(obstacle,throwPoint.position,throwPoint.rotation);
+       
+
+    }
     //The boss simply moves forward
     void Movement()
     {
-        transform.position += new Vector3(0, 0, -1) * Time.deltaTime;
+        playerX = player[0].GetComponent<Transform>().position.x;
+        Vector3 bossPosition =transform.position;
+        bossPosition.x =playerX;
+        transform.position =bossPosition;
+        
     }
    
     
@@ -86,16 +107,15 @@ public class TestBoss : MonoBehaviour
     {
 
             //fetches the players position
-            playerZ = player[0].GetComponent<Transform>().position.z;
-            playerX = player[0].GetComponent<Transform>().position.x;
+            
             
             bossZ = GetComponent<Transform>().position.z;
 
             //spawns the obstacle 5 feet in front of the player
             obstacleZ = playerZ + 5F;
             
-            //Debug.Log("in obstacle spawn");
-            Instantiate(obstacle,new Vector3(playerX,1,obstacleZ), Quaternion.identity);
+            Debug.Log("in old obstacle spawn");
+            Instantiate(obstacle,throwPoint.position, Quaternion.identity);
             obstacleCount++;
             yield return new WaitForSeconds(2);
             createObstacle = false;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -11,22 +12,33 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemyPrefab2;
     public GameObject[] enemyPrefab3;
     public Transform[] spawnPoints;
-    
+    public bool spawnEnemies = true;
+    public GameObject Boss;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.Instance.OnBossSpawned.AddListener(SpawnBoss);
 
         StartCoroutine(SpawnEnemiesRoutine());
 
     }
     private IEnumerator SpawnEnemiesRoutine()
     {
-        while (true)
+        while (spawnEnemies ==true)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(1f);
         }
+    }
+    
+    private void SpawnBoss()
+    {
+        spawnEnemies = false;
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        Quaternion boss = Quaternion.Euler(0, 90, 0);
+        Instantiate(Boss, spawnPoints[spawnIndex].position, boss);
+
     }
     private void Awake()
     {

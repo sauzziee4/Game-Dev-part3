@@ -1044,6 +1044,8 @@ MonoBehaviour:
   - {fileID: 858637129}
   - {fileID: 1218004629}
   - {fileID: 1272740569}
+  spawnEnemies: 1
+  Boss: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
 --- !u!4 &883466050
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +1984,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1771608037}
         m_TargetAssemblyTypeName: BossDefeatButton, Assembly-CSharp
-        m_MethodName: Pickup3
+        m_MethodName: BossSpawnmethod
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
