@@ -10,6 +10,10 @@ public class SectionTrigger : MonoBehaviour
     
     public GameObject roadSection;
     public int secNum;
+
+    public GameObject endPlatform;
+    public bool bossbeaten = false;
+    public float endPlatformCount = 0;
     
 
     private void OnTriggerEnter(Collider other)
@@ -18,9 +22,24 @@ public class SectionTrigger : MonoBehaviour
         secNum = Random.Range(0, 3);
         if (other.gameObject.CompareTag("Trigger"))
         {
+
             
             //where the platform is spawned
-           Instantiate(roadSection, new Vector3(0, 0, 39), Quaternion.identity);
+            if (bossbeaten==false)
+            {
+                Instantiate(roadSection, new Vector3(0, 0, 39), Quaternion.identity);
+
+            }
+            if (bossbeaten==true)
+            {
+                Debug.Log("should spawn endplatform");
+                Instantiate(endPlatform, new Vector3(0, 0, 39), Quaternion.identity);
+                enabled = false;
+                Debug.Log("should be disablend after this messgae");
+                endPlatformCount++;
+
+
+            }
                 
         }
 
@@ -30,12 +49,20 @@ public class SectionTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.Instance.OnBossBeaten.AddListener(LoadEndPlatform);
+             //GameManager.Instance.OnPickup1Activated.AddListener(OnPickup1Activated);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    public void LoadEndPlatform()
+    {
+        bossbeaten=true;
+
     }
 }

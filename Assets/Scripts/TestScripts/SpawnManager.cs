@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
         GameManager.Instance.OnBossSpawned.AddListener(SpawnBoss);
 
         StartCoroutine(SpawnEnemiesRoutine());
-
+        
     }
     private IEnumerator SpawnEnemiesRoutine()
     {
