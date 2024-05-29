@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 858637129}
   m_Layer: 0
   m_Name: SpawnPoint1
-  m_TagString: Untagged
+  m_TagString: spawnPointTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1017,7 +1017,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &883466049
 MonoBehaviour:
@@ -1046,6 +1046,14 @@ MonoBehaviour:
   - {fileID: 1272740569}
   spawnEnemies: 1
   Boss: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
+  level1Obstacles:
+  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
+  - {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
+  - {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
+  - {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
+  - {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
+  level2Obstacles:
+  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
 --- !u!4 &883466050
 Transform:
   m_ObjectHideFlags: 0
@@ -1377,7 +1385,7 @@ GameObject:
   - component: {fileID: 1218004629}
   m_Layer: 0
   m_Name: SpawnPoint2
-  m_TagString: Untagged
+  m_TagString: spawnPointTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1408,7 +1416,7 @@ GameObject:
   - component: {fileID: 1272740569}
   m_Layer: 0
   m_Name: SpawnPoint3
-  m_TagString: Untagged
+  m_TagString: spawnPointTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

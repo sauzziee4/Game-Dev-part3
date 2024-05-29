@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void IncrementObstaclesPassedScore()
     {
         obstaclesPassedScore++;
-        Debug.Log("Obstacles Passed: " + obstaclesPassedScore);
+        //Debug.Log("Obstacles Passed: " + obstaclesPassedScore);
 
         OnObstaclePassed.Invoke();
     }

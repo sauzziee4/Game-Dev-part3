@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -15,14 +16,25 @@ public class SpawnManager : MonoBehaviour
     public bool spawnEnemies = true;
     public GameObject Boss;
 
+    public List<GameObject> level1Obstacles;
+    public List<GameObject> level2Obstacles;
+
+    private List<GameObject> currentObstacles;
+    private List<Transform> currentSpawnPoints=new List<Transform>();
+
+    private string currentLevelName = "Level1";
+
     // Start is called before the first frame update
     void Start()
     {
         GameManager.Instance.OnBossSpawned.AddListener(SpawnBoss);
-
+        //UpdateCurrentLevel();
         StartCoroutine(SpawnEnemiesRoutine());
+
+        //UpdateCurrentLevel();
         
     }
+    
     private IEnumerator SpawnEnemiesRoutine()
     {
         while (spawnEnemies ==true)
@@ -45,6 +57,7 @@ public class SpawnManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -56,40 +69,51 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.Instance.currentLevelName != currentLevelName)
+        {
+            Debug.Log("in the udate");
+            //UpdateCurrentLevel();
+        }
         
         
     }
+   
+   
     private void SpawnEnemy()
     {
-        if (spawnPoints.Length==0)
+        
+        
+        currentLevelName = LevelManager.Instance.currentLevelName;
+        Debug.Log(currentLevelName);
+
+        //gets the spawnpoints
+        GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
+
+        
+
+        if (spawnPointObjects.Length== 0)
         {
             Debug.LogWarning("No spawn points set in SpawnManager.");
             return;
-            
+
         }
-
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
-        int enemyType = Random.Range(1, 4); // Randomly select enemy type 1, 2, or 3
-
-        GameObject enemyPrefab = null;
-
-        switch (enemyType)
+        GameObject obstacleToSpawn = null;
+        switch (currentLevelName)
         {
-            case 1:
-                enemyPrefab = enemyPrefab1[Random.Range(0, enemyPrefab1.Length)];
+            case "Level1":
+                obstacleToSpawn= level1Obstacles[Random.Range(0,level1Obstacles.Count)];
                 break;
-            case 2:
-                enemyPrefab = enemyPrefab2[Random.Range(0, enemyPrefab2.Length)];
+            case "Level2":
+                obstacleToSpawn = level2Obstacles[Random.Range(0,level2Obstacles.Count)];
                 break;
-            case 3:
-                enemyPrefab = enemyPrefab3[Random.Range(0, enemyPrefab3.Length)];
-                break;
-            default:
-                Debug.LogWarning("Invalid enemy type.");
-                break;
-        }
 
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-        //Debug.Log("Enemy spawned at " + spawnPoints[spawnIndex].position);
+        }
+        //choose a random spawnpoint
+        GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
+
+        Instantiate(obstacleToSpawn,spawnPoint.transform.position,Quaternion.identity);
+
+
+       
     }
 }

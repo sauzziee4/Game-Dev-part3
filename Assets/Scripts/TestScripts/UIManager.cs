@@ -104,10 +104,10 @@ public class UIManager : MonoBehaviour
 
         if (scoreText.text != null)
         {
-            Debug.Log("lets see if work" +GameManager.Instance.GetObstaclesPassedScore().ToString());
+            //Debug.Log("lets see if work" +GameManager.Instance.GetObstaclesPassedScore().ToString());
             scoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
             
-            Debug.Log("Score text updated: " + scoreText.text); // Log the updated text value
+            //Debug.Log("Score text updated: " + scoreText.text); // Log the updated text value
         }
         else
         {
