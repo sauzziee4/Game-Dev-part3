@@ -13,19 +13,40 @@ public class EndMenu : MonoBehaviour
 
     private void Start()
     {
-        //endScoreText.text = "";
+        levelsBeatenText.text = string.Empty;
+        endScoreText.text = string.Empty;
+        UpdateScoreText();
+        
     }
 
-     void Update()
+    void Update()
     {
-        levelsBeatenText.text ="Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
-        endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+        //levelsBeatenText.text ="Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
+        //endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+        if (LevelManager.Instance.currentLevelName=="GameOver")
+        {
+            UpdateScoreText();
+        }
 
+
+    }
+    private void UpdateScoreText()
+    {
+        endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+        //levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
 
     }
     public void QuitGame()
     {
+        Debug.Log("Quitting game");
         Application.Quit();
+    }
+
+    public void ShowScore()
+    {
+        levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
+        endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+
     }
     public void ReloadLevel()
     {

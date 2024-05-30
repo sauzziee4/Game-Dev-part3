@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Instance != this) 
         {
-            Debug.Log("hello");
+            //Debug.Log("hello");
             Destroy(gameObject);
         }
         
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        EventManager.TriggerEvent("OnGameRestart");
+        
         LevelManager.Instance.RestartLevel();
     }
 
@@ -131,14 +131,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         UIManager.Instance.TogglePausePanel();
-        EventManager.TriggerEvent("OnGamePaused");
+        
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
         UIManager.Instance.TogglePausePanel ();
-        EventManager.TriggerEvent("OnGameResumed");
+        
     }
 
 

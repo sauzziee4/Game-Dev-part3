@@ -52,7 +52,7 @@ public class MainMenu : MonoBehaviour
     
     public void ReloadLevel()
     {
-        
+        LevelManager.Instance.currentLevelName = "Level1";
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         menuD.SetActive(false);

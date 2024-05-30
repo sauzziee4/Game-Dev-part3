@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     private CanvasGroup pausePanelCanvasGroup;
     private bool isPausePanelVisible = false;
+
+    public string currentUILevel;
     
 
     private void Awake()
@@ -34,10 +36,12 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
     private void Start()
     {
         UpdateScoreTextReference();
+        UpdateLevelsBeatenTextReference();
 
         // Subscribe to GameManager events
         GameManager.Instance.OnObstaclePassed.AddListener(UpdateScore);
@@ -48,6 +52,23 @@ public class UIManager : MonoBehaviour
 
         //TogglePauseMenu();
 
+
+    }
+    private void Update()
+    {
+        //trying to get the ui to show the score and levels beaten correctly when you get to the next level
+        if (currentUILevel != LevelManager.Instance.currentLevelName)
+        {
+            UpdateScoreTextReference();
+            UpdateLevelsBeatenTextReference();
+            currentUILevel = LevelManager.Instance.currentLevelName;
+
+        }
+    }
+    public void NextLevelFind()
+    {
+        UpdateScoreTextReference();
+        UpdateLevelsBeatenTextReference();
 
     }
     private void UpdateScoreTextReference()

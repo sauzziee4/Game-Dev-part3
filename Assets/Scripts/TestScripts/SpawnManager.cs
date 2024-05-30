@@ -69,11 +69,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelManager.Instance.currentLevelName != currentLevelName)
-        {
-            Debug.Log("in the udate");
-            //UpdateCurrentLevel();
-        }
+        
         
         
     }
@@ -81,37 +77,46 @@ public class SpawnManager : MonoBehaviour
    
     private void SpawnEnemy()
     {
-        
-        
-        currentLevelName = LevelManager.Instance.currentLevelName;
-        Debug.Log(currentLevelName);
-
-        //gets the spawnpoints
-        GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
-
-        
-
-        if (spawnPointObjects.Length== 0)
+        if(LevelManager.Instance.currentLevelName!= "GameOver")
         {
-            Debug.LogWarning("No spawn points set in SpawnManager.");
-            return;
+            currentLevelName = LevelManager.Instance.currentLevelName;
+            //Debug.Log(currentLevelName);
+
+            //gets the spawnpoints
+            GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
+
+
+
+            if (spawnPointObjects.Length == 0)
+            {
+                Debug.LogWarning("No spawn points set in SpawnManager.");
+                return;
+
+            }
+            GameObject obstacleToSpawn = null;
+            switch (currentLevelName)
+            {
+                case "Level1":
+                    obstacleToSpawn = level1Obstacles[Random.Range(0, level1Obstacles.Count)];
+                    break;
+                case "Level2":
+                    obstacleToSpawn = level2Obstacles[Random.Range(0, level2Obstacles.Count)];
+                    break;
+
+            }
+            //choose a random spawnpoint
+            GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
+
+            Instantiate(obstacleToSpawn, spawnPoint.transform.position, Quaternion.identity);
 
         }
-        GameObject obstacleToSpawn = null;
-        switch (currentLevelName)
+        else
         {
-            case "Level1":
-                obstacleToSpawn= level1Obstacles[Random.Range(0,level1Obstacles.Count)];
-                break;
-            case "Level2":
-                obstacleToSpawn = level2Obstacles[Random.Range(0,level2Obstacles.Count)];
-                break;
-
+            Debug.Log("the game is over");
         }
-        //choose a random spawnpoint
-        GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-
-        Instantiate(obstacleToSpawn,spawnPoint.transform.position,Quaternion.identity);
+        
+        
+        
 
 
        
