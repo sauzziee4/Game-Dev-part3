@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelTransition : MonoBehaviour
 {
+    //use for end platform with transitions to the next level
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))

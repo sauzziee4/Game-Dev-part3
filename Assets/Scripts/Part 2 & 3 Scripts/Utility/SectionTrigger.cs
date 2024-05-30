@@ -30,6 +30,7 @@ public class SectionTrigger : MonoBehaviour
                 Instantiate(roadSection, new Vector3(0, 0, 39), Quaternion.identity);
 
             }
+            //if the boss is beaten we will spawn the end platform
             if (bossbeaten==true)
             {
                 Debug.Log("should spawn endplatform");

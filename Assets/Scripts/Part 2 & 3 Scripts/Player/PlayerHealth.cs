@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    // used for the players health
     public int maxHealth = 100;
     public int currentHealth;
     public GameObject player;
@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
+            //calls the die method
             Die();
             //gm.PlayerDeath();
 
@@ -66,6 +67,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
+    //tells the levelmanager to do the playerdied method which loads the game over scene
     private void Die()
     {
         LevelManager.Instance.PlayerDied();

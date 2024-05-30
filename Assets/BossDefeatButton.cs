@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossDefeatButton : MonoBehaviour
 {
+    //varios methods that can be triggered by pressing the button
+    //this is for testing purposes
     
     // Start is called before the first frame update
     void Start()

@@ -21,8 +21,7 @@ public class EndMenu : MonoBehaviour
 
     void Update()
     {
-        //levelsBeatenText.text ="Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
-        //endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
+        //if the current level is the gameoverscene, we call the updatescoretext method
         if (LevelManager.Instance.currentLevelName=="GameOver")
         {
             UpdateScoreText();
@@ -32,6 +31,7 @@ public class EndMenu : MonoBehaviour
     }
     private void UpdateScoreText()
     {
+        //responsible for displaying the score 
         endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
         //levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
 
@@ -42,12 +42,7 @@ public class EndMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowScore()
-    {
-        levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
-        endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
-
-    }
+   
     public void ReloadLevel()
     {
         //Loads level1

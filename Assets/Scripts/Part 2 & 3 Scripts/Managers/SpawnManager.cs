@@ -94,6 +94,7 @@ public class SpawnManager : MonoBehaviour
 
             }
             GameObject obstacleToSpawn = null;
+            //if we are in level1 we load level1obstacles but first we randomly choose one of the level one obstacles
             switch (currentLevelName)
             {
                 case "Level1":

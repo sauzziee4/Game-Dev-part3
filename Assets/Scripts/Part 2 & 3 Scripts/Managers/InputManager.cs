@@ -31,13 +31,13 @@ public class InputManager : MonoBehaviour
 
             if (Time.timeScale==0f)
             {
-                
+                //tells the gamemanager to resume the game
                 GameManager.Instance.ResumeGame();
 
             }
             else
             {
-               
+               //tells the gamemanager to pause the game
                 GameManager.Instance.PauseGame();
 
             }

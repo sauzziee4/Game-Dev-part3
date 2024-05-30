@@ -41,6 +41,7 @@ public class PickUpManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnPickupRoutine());
+        // Subscribe to GameManager events
         GameManager.Instance.OnPickup1Activated.AddListener(OnPickup1Activated);
         GameManager.Instance.OnPickup2Activated.AddListener(OnPickup2Activated);
         GameManager.Instance.OnPickup3Activated.AddListener(OnPickup3Activated);
@@ -51,21 +52,24 @@ public class PickUpManager : MonoBehaviour
         
         
     }
+    //used to set a delay between spawning pickups
     private IEnumerator SpawnPickupRoutine()
     {
         while(true)
         {
             SpawnPickups();
+            //a ten sceond delay
             yield return new WaitForSeconds(10f);
         }
     }
     private void SpawnPickups()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        int spawnIndex = Random.Range(0, spawnPoints.Length);//choses a random spawnpoint
         int PickupType = Random.Range(1, 4); // Randomly select enemy type 1, 2, or 3
 
         GameObject PickupPrefab = null;
 
+        // switch statement using the previous random to choose a random pickupprefab within the list of that pickupprefab
         switch (PickupType)
         {
             case 1:
@@ -86,15 +90,18 @@ public class PickUpManager : MonoBehaviour
 
     }
 
+    //the event for the first pickup is not implemented yet
     private void OnPickup1Activated()
     {
 
     }
+    //for the second pickup
     private void OnPickup2Activated()
     {
         StartCoroutine(Pickup2());
 
     }
+    //for the third pickup
     private void OnPickup3Activated()
     {
         StartCoroutine(Pickup3());
@@ -143,17 +150,7 @@ public class PickUpManager : MonoBehaviour
         //GameManager.Instance.pickupEffect = false;
 
     }
-    public void SpeedIncrese()
-    {
-        //calls the couroutine
-        StartCoroutine(Pickup2());
-    }
-    public void InvincibleMethod()
-    {
-        //calls the couroutine
-        StartCoroutine(Pickup3());
-        
-    }
+    
 
 
 }

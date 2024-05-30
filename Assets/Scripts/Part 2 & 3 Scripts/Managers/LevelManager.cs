@@ -30,12 +30,12 @@ public class LevelManager : MonoBehaviour
     {
         // Initialize UI elements if needed
     }
-
+    //unsure if this is needed
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
     }
-
+    //restarts the level
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -60,6 +60,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        //if the current level is level1 then it loads level 2
         if (currentLevelName == Level1Name)
         {
             LoadSecondLevel();
@@ -69,6 +70,7 @@ public class LevelManager : MonoBehaviour
             LoadFirstLevel();
         }
     }
+    //loads the gameover scen when the player dies
     public void PlayerDied()
     {
         currentLevelName = "GameOver";
