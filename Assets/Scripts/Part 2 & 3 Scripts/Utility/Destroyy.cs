@@ -30,7 +30,7 @@ public class Destroyy : MonoBehaviour
 
 
 
-            Debug.Log("enemy has been destroyed");
+            //Debug.Log("enemy has been destroyed");
             Destroy(other.gameObject);
             
         }

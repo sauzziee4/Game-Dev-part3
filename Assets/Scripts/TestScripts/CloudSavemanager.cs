@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Services.CloudSave;
 using UnityEngine;
+using Unity.Services.CloudSave.Models;
 
 public class CloudSavemanager : MonoBehaviour
 {
@@ -21,25 +22,22 @@ public class CloudSavemanager : MonoBehaviour
         }
     }
 
-    public async void SaveScore(int score)
+    public static async Task SaveData()
     {
-        var data = new Dictionary<string, object>
-        {
-            {"playerScore", score}
-        };
-        await CloudSaveService.Instance.Data.ForceSaveAsync(data);
-        Debug.Log("Score saved to cloud: " + score);
+        Dictionary<string, string> result =
+            await CloudSaveService.Instance.Data.Player.SaveAsync(new Dictionary<string, object>()
+            {
+                { "Highscore", 25 }
+            });
     }
 
-    public async Task<int> LoadScore()
+    public static async Task<Item> LoadData()
     {
-        var data = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "playerScore" });
-        if (data.ContainsKey("playerScore"))
+        Dictionary<string, Item> result = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string>()
         {
-            int score = System.Convert.ToInt32(data["playerScore"]);
-            Debug.Log("Score loaded from cloud: " + score);
-            return score;
-        }
-        return 0;
+            "Highscore"
+        });
+
+        return result["Highscore"];
     }
 }

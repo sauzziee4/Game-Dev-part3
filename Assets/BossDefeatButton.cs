@@ -43,4 +43,8 @@ public class BossDefeatButton : MonoBehaviour
         LevelManager.Instance.LoadNextLevel();
 
     }
+    public void SubmitScoremethod()
+    {
+
+    }
 }
