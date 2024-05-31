@@ -22,13 +22,19 @@ public class CloudSavemanager : MonoBehaviour
         }
     }
 
-    public static async Task SaveData()
+    public static async Task SaveData(int score,string playerID)
     {
-        Dictionary<string, string> result =
-            await CloudSaveService.Instance.Data.Player.SaveAsync(new Dictionary<string, object>()
-            {
-                { "Highscore", 25 }
-            });
+        Dictionary<string, object> data = new Dictionary<string, object>()
+        {
+            { "Highscore", score },
+            { "PlayerID", playerID }
+
+        };
+        Dictionary<string, string> result = await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        Debug.Log("Data saved to cloud.");
+        Debug.Log(score);
+        Debug.Log(playerID);
+       
     }
 
     public static async Task<Item> LoadData()

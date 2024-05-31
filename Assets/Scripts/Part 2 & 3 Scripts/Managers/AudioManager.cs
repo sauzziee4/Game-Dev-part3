@@ -5,26 +5,47 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioSource backgroundMusic;
+    public AudioSource buttonPressSound;
+    public AudioSource pickupActivationSound;
+
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Play background music
+    public void PlayBackgroundMusic()
     {
-        
+        if (backgroundMusic != null && !backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Play();
+        }
+    }
+
+    // Play button press sound
+    public void PlayButtonPressSound()
+    {
+        if (buttonPressSound != null)
+        {
+            buttonPressSound.PlayOneShot(buttonPressSound.clip);
+        }
+    }
+
+    // Play pickup activation sound
+    public void PlayPickupActivationSound()
+    {
+        if (pickupActivationSound != null)
+        {
+            pickupActivationSound.PlayOneShot(pickupActivationSound.clip);
+        }
     }
 }

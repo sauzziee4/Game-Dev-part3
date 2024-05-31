@@ -4,7 +4,9 @@ using Unity.Services.Authentication;
 using Unity.Services.CloudSave.Models;
 using Unity.Services.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class ServicesSetup : MonoBehaviour
 {
@@ -16,23 +18,28 @@ public class ServicesSetup : MonoBehaviour
     private Button _loadButton;
 
     #endregion
-    
-    
-    
+
+
+
     #region UNITY METHODS
 
-    private async void Awake()
+    private async void Start()
     {
         await UnityServices.InitializeAsync();
 
-        AuthenticationService.Instance.SignedIn += OnSignIn;
-        AuthenticationService.Instance.SignInFailed += OnSignInFailed;
-        AuthenticationService.Instance.SignedOut += OnSignOut;
+        // Check if signed in, if not, sign in anonymously
+        if (!AuthenticationService.Instance.IsSignedIn)
+        {
+            AuthenticationService.Instance.SignedIn += OnSignIn;
+            AuthenticationService.Instance.SignInFailed += OnSignInFailed;
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
 
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-
-        await CloudSave.SaveData();
+        // Load highscore data if it's the start scene or game over scene
+        if (SceneManager.GetActiveScene().name == "StartScene" || SceneManager.GetActiveScene().name == "GameOverScene")
+        {
+            await LoadHighscore();
+        }
     }
 
     private void OnEnable()
@@ -51,10 +58,17 @@ public class ServicesSetup : MonoBehaviour
 
     private void OnSignIn()
     {
+        string playerId = AuthenticationService.Instance.PlayerId;
+        PlayerID.Instance.SetPlayerId(playerId);
         print("Signed In Successfully.");
         print(AuthenticationService.Instance.PlayerId);
         print(AuthenticationService.Instance.AccessToken);
+
+        AuthenticationService.Instance.SignedIn -= OnSignIn;
+        AuthenticationService.Instance.SignInFailed -= OnSignInFailed;
+        
     }
+    
 
     private void OnSignInFailed(RequestFailedException exception)
     {
@@ -73,9 +87,13 @@ public class ServicesSetup : MonoBehaviour
 
     private async void OnLoadButtonClicked()
     {
+        await LoadHighscore();
+    }
+    private async Task LoadHighscore()
+    {
         Item data = await CloudSave.LoadData();
         _highscoreText.SetText(data.Value.GetAs<int>().ToString());
-        print(_highscoreText.text); 
+        print(_highscoreText.text);
     }
 
     #endregion

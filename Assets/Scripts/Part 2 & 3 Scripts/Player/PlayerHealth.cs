@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -70,6 +71,9 @@ public class PlayerHealth : MonoBehaviour
     //tells the levelmanager to do the playerdied method which loads the game over scene
     private void Die()
     {
+       int score=GameManager.Instance.GetObstaclesPassedScore();
+        string playerID = PlayerID.Instance.PlayerId;
+        CloudSavemanager.SaveData(score, playerID);
         LevelManager.Instance.PlayerDied();
     }
     
