@@ -1088,7 +1088,8 @@ MonoBehaviour:
   - {fileID: 1218004629}
   - {fileID: 1272740569}
   spawnEnemies: 1
-  Boss: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
+  Boss1: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
+  Boss2: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
   level1Obstacles:
   - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
   - {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
@@ -1959,7 +1960,10 @@ MonoBehaviour:
   OnPickup3Activated:
     m_PersistentCalls:
       m_Calls: []
-  OnBossSpawned:
+  OnBoss1Spawned:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBoss2Spawned:
     m_PersistentCalls:
       m_Calls: []
   OnBossBeaten:
@@ -2081,7 +2085,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1771608037}
         m_TargetAssemblyTypeName: BossDefeatButton, Assembly-CSharp
-        m_MethodName: SubmitScoremethod
+        m_MethodName: NextLevelmethod
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

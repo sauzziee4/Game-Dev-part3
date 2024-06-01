@@ -24,7 +24,7 @@ public class BossDefeatButton : MonoBehaviour
     }
     public void BossSpawnmethod()
     {
-        GameManager.Instance.SpawnBoss();
+        GameManager.Instance.SpawnBoss1();
 
     }
     public void Pickup1()

@@ -56,10 +56,11 @@ public class PlayerHealth : MonoBehaviour
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
             //calls the die method
+            gm.PlayerDeath();
             Die();
             //gm.PlayerDeath();
 
-            //Destroy(gameObject);
+            Destroy(gameObject);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
 
@@ -71,10 +72,33 @@ public class PlayerHealth : MonoBehaviour
     //tells the levelmanager to do the playerdied method which loads the game over scene
     private void Die()
     {
-       int score=GameManager.Instance.GetObstaclesPassedScore();
-        string playerID = PlayerID.Instance.PlayerId;
-        CloudSavemanager.SaveData(score, playerID);
+        if (LevelManager.Instance == null)
+        {
+            Debug.LogError("LevelManager.Instance is null");
+            return;
+        }
         LevelManager.Instance.PlayerDied();
+
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null");
+            return;
+        }
+        int score = GameManager.Instance.GetObstaclesPassedScore();
+
+        if (PlayerID.Instance == null)
+        {
+            Debug.LogError("PlayerID.Instance is null");
+            return;
+        }
+        string playerID = PlayerID.Instance.PlayerId;
+
+        if (CloudSavemanager.Instance == null)
+        {
+            Debug.LogError("CloudSavemanager is null");
+            return;
+        }
+        CloudSavemanager.SaveData(score, playerID);
     }
-    
+
 }

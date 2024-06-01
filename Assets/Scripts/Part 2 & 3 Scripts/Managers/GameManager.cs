@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnPickup1Activated;
     public UnityEvent OnPickup2Activated;
     public UnityEvent OnPickup3Activated;
-    public UnityEvent OnBossSpawned;
+    public UnityEvent OnBoss1Spawned;
+    public UnityEvent OnBoss2Spawned;
     public UnityEvent OnBossBeaten;
     
 
@@ -73,8 +74,9 @@ public class GameManager : MonoBehaviour
         if (OnPickup1Activated == null) OnPickup1Activated = new UnityEvent();
         if(OnPickup2Activated == null) OnPickup2Activated = new UnityEvent();
         if(OnPickup3Activated == null) OnPickup3Activated = new UnityEvent();
-        if (OnBossSpawned == null) OnBossSpawned = new UnityEvent();
-        if(OnBossBeaten == null) OnBossBeaten = new UnityEvent();
+        if (OnBoss1Spawned == null) OnBoss1Spawned = new UnityEvent();
+        if (OnBoss2Spawned == null) OnBoss2Spawned = new UnityEvent();
+        if (OnBossBeaten == null) OnBossBeaten = new UnityEvent();
         
 
         
@@ -115,11 +117,15 @@ public class GameManager : MonoBehaviour
         OnPickup3Activated.Invoke();
 
     }
-    public void SpawnBoss()
+    public void SpawnBoss1()
     {
         //calls the event and invokes all registered callbacks
-        OnBossSpawned.Invoke();
+        OnBoss1Spawned.Invoke();
 
+    }
+    public void SpawnBoss2()
+    {
+        OnBoss2Spawned.Invoke();
     }
     public void DefeatBoss()
     {

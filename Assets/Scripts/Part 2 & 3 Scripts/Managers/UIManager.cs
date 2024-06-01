@@ -11,9 +11,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    //public GameObject pause;
-
-    //public float menuNum = 0;
+    
     
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI levelsBeatenText;
@@ -39,7 +37,21 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+
+
+
+
+
+
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        UpdateScore();
+        UpdateLevelsBeaten();
     }
     private void Start()
     {
@@ -62,23 +74,11 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        //trying to get the ui to show the score and levels beaten correctly when you get to the next level
-        if (currentUILevel != LevelManager.Instance.currentLevelName)
-        {
-            UpdateScoreTextReference();
-            UpdateLevelsBeatenTextReference();
-            currentUILevel = LevelManager.Instance.currentLevelName;
-
-        }
+        
     }
 
-    //unsure what the method is use dfor 
-    public void NextLevelFind()
-    {
-        UpdateScoreTextReference();
-        UpdateLevelsBeatenTextReference();
-
-    }
+    
+    
 
     // a method for finding the score text 
     private void UpdateScoreTextReference()

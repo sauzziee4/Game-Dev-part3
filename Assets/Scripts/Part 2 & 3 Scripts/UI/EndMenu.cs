@@ -33,7 +33,7 @@ public class EndMenu : MonoBehaviour
     {
         //responsible for displaying the score 
         endScoreText.text = "Score: " + GameManager.Instance.GetObstaclesPassedScore().ToString();
-        //levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
+        levelsBeatenText.text = "Levels Beaten :" + GameManager.Instance.GetLevelsBeaten().ToString();
 
     }
     public void QuitGame()

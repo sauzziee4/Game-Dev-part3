@@ -14,7 +14,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemyPrefab3;
     public Transform[] spawnPoints;
     public bool spawnEnemies = true;
-    public GameObject Boss;
+    public GameObject Boss1;
+    public GameObject Boss2;
 
     public List<GameObject> level1Obstacles;
     public List<GameObject> level2Obstacles;
@@ -27,7 +28,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.OnBossSpawned.AddListener(SpawnBoss);
+        GameManager.Instance.OnBoss2Spawned.AddListener(SpawnBoss1);
+        GameManager.Instance.OnBoss1Spawned.AddListener(SpawnBoss2);
         //UpdateCurrentLevel();
         StartCoroutine(SpawnEnemiesRoutine());
 
@@ -44,12 +46,20 @@ public class SpawnManager : MonoBehaviour
         }
     }
     
-    private void SpawnBoss()
+    private void SpawnBoss1()
     {
         spawnEnemies = false;
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         Quaternion boss = Quaternion.Euler(0, 90, 0);
-        Instantiate(Boss, spawnPoints[spawnIndex].position, boss);
+        Instantiate(Boss1, spawnPoints[spawnIndex].position, boss);
+
+    }
+    private void SpawnBoss2()
+    {
+        spawnEnemies = false;
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        Quaternion boss = Quaternion.Euler(0, 90, 0);
+        Instantiate(Boss2, spawnPoints[spawnIndex].position, boss);
 
     }
     private void Awake()
