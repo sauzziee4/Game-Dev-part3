@@ -172,8 +172,8 @@ public class UIManager : MonoBehaviour
             return;
         }
         //switches between true and false
-        isPausePanelVisible = !isPausePanelVisible;
-        if (isPausePanelVisible)
+        //isPausePanelVisible = !isPausePanelVisible;
+        if (pausePanelCanvasGroup.alpha == 0f)
         {
             ShowPauseMenu();
         }
@@ -215,6 +215,13 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogWarning("Pause panel CanvasGroup is null, cannot hide pause menu.");
         }
+    }
+    public void Restart()
+    {
+        Debug.Log("trying to rerstart");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        //isPausePanelVisible=false;
+
     }
 
    

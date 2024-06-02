@@ -57,12 +57,19 @@ public class GameManager : MonoBehaviour
         //calls the onobstacle passed event and invokes all registered callbacks, such as the Uimanager listening to this event and then updating the score
         OnObstaclePassed.Invoke();
     }
-    
+    public void ResetObstaclesAndlevel()
+    {
+        obstaclesPassedScore = 0;
+        levelsBeaten = 0;
+        //Debug.Log(GetObstaclesPassedScore());
+
+    }
+
 
 
     //shows the score
 
-    
+
 
     //shows the stage
     //[Serialize
@@ -144,23 +151,7 @@ public class GameManager : MonoBehaviour
         LevelManager.Instance.RestartLevel();
     }
 
-    //handles pausing the game by setting the timescale to zero and telling the UImanager to toggle the pause menu
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-        UIManager.Instance.TogglePausePanel();
-        
-    }
-    //handles resuming the game by setting the timescale to 1 and telling the UImanager to toggle the pause menu
-    public void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        UIManager.Instance.TogglePausePanel ();
-        
-    }
-
-
-
+    
     // Update is called once per frame
     void Update()
     {

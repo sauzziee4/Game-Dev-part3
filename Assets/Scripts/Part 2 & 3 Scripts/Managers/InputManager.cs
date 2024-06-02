@@ -31,14 +31,18 @@ public class InputManager : MonoBehaviour
 
             if (Time.timeScale==0f)
             {
+                Time.timeScale = 1f;
+                UIManager.Instance.TogglePausePanel();
                 //tells the gamemanager to resume the game
-                GameManager.Instance.ResumeGame();
+                //GameManager.Instance.ResumeGame();
 
             }
             else
             {
-               //tells the gamemanager to pause the game
-                GameManager.Instance.PauseGame();
+                Time.timeScale = 0f;
+                UIManager.Instance.TogglePausePanel();
+                //tells the gamemanager to pause the game
+                //GameManager.Instance.PauseGame();
 
             }
             

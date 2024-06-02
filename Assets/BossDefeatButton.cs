@@ -40,6 +40,7 @@ public class BossDefeatButton : MonoBehaviour
     }
     public void NextLevelmethod()
     {
+        Debug.Log("pressed for next level");
         LevelManager.Instance.LoadNextLevel();
 
     }

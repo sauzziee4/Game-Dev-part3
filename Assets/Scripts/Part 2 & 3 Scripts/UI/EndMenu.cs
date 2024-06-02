@@ -47,6 +47,8 @@ public class EndMenu : MonoBehaviour
     {
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -2);
+        GameManager.Instance.ResetObstaclesAndlevel();
     }
+    
 
 }

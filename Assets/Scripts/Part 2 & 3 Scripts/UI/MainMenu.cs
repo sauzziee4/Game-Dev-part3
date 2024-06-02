@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]  GameObject menuD;
+    //[SerializeField]  GameObject menuD;
     
-    public GameManager gm;
+    //public GameManager gm;
 
     
     // Start is called before the first frame update
@@ -23,8 +23,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         //on start the pause menu is not activated
-        menuD.SetActive(false);
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+        //menuD.SetActive(false);
+        //gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
 
     }
@@ -33,14 +33,14 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         //if pause control tells main menu the pausemenu is true then the pause menu is activated
-        if (PauseControl.PauseMenu==true )
-        {
-            menuD.SetActive(true);
-        }
-        else
-        {
-            menuD.SetActive(false);
-        }
+        //if (PauseControl.PauseMenu==true )
+      //  {
+      //      //menuD.SetActive(true);
+       // }
+        //else
+       // {
+         //   menuD.SetActive(false);
+       // }
 
         
     }
@@ -55,8 +55,10 @@ public class MainMenu : MonoBehaviour
         LevelManager.Instance.currentLevelName = "Level1";
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        menuD.SetActive(false);
-        
+        Time.timeScale = 1f;
+        GameManager.Instance.ResetObstaclesAndlevel();
+
     }
+
 }
 

@@ -927,11 +927,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1771608036}
   - {fileID: 1784952847}
   - {fileID: 1788922916}
   - {fileID: 1927411372}
   - {fileID: 619585778}
-  - {fileID: 1771608036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 899674349}
   - component: {fileID: 899674348}
   - component: {fileID: 899674347}
+  - component: {fileID: 899674350}
   m_Layer: 5
   m_Name: ReloadButton
   m_TagString: Untagged
@@ -1159,9 +1160,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 899674350}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1209,6 +1210,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899674345}
   m_CullTransparentMesh: 1
+--- !u!114 &899674350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899674345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2de700afb903b43ae4aef205f9b98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937432032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1689,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: second platform
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6152789921059788143, guid: d03abbb71fa8e5241824b21b21fe47e2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2088,7 +2102,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1771608037}
         m_TargetAssemblyTypeName: BossDefeatButton, Assembly-CSharp
-        m_MethodName: BossSpawnmethod
+        m_MethodName: NextLevelmethod
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2890,6 +2904,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244092877663618159, guid: d03abbb71fa8e5241824b21b21fe47e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152789921059788143, guid: d03abbb71fa8e5241824b21b21fe47e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409528883128749312, guid: d03abbb71fa8e5241824b21b21fe47e2, type: 3}
