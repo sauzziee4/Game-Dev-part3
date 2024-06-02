@@ -459,68 +459,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309897183}
   m_CullTransparentMesh: 1
---- !u!1 &335046749
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 335046751}
-  - component: {fileID: 335046750}
-  m_Layer: 0
-  m_Name: SpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &335046750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335046749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c58b8620a782c418bcf5f6a0dc5d39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
-  enemyPrefab1:
-  - {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
-  - {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
-  enemyPrefab2:
-  - {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
-  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  enemyPrefab3:
-  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spawnEnemies: 1
-  Boss1: {fileID: 0}
-  Boss2: {fileID: 0}
-  level1Obstacles: []
-  level2Obstacles: []
---- !u!4 &335046751
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335046749}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7396985, y: 6.3829703, z: -6.660839}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &353279275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2398,7 +2336,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1025116365}
   - {fileID: 476327560}
-  - {fileID: 335046751}
   - {fileID: 353279275}
   - {fileID: 1847615507}
   - {fileID: 2064087036}

@@ -114,7 +114,7 @@ public class TestBoss : MonoBehaviour
             //spawns the obstacle 5 feet in front of the player
             obstacleZ = playerZ + 5F;
             
-            Debug.Log("in old obstacle spawn");
+            //Debug.Log("in old obstacle spawn");
             Instantiate(obstacle,throwPoint.position, Quaternion.identity);
             obstacleCount++;
             yield return new WaitForSeconds(2);
