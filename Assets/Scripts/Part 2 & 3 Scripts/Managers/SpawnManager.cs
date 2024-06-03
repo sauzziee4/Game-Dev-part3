@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemylist = null;
 
     public int bossSpawnDelay = 10;
-    private bool bossSpawned = false;
+    
 
 
 
@@ -50,40 +50,36 @@ public class SpawnManager : MonoBehaviour
         //UpdateCurrentLevel();
 
     }
-    public void BossSetup()
-    {
-        
-
-    }
+    
     private void StartBossSpawnDelay()
     {
         Debug.Log("in start spawndelay metrhod");
         spawnEnemies = false;
-        if (!bossSpawned)
-        {
-            StartCoroutine(BossSpawnDelay());
-        }
+        
+        
+        StartCoroutine(BossSpawnDelay());
+        
         
     }
     public IEnumerator BossSpawnDelay()
     {
         Debug.Log("in spawn delay coroutine");
         yield return new WaitForSeconds(bossSpawnDelay);
-        if (!bossSpawned)
+        
+        
+        if (currentLevelName == "Level1")
         {
-            if (currentLevelName == "Level1")
-            {
-                Debug.Log("abou to enter boss spawn method");
-                SpawnBoss1();
-
-            }
-            if (currentLevelName == "Level2")
-            {
-                SpawnBoss2();
-            }
-            bossSpawned = true;
+           Debug.Log("abou to enter boss spawn method");
+           SpawnBoss1();
 
         }
+        if (currentLevelName == "Level2")
+        {
+             SpawnBoss2();
+        }
+        
+
+        
        
     }
     
@@ -165,12 +161,14 @@ public class SpawnManager : MonoBehaviour
     
     private void SpawnBoss1()
     {
+        Debug.Log("in boss spawn method");
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
         GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
         
         
         Quaternion boss = Quaternion.Euler(0, 90, 0);
         Instantiate(Boss1, spawnPoint.transform.position, boss);
+        StartCoroutine(EndBossAfterDelay());
 
     }
     private void SpawnBoss2()
@@ -181,7 +179,24 @@ public class SpawnManager : MonoBehaviour
         
         Quaternion boss = Quaternion.Euler(0, 90, 0);
         Instantiate(Boss2, spawnPoint.transform.position, boss);
+        StartCoroutine(EndBossAfterDelay());
 
+    }
+    private IEnumerator EndBossAfterDelay()
+    {
+        Debug.Log("in boss aftyer delay");
+        yield return new WaitForSeconds(bossSpawnDelay);
+        DestroyBoss();
+    }
+    private void DestroyBoss()
+    {
+        Debug.Log("In boss destroy method");
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+        if (boss != null)
+        {
+            Destroy(boss);
+            GameManager.Instance.DefeatBoss();
+        }
     }
     private void Awake()
     {
@@ -207,83 +222,5 @@ public class SpawnManager : MonoBehaviour
     }
    
    
-    private void SpawnEnemy()
-    {
-        
-       // if(LevelManager.Instance.currentLevelName!= "GameOver")
-       // {
-            //currentLevelName = LevelManager.Instance.currentLevelName;
-            //Debug.Log(currentLevelName);
-
-            //gets the spawnpoints
-            
-
-
-
-
-            //GameObject obstacleToSpawn = null;
-            //if we are in level1 we load level1obstacles but first we randomly choose one of the level one obstacles
-            //if (currentLevelName =="Level1")
-            //{
-               // GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
-               // GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-
-
-                //int Enemytype = Random.Range(1, 4);
-                //enemyID = Random.Range(0, 2);
-                //if (enemyID == 0)
-             //   {
-              //      Debug.Log("spawning first enemy type");
-             //       Instantiate(enemyPrefab1,spawnPoint.transform.position, Quaternion.identity);
-
-              //  }
-             //   if (enemyID == 1)
-              //  {
-                //    Debug.Log("spawning second enemy type");
-               //     Instantiate(enemyPrefab2, spawnPoint.transform.position, Quaternion.identity);
-        //
-               // }
-            //    if (enemyID == 2)
-                {
-                 //   Instantiate(enemyPrefab3, spawnPoint.transform.position, Quaternion.identity);
-                   // Debug.Log("spawning third enemy type");
-
-                }
-
-
-
-
-
-            ///}
-           // if (currentLevelName =="Level2")
-            //{
-
-            //}
-            //switch (currentLevelName)
-            //{
-                //case "Level1":
-                    //obstacleToSpawn = level1Obstacles[Random.Range(0, level1Obstacles.Count)];
-                    //break;
-               // case "Level2":
-                  //  obstacleToSpawn = level2Obstacles[Random.Range(0, level2Obstacles.Count)];
-                 //   break;
-
-            //}
-            //choose a random spawnpoint
-            //GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-
-            //Instantiate(obstacleToSpawn, Pos1, Quaternion.identity);
-
-       // }
-       // else
-        //{
-            //Debug.Log("the game is over");
-        //}
-        
-        
-        
-
-
-       
-    }
+    
 }

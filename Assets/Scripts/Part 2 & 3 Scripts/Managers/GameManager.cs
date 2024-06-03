@@ -17,7 +17,16 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnBoss1Spawned;
     public UnityEvent OnBoss2Spawned;
     public UnityEvent OnBossBeaten;
-    
+
+    public int scoreToSpawnBoss1 = 5;
+    public int scoreToSpawnBoss2 = 20;
+    private bool boss1Spawned = false;
+    private bool boss2Spawned = false;
+    private bool boss1Defeated = false;
+    private bool boss2Defeated = false;
+
+
+
 
 
 
@@ -138,7 +147,21 @@ public class GameManager : MonoBehaviour
     }
     public void DefeatBoss()
     {
+        
+        if (LevelManager.Instance.currentLevelName =="Level1")
+        {
+            boss1Spawned = false;
+            boss1Defeated = true;
+
+        }
+        if (LevelManager.Instance.currentLevelName == "Level2")
+        {
+            boss2Spawned = false;
+            boss2Defeated = true;
+
+        }
         levelsBeaten++;
+        
         //calls the event and invokes all registered callbacks
         OnBossBeaten.Invoke();
 
@@ -158,33 +181,36 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //ensure the list accounts for enemies dieing and spawning
-        enemylist = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemylist = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (obstaclesPassedScore== 5)
+        if (obstaclesPassedScore >= scoreToSpawnBoss1 && !boss1Spawned &&!boss1Defeated)
         {
+            Debug.Log("in gamenager telling boss to spawn");
             Debug.Log("the score is " +obstaclesPassedScore);
             SpawnBoss1();
+            boss1Spawned = true;
             
+        }
+        if (obstaclesPassedScore >= scoreToSpawnBoss2 && !boss2Spawned && !boss2Defeated)
+        {
+            Debug.Log("the score is " + obstaclesPassedScore);
+            SpawnBoss2();
+            boss2Spawned = true;
+
         }
 
 
 
-       NextStage();
+
+        
+    }
+    public void ResetBossBoll()
+    {
+
     }
     
     //not used anymore
-    public void NextStage()
-    {
-          
-        
-        //once the boss is defeated we go to stage 3
-        if (GameManager.Instance.bossDeath ==true)
-        {
-            //Victory
-            //GameManager.Instance.stage = 3;
-        }
-        
-    }
+    
 
     //not used anymore
     //used so the scripts know the player is aalive
@@ -205,22 +231,8 @@ public class GameManager : MonoBehaviour
 
 
     }
-    //used to move to the next stage once the boss has died
-    //not used anymore
-    public void BossSpawn()
-    {
-        bossSpawn = true;
-        bossDeath = false;
-        
-
-    }
-    //not used anymore
-    public void BossDeath()
-    {
-
-        bossDeath=true;
-
-    }
+  
+   
    
 
 

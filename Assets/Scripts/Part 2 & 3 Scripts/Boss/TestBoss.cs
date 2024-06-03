@@ -75,11 +75,7 @@ public class TestBoss : MonoBehaviour
             
 
         
-        if ((GetComponent<Transform>().position.y <= -25))
-        {
-            gm.BossDeath();
-            Destroy(gameObject);
-        }
+        
 
 
     }

@@ -300,7 +300,7 @@ public class GeneRate : MonoBehaviour
             Instantiate(Boss, new Vector3(xPosE, yPosE, zPosE),boss);
 
             //the gamemanager is told that a boss has spawned
-            gm.BossSpawn();
+            
             
             //exits the while loop
             BossActive = true;
