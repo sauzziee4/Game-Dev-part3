@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnBoss1Spawned;
     public UnityEvent OnBoss2Spawned;
     public UnityEvent OnBossBeaten;
+    
 
     public int scoreToSpawnBoss1 = 5;
     public int scoreToSpawnBoss2 = 20;
@@ -94,6 +95,8 @@ public class GameManager : MonoBehaviour
         if (OnBoss1Spawned == null) OnBoss1Spawned = new UnityEvent();
         if (OnBoss2Spawned == null) OnBoss2Spawned = new UnityEvent();
         if (OnBossBeaten == null) OnBossBeaten = new UnityEvent();
+
+        LevelManager.Instance.OnNextLevelLoad.AddListener(NextLevelBossSpawn);
         
 
         
@@ -102,6 +105,16 @@ public class GameManager : MonoBehaviour
         //UIManager.Instance.Initialize();
         //LevelManager.Instance.Initialize();
         //InputManager.Instance.Initialize();
+
+    }
+    public void NextLevelBossSpawn()
+    {
+        boss1Spawned = false;
+        boss2Spawned = false;
+        boss1Defeated = false;
+        boss2Defeated = false;
+        scoreToSpawnBoss1 = obstaclesPassedScore + 5;
+        scoreToSpawnBoss2 = obstaclesPassedScore + 20;
 
     }
     //used to get what the score is from the gamemanager
@@ -183,7 +196,7 @@ public class GameManager : MonoBehaviour
         //ensure the list accounts for enemies dieing and spawning
         //enemylist = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (obstaclesPassedScore >= scoreToSpawnBoss1 && !boss1Spawned &&!boss1Defeated)
+        if (obstaclesPassedScore >= scoreToSpawnBoss1 && !boss1Spawned &&!boss1Defeated && LevelManager.Instance.currentLevelName=="Level1")
         {
             Debug.Log("in gamenager telling boss to spawn");
             Debug.Log("the score is " +obstaclesPassedScore);
@@ -191,7 +204,7 @@ public class GameManager : MonoBehaviour
             boss1Spawned = true;
             
         }
-        if (obstaclesPassedScore >= scoreToSpawnBoss2 && !boss2Spawned && !boss2Defeated)
+        if (obstaclesPassedScore >= scoreToSpawnBoss2 && !boss2Spawned && !boss2Defeated && LevelManager.Instance.currentLevelName=="Level2")
         {
             Debug.Log("the score is " + obstaclesPassedScore);
             SpawnBoss2();

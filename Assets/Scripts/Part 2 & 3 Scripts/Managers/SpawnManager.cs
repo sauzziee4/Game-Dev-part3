@@ -44,11 +44,18 @@ public class SpawnManager : MonoBehaviour
         GameManager.Instance.OnBoss1Spawned.AddListener(StartBossSpawnDelay);
         //UpdateCurrentLevel();
         Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
+
+        LevelManager.Instance.OnNextLevelLoad.AddListener(NextlevelEnemiesSpawn);
         
 
 
         //UpdateCurrentLevel();
 
+    }
+    private void NextlevelEnemiesSpawn()
+    {
+        spawnEnemies = true;
+        StartCoroutine(SpawnEnemiesRoutine());
     }
     
     private void StartBossSpawnDelay()

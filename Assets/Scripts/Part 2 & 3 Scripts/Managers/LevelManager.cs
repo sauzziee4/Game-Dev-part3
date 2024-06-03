@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public string Level1Name = "Level1";
     public string Level2Name = "Level2";
+    public UnityEvent OnNextLevelLoad;
 
     public string currentLevelName;
 
@@ -43,6 +45,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        if (OnNextLevelLoad == null) OnNextLevelLoad = new UnityEvent();
         LoadFirstLevel();
     }
 
@@ -64,10 +67,12 @@ public class LevelManager : MonoBehaviour
         if (currentLevelName == Level1Name)
         {
             LoadSecondLevel();
+            OnNextLevelLoad.Invoke();
         }
         else
         {
             LoadFirstLevel();
+            OnNextLevelLoad.Invoke();
         }
     }
     //loads the gameover scen when the player dies
