@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public bool playerLive;
     public bool bossDeath;
+    public bool bossSpawn;
     
    
 
@@ -126,6 +127,7 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnBoss1()
     {
+        Debug.Log("Spawnboss 1 method ");
         //calls the event and invokes all registered callbacks
         OnBoss1Spawned.Invoke();
 
@@ -157,6 +159,13 @@ public class GameManager : MonoBehaviour
     {
         //ensure the list accounts for enemies dieing and spawning
         enemylist = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (obstaclesPassedScore== 5)
+        {
+            Debug.Log("the score is " +obstaclesPassedScore);
+            SpawnBoss1();
+            
+        }
 
 
 
@@ -200,6 +209,7 @@ public class GameManager : MonoBehaviour
     //not used anymore
     public void BossSpawn()
     {
+        bossSpawn = true;
         bossDeath = false;
         
 
@@ -207,6 +217,7 @@ public class GameManager : MonoBehaviour
     //not used anymore
     public void BossDeath()
     {
+
         bossDeath=true;
 
     }

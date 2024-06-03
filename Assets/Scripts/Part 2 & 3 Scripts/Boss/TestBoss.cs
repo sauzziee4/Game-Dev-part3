@@ -96,6 +96,8 @@ public class TestBoss : MonoBehaviour
     {
         playerX = player[0].GetComponent<Transform>().position.x;
         Vector3 bossPosition =transform.position;
+        
+        //transform.position += new Vector3(0, 0, -4) * Time.deltaTime;
         bossPosition.x =playerX;
         transform.position =bossPosition;
         

@@ -21,7 +21,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject Boss2;
     public Vector3[] spawnCoordinates = new Vector3[3];
     float enemyID;
-    
+    public GameObject[] enemylist = null;
+
+    public int bossSpawnDelay = 10;
+    private bool bossSpawned = false;
+
 
 
     public List<GameObject> level1Obstacles;
@@ -36,8 +40,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.OnBoss2Spawned.AddListener(SpawnBoss2);
-        GameManager.Instance.OnBoss1Spawned.AddListener(SpawnBoss1);
+        GameManager.Instance.OnBoss2Spawned.AddListener(StartBossSpawnDelay);
+        GameManager.Instance.OnBoss1Spawned.AddListener(StartBossSpawnDelay);
         //UpdateCurrentLevel();
         Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
         
@@ -45,6 +49,42 @@ public class SpawnManager : MonoBehaviour
 
         //UpdateCurrentLevel();
 
+    }
+    public void BossSetup()
+    {
+        
+
+    }
+    private void StartBossSpawnDelay()
+    {
+        Debug.Log("in start spawndelay metrhod");
+        spawnEnemies = false;
+        if (!bossSpawned)
+        {
+            StartCoroutine(BossSpawnDelay());
+        }
+        
+    }
+    public IEnumerator BossSpawnDelay()
+    {
+        Debug.Log("in spawn delay coroutine");
+        yield return new WaitForSeconds(bossSpawnDelay);
+        if (!bossSpawned)
+        {
+            if (currentLevelName == "Level1")
+            {
+                Debug.Log("abou to enter boss spawn method");
+                SpawnBoss1();
+
+            }
+            if (currentLevelName == "Level2")
+            {
+                SpawnBoss2();
+            }
+            bossSpawned = true;
+
+        }
+       
     }
     
     private IEnumerator SpawnEnemiesRoutine()
@@ -127,7 +167,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
         GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-        spawnEnemies = false;
+        
         
         Quaternion boss = Quaternion.Euler(0, 90, 0);
         Instantiate(Boss1, spawnPoint.transform.position, boss);
@@ -137,8 +177,8 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
         GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-        spawnEnemies = false;
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        
+        
         Quaternion boss = Quaternion.Euler(0, 90, 0);
         Instantiate(Boss2, spawnPoint.transform.position, boss);
 
