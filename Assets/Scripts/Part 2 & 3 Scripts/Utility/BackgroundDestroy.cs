@@ -27,12 +27,15 @@ public class BackgroundDestroy : MonoBehaviour
         playerZ = player[0].GetComponent<Transform>().position.z;
 
         //the distance between the player and the object
-        zDistance = objectZ + playerZ;
-        //if that distance is greater then 30 the object is destroyed
-        if (zDistance <-30)
+        
+
+        if (transform.position.z<=-30f)
         {
             Destroy(gameObject);
+
         }
+        //if that distance is greater then 30 the object is destroyed
+        
        
             
 
