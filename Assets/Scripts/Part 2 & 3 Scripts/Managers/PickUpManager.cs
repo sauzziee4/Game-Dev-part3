@@ -23,6 +23,8 @@ public class PickUpManager : MonoBehaviour
     //pickup4
     public static bool pk4;
     public float pickupID;
+
+    public bool spawning;
     
 
 
@@ -47,12 +49,26 @@ public class PickUpManager : MonoBehaviour
         GameManager.Instance.OnPickup1Activated.AddListener(OnPickup1Activated);
         GameManager.Instance.OnPickup2Activated.AddListener(OnPickup2Activated);
         GameManager.Instance.OnPickup3Activated.AddListener(OnPickup3Activated);
+        LevelManager.Instance.OnNextLevelLoad.AddListener(PickupsSpawn);
+    }
+    public void PickupsSpawn()
+    {
+        spawning= true;
+        StopAllCoroutines();
+        StartCoroutine(SpawnPickupRoutine());
+
+    }
+    public void PickupsStop()
+    {
+        spawning = false;
+        StopCoroutine(SpawnPickupRoutine());
+
     }
     private void Update()
     {
         if (LevelManager.Instance.currentLevelName=="GameOver")
         {
-            StopCoroutine(SpawnPickupRoutine());
+            PickupsStop();
         }
         
        
@@ -62,7 +78,7 @@ public class PickUpManager : MonoBehaviour
     //used to set a delay between spawning pickups
     private IEnumerator SpawnPickupRoutine()
     {
-        while(true)
+        while(spawning ==true)
         {
             Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
 

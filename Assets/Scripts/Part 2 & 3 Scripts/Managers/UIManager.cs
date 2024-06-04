@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     private CanvasGroup pausePanelCanvasGroup;
 
     //used to switch between the canva being visible and invisibible
-    private bool isPausePanelVisible = false;
+    
 
     //trying to get the ui eleemnts to properly display in lvele 2
     public string currentUILevel;
@@ -172,7 +172,7 @@ public class UIManager : MonoBehaviour
             return;
         }
         //switches between true and false
-        //isPausePanelVisible = !isPausePanelVisible;
+        
         if (pausePanelCanvasGroup.alpha == 0f)
         {
             ShowPauseMenu();
@@ -220,7 +220,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("trying to rerstart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-        //isPausePanelVisible=false;
+        
 
     }
 

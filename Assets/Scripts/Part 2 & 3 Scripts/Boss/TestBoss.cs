@@ -10,11 +10,11 @@ public class TestBoss : MonoBehaviour
     public bool awake = false;
 
     //player position
-    float playerZ;
+    
     float playerX;
     
     //the z position of the obstacles that the boss spawns
-    float obstacleZ;
+    
 
      public GameObject[] player = null;
     
@@ -25,7 +25,7 @@ public class TestBoss : MonoBehaviour
     float bossZ;
 
     //counting the obstacles
-    float obstacleCount;
+   
     
 
     public bool createObstacle = false;
@@ -110,11 +110,11 @@ public class TestBoss : MonoBehaviour
             bossZ = GetComponent<Transform>().position.z;
 
             //spawns the obstacle 5 feet in front of the player
-            obstacleZ = playerZ + 5F;
+            
             
             //Debug.Log("in old obstacle spawn");
             Instantiate(obstacle,throwPoint.position, Quaternion.identity);
-            obstacleCount++;
+            
             yield return new WaitForSeconds(2);
             createObstacle = false;
             new WaitForSeconds(5);

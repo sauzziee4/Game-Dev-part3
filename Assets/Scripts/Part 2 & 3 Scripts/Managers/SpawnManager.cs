@@ -33,10 +33,10 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //InitializeSpawnPoints();
+        
         GameManager.Instance.OnBoss2Spawned.AddListener(StartBossSpawnDelay);
         GameManager.Instance.OnBoss1Spawned.AddListener(StartBossSpawnDelay);
-        //UpdateCurrentLevel();
+        
         Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
 
         LevelManager.Instance.OnNextLevelLoad.AddListener(NextlevelEnemiesSpawn);

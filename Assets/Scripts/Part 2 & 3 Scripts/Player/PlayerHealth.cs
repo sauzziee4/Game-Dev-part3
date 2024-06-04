@@ -35,13 +35,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.y <= -25) // If the player falls off the map they die
-        {
-            Debug.Log("Player fell off the map" + player.transform.position.y);
-            Takedamage(20);
-            
-
-        }
+       
         
     }
 
@@ -58,10 +52,10 @@ public class PlayerHealth : MonoBehaviour
             //calls the die method
             gm.PlayerDeath();
             Die();
-            //gm.PlayerDeath();
+           
 
             Destroy(gameObject);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            
 
 
 
