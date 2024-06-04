@@ -753,6 +753,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   KillReward: 5
+--- !u!1 &389886437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389886439}
+  - component: {fileID: 389886438}
+  m_Layer: 0
+  m_Name: SpawningManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389886438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389886437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c58b8620a782c418bcf5f6a0dc5d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
+  enemyPrefab1: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
+  enemyPrefab2: {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
+  enemyPrefab3: {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
+  enemyPrefab4: {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
+  enemyPrefab5: {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
+  enemyPrefab6: {fileID: 0}
+  spawnPoints:
+  - {fileID: 858637129}
+  - {fileID: 1218004629}
+  - {fileID: 1272740569}
+  spawnEnemies: 1
+  Boss1: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
+  Boss2: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
+  spawnCoordinates:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  enemylist: []
+  bossSpawnDelay: 10
+  level1Obstacles:
+  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
+  - {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
+  - {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
+  - {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
+  - {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
+  level2Obstacles:
+  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
+  obstacleToSpawn: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
+--- !u!4 &389886439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389886437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 407.44168, y: 252.84218, z: 1.9348805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481857781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1918568640203918091, guid: 78a5bfa18c0788645b30591059200130, type: 3}
@@ -1039,7 +1112,7 @@ Transform:
   m_GameObject: {fileID: 858637128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.86, z: 29.2}
+  m_LocalPosition: {x: -3, y: 0.54, z: 29.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1419,7 +1492,7 @@ Transform:
   m_GameObject: {fileID: 1218004628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.86, z: 29.2}
+  m_LocalPosition: {x: 0, y: 0.54, z: 29.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1450,7 +1523,7 @@ Transform:
   m_GameObject: {fileID: 1272740568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0.86, z: 29.2}
+  m_LocalPosition: {x: 3, y: 0.54, z: 29.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1894,7 +1967,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1727399204}
   - component: {fileID: 1727399203}
-  - component: {fileID: 1727399205}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GM
@@ -1947,8 +2019,11 @@ MonoBehaviour:
   OnBossBeaten:
     m_PersistentCalls:
       m_Calls: []
+  scoreToSpawnBoss1: 5
+  scoreToSpawnBoss2: 20
   playerLive: 1
   bossDeath: 0
+  bossSpawn: 0
   enemylist: []
 --- !u!4 &1727399204
 Transform:
@@ -1965,45 +2040,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1727399205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727399202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c58b8620a782c418bcf5f6a0dc5d39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
-  enemyPrefab1: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  enemyPrefab2: {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
-  enemyPrefab3: {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
-  enemyPrefab4: {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
-  enemyPrefab5: {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
-  enemyPrefab6: {fileID: 0}
-  spawnPoints:
-  - {fileID: 858637129}
-  - {fileID: 1218004629}
-  - {fileID: 1272740569}
-  spawnEnemies: 1
-  Boss1: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
-  Boss2: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
-  spawnCoordinates:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  level1Obstacles:
-  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  - {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
-  - {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
-  - {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
-  - {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
-  level2Obstacles:
-  - {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  obstacleToSpawn: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
 --- !u!1 &1771608035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,6 +2650,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level1Name: Level1
   Level2Name: Level2
+  OnNextLevelLoad:
+    m_PersistentCalls:
+      m_Calls: []
   currentLevelName: 
 --- !u!4 &1952498316
 Transform:
@@ -2944,3 +2983,4 @@ SceneRoots:
   - {fileID: 30313442}
   - {fileID: 1786376960}
   - {fileID: 1293234797}
+  - {fileID: 389886439}

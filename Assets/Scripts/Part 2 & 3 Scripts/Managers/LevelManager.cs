@@ -60,6 +60,15 @@ public class LevelManager : MonoBehaviour
         currentLevelName = Level2Name;
         SceneManager.LoadScene(Level2Name);
     }
+    public void FromGameoverToLevel1()
+    {
+        currentLevelName = Level1Name;
+        SceneManager.LoadScene(Level1Name);
+        GameManager.Instance.ResetObstaclesAndlevel();
+        SpawnManager.Instance.NextlevelEnemiesSpawn();
+
+
+    }
 
     public void LoadNextLevel()
     {

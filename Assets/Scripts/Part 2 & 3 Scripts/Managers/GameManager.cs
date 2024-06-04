@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         obstaclesPassedScore = 0;
         levelsBeaten = 0;
         //Debug.Log(GetObstaclesPassedScore());
-
+        
     }
 
 

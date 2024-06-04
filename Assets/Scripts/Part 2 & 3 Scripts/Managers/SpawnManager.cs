@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
 
-    public SpawnManager Instance;
+    public static SpawnManager Instance;
 
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
@@ -46,18 +46,23 @@ public class SpawnManager : MonoBehaviour
         Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
 
         LevelManager.Instance.OnNextLevelLoad.AddListener(NextlevelEnemiesSpawn);
-        
+
 
 
         //UpdateCurrentLevel();
 
     }
-    private void NextlevelEnemiesSpawn()
+    public void NextlevelEnemiesSpawn()
     {
         spawnEnemies = true;
         StartCoroutine(SpawnEnemiesRoutine());
     }
-    
+    private void GameOverStopSpawning()
+    {
+        spawnEnemies = false;
+        StopCoroutine(SpawnEnemiesRoutine());
+    }
+
     private void StartBossSpawnDelay()
     {
         Debug.Log("in start spawndelay metrhod");
@@ -94,8 +99,11 @@ public class SpawnManager : MonoBehaviour
     {
         while (spawnEnemies ==true)
         {
+            Debug.Log("there are : " + spawnPoints.Length + "spawnpoints");
             GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
+            Debug.Log("there are : " + spawnPoints.Length + "spawnpoints");
             GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
+            Debug.Log("there are : "+spawnPoints.Length +"spawnpoints");
 
             if (currentLevelName =="Level1")
             {
@@ -223,6 +231,10 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.Instance.currentLevelName=="GameOver")
+        {
+            GameOverStopSpawning();
+        }
         
         
         
