@@ -8,9 +8,9 @@ public class PickUpManager : MonoBehaviour
     //manages the pickups
     public static PickUpManager Instance {  get; private set; }
 
-    public GameObject[] pickupPrefab1;
-    public GameObject[] pickupPrefab2;
-    public GameObject[] pickupPrefab3;
+    public GameObject pickupPrefab1;
+    public GameObject pickupPrefab2;
+    public GameObject pickupPrefab3;
     public Transform[] spawnPoints;
 
 
@@ -22,6 +22,7 @@ public class PickUpManager : MonoBehaviour
     public static bool pk3;
     //pickup4
     public static bool pk4;
+    public float pickupID;
     
 
 
@@ -32,6 +33,7 @@ public class PickUpManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -48,6 +50,11 @@ public class PickUpManager : MonoBehaviour
     }
     private void Update()
     {
+        if (LevelManager.Instance.currentLevelName=="GameOver")
+        {
+            StopCoroutine(SpawnPickupRoutine());
+        }
+        
        
         
         
@@ -57,38 +64,41 @@ public class PickUpManager : MonoBehaviour
     {
         while(true)
         {
-            SpawnPickups();
+            Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
+
+            pickupID=Random.Range(0, 3);
+            InstantiatePickup(pickupID, spawningSpot);
+            
             //a ten sceond delay
             yield return new WaitForSeconds(10f);
         }
     }
-    private void SpawnPickups()
+    private void InstantiatePickup(float pickupID, Vector3 position)
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);//choses a random spawnpoint
-        int PickupType = Random.Range(1, 4); // Randomly select enemy type 1, 2, or 3
-
-        GameObject PickupPrefab = null;
-
-        // switch statement using the previous random to choose a random pickupprefab within the list of that pickupprefab
-        switch (PickupType)
+        if (pickupID==0)
         {
-            case 1:
-                PickupPrefab = pickupPrefab1[Random.Range(0, pickupPrefab1.Length)];
-                break;
-            case 2:
-                PickupPrefab = pickupPrefab2[Random.Range(0, pickupPrefab2.Length)];
-                break;
-            case 3:
-                PickupPrefab = pickupPrefab3[Random.Range(0, pickupPrefab3.Length)];
-                break;
-            default:
-                Debug.LogWarning("Invalid enemy type.");
-                break;
-        }
-        Instantiate(PickupPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+            Instantiate(pickupPrefab1, position, Quaternion.identity);
 
+        }
+        if (pickupID == 1)
+        {
+            Instantiate(pickupPrefab2, position, Quaternion.identity);
+
+        }
+        if(pickupID == 2)
+        {
+            Instantiate(pickupPrefab3, position, Quaternion.identity);
+
+        }
 
     }
+    
+    public Vector3[] hardcodedSpawnPoints = new Vector3[3]
+    {
+         new Vector3(-3f, 1f, 29.2f),
+         new Vector3(0f, 1f, 29.2f),
+         new Vector3(3f, 1f, 29.2f)
+     };
 
     //the event for the first pickup is not implemented yet
     private void OnPickup1Activated()

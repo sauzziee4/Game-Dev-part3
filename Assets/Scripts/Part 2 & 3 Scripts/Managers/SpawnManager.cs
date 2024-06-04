@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,31 +16,24 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab4;
     public GameObject enemyPrefab5;
     public GameObject enemyPrefab6;
-    public Transform[] spawnPoints;
+    
     public bool spawnEnemies = true;
     public GameObject Boss1;
     public GameObject Boss2;
-    public Vector3[] spawnCoordinates = new Vector3[3];
+    
     float enemyID;
-    public GameObject[] enemylist = null;
+    
 
     public int bossSpawnDelay = 10;
     
 
-
-
-    public List<GameObject> level1Obstacles;
-    public List<GameObject> level2Obstacles;
-
-    private List<GameObject> currentObstacles;
-    private List<Transform> currentSpawnPoints=new List<Transform>();
-    public GameObject obstacleToSpawn;
 
     private string currentLevelName = "Level1";
 
     // Start is called before the first frame update
     void Start()
     {
+        //InitializeSpawnPoints();
         GameManager.Instance.OnBoss2Spawned.AddListener(StartBossSpawnDelay);
         GameManager.Instance.OnBoss1Spawned.AddListener(StartBossSpawnDelay);
         //UpdateCurrentLevel();
@@ -49,12 +43,14 @@ public class SpawnManager : MonoBehaviour
 
 
 
-        //UpdateCurrentLevel();
+        
 
     }
     public void NextlevelEnemiesSpawn()
     {
-        spawnEnemies = true;
+        spawnEnemies = true; 
+        StopAllCoroutines(); // Ensure any previous coroutine is stopped
+         // Reinitialize spawn points in case of scene reload
         StartCoroutine(SpawnEnemiesRoutine());
     }
     private void GameOverStopSpawning()
@@ -94,106 +90,88 @@ public class SpawnManager : MonoBehaviour
         
        
     }
-    
+   
+
+
     private IEnumerator SpawnEnemiesRoutine()
     {
-        while (spawnEnemies ==true)
+        while (spawnEnemies)
         {
-            Debug.Log("there are : " + spawnPoints.Length + "spawnpoints");
-            GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
-            Debug.Log("there are : " + spawnPoints.Length + "spawnpoints");
-            GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-            Debug.Log("there are : "+spawnPoints.Length +"spawnpoints");
-
-            if (currentLevelName =="Level1")
+            if (hardcodedSpawnPoints.Length == 0)
             {
-                int Enemytype = Random.Range(1, 4);
-                enemyID = Random.Range(0, 4);
-                if (enemyID == 0)
-                {
-                    Instantiate(enemyPrefab1, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if (enemyID == 1)
-                {
-                    Instantiate(enemyPrefab2, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if (enemyID == 2)
-                {
-                    Instantiate(enemyPrefab3, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if(enemyID == 3)
-                {
-                    Instantiate(enemyPrefab4, spawnPoint.transform.position, Quaternion.identity);
-
-
-                }
-                if (enemyID == 4)
-                {
-                    Instantiate(enemyPrefab5, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-
+                Debug.LogError("No hardcoded spawn points available. Aborting enemy spawn routine.");
+                yield break; // Exit the coroutine if no spawn points are defined
             }
-            if (currentLevelName =="Level2")
+
+            Debug.Log("There are: " + hardcodedSpawnPoints.Length + " hardcoded spawn points");
+
+            Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
+            Debug.Log("Selected spawn point position: " + spawningSpot);
+
+            if (currentLevelName == "Level1")
             {
-                int Enemytype = Random.Range(1, 4);
-                enemyID = Random.Range(0, 4);
-                if (enemyID == 0)
-                {
-                    Instantiate(enemyPrefab1, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if (enemyID == 1)
-                {
-                    Instantiate(enemyPrefab2, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if (enemyID == 2)
-                {
-                    Instantiate(enemyPrefab3, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-                if (enemyID == 3)
-                {
-                    Instantiate(enemyPrefab4, spawnPoint.transform.position, Quaternion.identity);
-
-
-                }
-                if (enemyID == 4)
-                {
-                    Instantiate(enemyPrefab5, spawnPoint.transform.position, Quaternion.identity);
-
-                }
-
+                enemyID = Random.Range(0, 5);
+                InstantiateEnemy(enemyID, spawningSpot);
+            }
+            else if (currentLevelName == "Level2")
+            {
+                enemyID = Random.Range(0, 5);
+                InstantiateEnemy(enemyID, spawningSpot);
             }
 
             yield return new WaitForSeconds(1f);
         }
     }
-    
+    private void InstantiateEnemy(float enemyID, Vector3 position)
+    {
+        Debug.Log("Spawning enemy ID: " + enemyID + " at position: " + position);
+        if (enemyID == 0)
+        {
+            Instantiate(enemyPrefab1, position, Quaternion.identity);
+        }
+        else if (enemyID == 1)
+        {
+            Instantiate(enemyPrefab2, position, Quaternion.identity);
+        }
+        else if (enemyID == 2)
+        {
+            Instantiate(enemyPrefab3, position, Quaternion.identity);
+        }
+        else if (enemyID == 3)
+        {
+            Instantiate(enemyPrefab4, position, Quaternion.identity);
+        }
+        else if (enemyID == 4)
+        {
+            Instantiate(enemyPrefab5, position, Quaternion.identity);
+        }
+    }
+    public Vector3[] hardcodedSpawnPoints = new Vector3[3]
+    {
+         new Vector3(-3f, 0.54f, 29.2f),
+         new Vector3(0f, 0.54f, 29.2f),
+         new Vector3(3f, 0.54f, 29.2f)
+    };
+
     private void SpawnBoss1()
     {
+        Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
         Debug.Log("in boss spawn method");
-        GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
-        GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
+        
         
         
         Quaternion boss = Quaternion.Euler(0, 90, 0);
-        Instantiate(Boss1, spawnPoint.transform.position, boss);
+        Instantiate(Boss1, spawningSpot, boss);
         StartCoroutine(EndBossAfterDelay());
 
     }
     private void SpawnBoss2()
     {
-        GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("spawnPointTag");
-        GameObject spawnPoint = spawnPointObjects[Random.Range(0, spawnPoints.Length)];
-        
-        
+        Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
+
+
         Quaternion boss = Quaternion.Euler(0, 90, 0);
-        Instantiate(Boss2, spawnPoint.transform.position, boss);
+        Instantiate(Boss2, spawningSpot, boss);
         StartCoroutine(EndBossAfterDelay());
 
     }
