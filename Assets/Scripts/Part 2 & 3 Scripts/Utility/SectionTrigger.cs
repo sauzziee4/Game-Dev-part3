@@ -8,12 +8,14 @@ public class SectionTrigger : MonoBehaviour
 {
     //used to spawn new platforms
     
-    public GameObject roadSection;
+    //public GameObject roadSection;
     public int secNum;
 
-    public GameObject endPlatform;
-    public bool bossbeaten = false;
-    public float endPlatformCount = 0;
+    
+    
+
+    public bool bossPhase = false;
+    public bool endPhase = false;
     
 
     private void OnTriggerEnter(Collider other)
@@ -25,19 +27,25 @@ public class SectionTrigger : MonoBehaviour
 
             
             //where the platform is spawned
-            if (bossbeaten==false)
+            if (bossPhase==false & endPhase==false)
             {
-                Instantiate(roadSection, new Vector3(0, 0, 39), Quaternion.identity);
+                SpawnManager.Instance.SpawnRandomPlatform();
+                
+
+            }
+            if (bossPhase ==true)
+            {
+                SpawnManager.Instance.SpawnBossPlatform();
 
             }
             //if the boss is beaten we will spawn the end platform
-            if (bossbeaten==true)
+            if (endPhase==true)
             {
+                SpawnManager.Instance.SpawnEndPlatform();
                 Debug.Log("should spawn endplatform");
-                Instantiate(endPlatform, new Vector3(0, 0, 39), Quaternion.identity);
+                
                 enabled = false;
-                Debug.Log("should be disablend after this messgae");
-                endPlatformCount++;
+                
 
 
             }
@@ -51,6 +59,7 @@ public class SectionTrigger : MonoBehaviour
     void Start()
     {
         GameManager.Instance.OnBossBeaten.AddListener(LoadEndPlatform);
+        GameManager.Instance.OnBoss1Spawned.AddListener(LoadBossPlatForm);
              //GameManager.Instance.OnPickup1Activated.AddListener(OnPickup1Activated);
 
     }
@@ -63,7 +72,13 @@ public class SectionTrigger : MonoBehaviour
     
     public void LoadEndPlatform()
     {
-        bossbeaten=true;
+        bossPhase = false;
+        endPhase=true;
+
+    }
+    public void LoadBossPlatForm()
+    {
+        bossPhase=true;
 
     }
 }

@@ -10,21 +10,25 @@ public class SpawnManager : MonoBehaviour
 
     public static SpawnManager Instance;
 
-    public GameObject enemyPrefab1;
-    public GameObject enemyPrefab2;
-    public GameObject enemyPrefab3;
-    public GameObject enemyPrefab4;
-    public GameObject enemyPrefab5;
-    public GameObject enemyPrefab6;
     
-    public bool spawnEnemies = true;
+    
+    
     public GameObject Boss1;
     public GameObject Boss2;
+
+    public GameObject[] platformprefabs1;
+    public GameObject[] platformprefabs2;
+
+    public GameObject bossPlatformPrefab1;
+    public GameObject bossPlatformPrefab2;
+
+    public GameObject endPlatformPrefab1;
+    public GameObject endPlatformPrefab2;
     
-    float enemyID;
+    
     
 
-    public int bossSpawnDelay = 10;
+    public int bossSpawnDelay = 15;
     
 
 
@@ -37,32 +41,70 @@ public class SpawnManager : MonoBehaviour
         GameManager.Instance.OnBoss2Spawned.AddListener(StartBossSpawnDelay);
         GameManager.Instance.OnBoss1Spawned.AddListener(StartBossSpawnDelay);
         
-        Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
+        //Coroutine EnGene =StartCoroutine(SpawnEnemiesRoutine());
 
-        LevelManager.Instance.OnNextLevelLoad.AddListener(NextlevelEnemiesSpawn);
+        //LevelManager.Instance.OnNextLevelLoad.AddListener(NextlevelEnemiesSpawn);
 
 
 
         
 
     }
-    public void NextlevelEnemiesSpawn()
-    {
-        spawnEnemies = true; 
-        StopAllCoroutines(); // Ensure any previous coroutine is stopped
-         // Reinitialize spawn points in case of scene reload
-        StartCoroutine(SpawnEnemiesRoutine());
+    public void SpawnBossPlatform()
+    { 
+        if (LevelManager.Instance.currentLevelName=="Level1")
+        {
+            Instantiate(bossPlatformPrefab1, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+        if (LevelManager.Instance.currentLevelName == "Level2")
+        {
+            Instantiate(bossPlatformPrefab2, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+
+
     }
-    private void GameOverStopSpawning()
+    public void SpawnEndPlatform()
     {
-        spawnEnemies = false;
-        StopCoroutine(SpawnEnemiesRoutine());
+        if (LevelManager.Instance.currentLevelName == "Level1")
+        {
+            Instantiate(endPlatformPrefab1, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+        if (LevelManager.Instance.currentLevelName == "Level2")
+        {
+            Instantiate(endPlatformPrefab2, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+
     }
+
+    public void SpawnRandomPlatform()
+    {
+        if (LevelManager.Instance.currentLevelName=="Level1")
+        {
+            int randomIndex = Random.Range(0, platformprefabs1.Length);
+            GameObject selectedPlatfrom = platformprefabs1[randomIndex];
+            Instantiate(selectedPlatfrom, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+        if (LevelManager.Instance.currentLevelName=="Level2")
+        {
+            int randomIndex = Random.Range(0, platformprefabs2.Length);
+            GameObject selectedPlatfrom = platformprefabs2[randomIndex];
+            Instantiate(selectedPlatfrom, new Vector3(0, 0, 39), Quaternion.identity);
+
+        }
+
+    }
+   
+    
 
     private void StartBossSpawnDelay()
     {
         Debug.Log("in start spawndelay metrhod");
-        spawnEnemies = false;
+        
         
         
         StartCoroutine(BossSpawnDelay());
@@ -93,59 +135,8 @@ public class SpawnManager : MonoBehaviour
    
 
 
-    private IEnumerator SpawnEnemiesRoutine()
-    {
-        while (spawnEnemies)
-        {
-            if (hardcodedSpawnPoints.Length == 0)
-            {
-                Debug.LogError("No hardcoded spawn points available. Aborting enemy spawn routine.");
-                yield break; // Exit the coroutine if no spawn points are defined
-            }
-
-            Debug.Log("There are: " + hardcodedSpawnPoints.Length + " hardcoded spawn points");
-
-            Vector3 spawningSpot = hardcodedSpawnPoints[Random.Range(0, hardcodedSpawnPoints.Length)];
-            Debug.Log("Selected spawn point position: " + spawningSpot);
-
-            if (currentLevelName == "Level1")
-            {
-                enemyID = Random.Range(0, 5);
-                InstantiateEnemy(enemyID, spawningSpot);
-            }
-            else if (currentLevelName == "Level2")
-            {
-                enemyID = Random.Range(0, 5);
-                InstantiateEnemy(enemyID, spawningSpot);
-            }
-
-            yield return new WaitForSeconds(1f);
-        }
-    }
-    private void InstantiateEnemy(float enemyID, Vector3 position)
-    {
-        Debug.Log("Spawning enemy ID: " + enemyID + " at position: " + position);
-        if (enemyID == 0)
-        {
-            Instantiate(enemyPrefab1, position, Quaternion.identity);
-        }
-        else if (enemyID == 1)
-        {
-            Instantiate(enemyPrefab2, position, Quaternion.identity);
-        }
-        else if (enemyID == 2)
-        {
-            Instantiate(enemyPrefab3, position, Quaternion.identity);
-        }
-        else if (enemyID == 3)
-        {
-            Instantiate(enemyPrefab4, position, Quaternion.identity);
-        }
-        else if (enemyID == 4)
-        {
-            Instantiate(enemyPrefab5, position, Quaternion.identity);
-        }
-    }
+    
+    
     public Vector3[] hardcodedSpawnPoints = new Vector3[3]
     {
          new Vector3(-3f, 0.54f, 29.2f),
@@ -211,7 +202,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (LevelManager.Instance.currentLevelName=="GameOver")
         {
-            GameOverStopSpawning();
+            //GameOverStopSpawning();
         }
         
         
