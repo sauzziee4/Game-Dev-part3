@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnBossBeaten;
     
 
-    public int scoreToSpawnBoss1 = 5;
+    public int scoreToSpawnBoss1 = 20;
     public int scoreToSpawnBoss2 = 20;
     private bool boss1Spawned = false;
     private bool boss2Spawned = false;

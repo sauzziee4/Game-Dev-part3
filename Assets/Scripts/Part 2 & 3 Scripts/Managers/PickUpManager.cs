@@ -18,6 +18,7 @@ public class PickUpManager : MonoBehaviour
 
     public static bool speedUp;
     public static bool invincible;
+    public static bool jumpBoost;
     //pickup 3
     public static bool pk3;
     //pickup4
@@ -44,12 +45,14 @@ public class PickUpManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(SpawnPickupRoutine());
+        
         // Subscribe to GameManager events
         GameManager.Instance.OnPickup1Activated.AddListener(OnPickup1Activated);
         GameManager.Instance.OnPickup2Activated.AddListener(OnPickup2Activated);
         GameManager.Instance.OnPickup3Activated.AddListener(OnPickup3Activated);
         LevelManager.Instance.OnNextLevelLoad.AddListener(PickupsSpawn);
+
+        //PickupsSpawn();
     }
     public void PickupsSpawn()
     {
@@ -104,8 +107,10 @@ public class PickUpManager : MonoBehaviour
         if(pickupID == 2)
         {
             Instantiate(pickupPrefab3, position, Quaternion.identity);
+            //Debug.Log(position.ToString());
 
         }
+        Debug.Log(position.ToString());
 
     }
     
@@ -119,6 +124,7 @@ public class PickUpManager : MonoBehaviour
     //the event for the first pickup is not implemented yet
     private void OnPickup1Activated()
     {
+        StartCoroutine(Pickup1());
 
     }
     //for the second pickup
@@ -157,25 +163,17 @@ public class PickUpManager : MonoBehaviour
         
 
     }
-    
-    //used for the jump boost pickup
-    public void JumpBoost(PlayerControl2 playerControl)
+    public IEnumerator Pickup1()
     {
-        //calls the couroutine
-        StartCoroutine(JumpBoostCoroutine(playerControl));
-    }
-
-    //the couroutine for the jump boost
-    private IEnumerator JumpBoostCoroutine(PlayerControl2 playerControl)
-    {
-        //GameManager.Instance.pickupEffect = true;
-        playerControl.IncreaseJump();
+        
+        jumpBoost = true;
         yield return new WaitForSeconds(5);
         //after 5 seconds the pickup effect stops
-        playerControl.ResetJump();
-        //GameManager.Instance.pickupEffect = false;
+        jumpBoost = false;
 
     }
+    
+   
     
 
 

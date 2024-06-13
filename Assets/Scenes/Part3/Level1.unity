@@ -778,19 +778,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c58b8620a782c418bcf5f6a0dc5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 2052870778304991991, guid: 3d0e418c0cd97a14d8eac37b8adcd838, type: 3}
-  enemyPrefab2: {fileID: 8661057617049000708, guid: fd99bf2201bacb3469ed08e31299bf62, type: 3}
-  enemyPrefab3: {fileID: 4963240028006156190, guid: f97eeadc89b162643804e51fe2ea710f, type: 3}
-  enemyPrefab4: {fileID: 9206562878160474778, guid: 928a4ea4995e88447a4adc4ed1f32dc6, type: 3}
-  enemyPrefab5: {fileID: 5834833368646585338, guid: d107beae1ac512149a8fa2aa7c482cf3, type: 3}
-  enemyPrefab6: {fileID: 0}
-  spawnEnemies: 1
   Boss1: {fileID: 9113561252080322206, guid: d6112008cba14c147b799fa5f0944f3d, type: 3}
   Boss2: {fileID: 1758701902456473070, guid: ca62c833fea013f409f864105d6e9932, type: 3}
   platformprefabs1:
   - {fileID: 6093692152936551374, guid: 404bd479c76b4f84691964e6f9661646, type: 3}
   - {fileID: 5355059060697659357, guid: d2d72aa4f42a1e347a48f1dc03a85c44, type: 3}
   - {fileID: 561636754768986979, guid: 94c067ab210db1240993ce01be178804, type: 3}
+  - {fileID: 6677669543637455367, guid: f7a0e151a7bd6a14eac339758c9e6ce6, type: 3}
+  - {fileID: 6093692152936551374, guid: 404bd479c76b4f84691964e6f9661646, type: 3}
+  - {fileID: 5355059060697659357, guid: d2d72aa4f42a1e347a48f1dc03a85c44, type: 3}
+  - {fileID: 561636754768986979, guid: 94c067ab210db1240993ce01be178804, type: 3}
+  - {fileID: 6677669543637455367, guid: f7a0e151a7bd6a14eac339758c9e6ce6, type: 3}
+  - {fileID: 6093692152936551374, guid: 3913279e6971f7748bd87cdcb8b7f7a6, type: 3}
+  - {fileID: 5355059060697659357, guid: 1b720fa61bf02aa49ba87a8c5da2d43c, type: 3}
   - {fileID: 6677669543637455367, guid: f7a0e151a7bd6a14eac339758c9e6ce6, type: 3}
   platformprefabs2:
   - {fileID: 6093692152936551374, guid: 404bd479c76b4f84691964e6f9661646, type: 3}
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   OnBossBeaten:
     m_PersistentCalls:
       m_Calls: []
-  scoreToSpawnBoss1: 5
+  scoreToSpawnBoss1: 20
   scoreToSpawnBoss2: 20
   playerLive: 1
   bossDeath: 0

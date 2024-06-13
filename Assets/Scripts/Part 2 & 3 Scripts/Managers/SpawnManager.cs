@@ -85,6 +85,7 @@ public class SpawnManager : MonoBehaviour
         if (LevelManager.Instance.currentLevelName=="Level1")
         {
             int randomIndex = Random.Range(0, platformprefabs1.Length);
+            Debug.Log(randomIndex);
             GameObject selectedPlatfrom = platformprefabs1[randomIndex];
             Instantiate(selectedPlatfrom, new Vector3(0, 0, 39), Quaternion.identity);
 

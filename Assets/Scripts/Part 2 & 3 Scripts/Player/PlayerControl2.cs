@@ -48,6 +48,15 @@ public class PlayerControl2 : MonoBehaviour
         //Jump with physics
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
+            if (PickUpManager.jumpBoost==false)
+            {
+                jumpForce= originalJumpForce;
+            }
+            if(PickUpManager.jumpBoost==true)
+            {
+                jumpForce = 23;
+
+            }
             objRb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
         }
 

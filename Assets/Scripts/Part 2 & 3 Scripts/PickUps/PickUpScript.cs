@@ -14,7 +14,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             GameManager.Instance.ActivatePickup1();
             //pickUpFX.Play();
-            PickUpManager.Instance.JumpBoost(other.GetComponent<PlayerControl2>());
+            //PickUpManager.Instance.JumpBoost(other.GetComponent<PlayerControl2>());
             Destroy(this.gameObject);
         }
         if (other.gameObject.CompareTag("Enemy"))
