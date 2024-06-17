@@ -8,11 +8,13 @@ public class StartMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("should start the game");
+        AudioManager.Instance.PlayButtonPressSound();
         //loads the next scene which is level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         Debug.Log("Quitting game");
         Application.Quit();
 

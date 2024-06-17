@@ -26,6 +26,7 @@ public class EndMenu : MonoBehaviour
     
     public void QuitGame()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         Debug.Log("Quitting game");
         Application.Quit();
     }
@@ -33,6 +34,7 @@ public class EndMenu : MonoBehaviour
    
     public void ReloadLevel()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         LevelManager.Instance.FromGameoverToLevel1();
         //Loads level1
         

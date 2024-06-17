@@ -32,11 +32,13 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         Application.Quit();
     }
     
     public void ReloadLevel()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         LevelManager.Instance.currentLevelName = "Level1";
         //Loads level1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

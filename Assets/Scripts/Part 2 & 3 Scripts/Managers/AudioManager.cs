@@ -7,7 +7,16 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
     public AudioSource backgroundMusic;
     public AudioSource buttonPressSound;
+    public AudioSource speedBoostSound;
+    public AudioSource jumpBoostSound;
+    public AudioSource immunitySound;
+    public AudioSource bossSound;
+    public AudioSource deathSound;
+    public AudioSource footStepsSound;
     public AudioSource pickupActivationSound;
+
+    public AudioClip buttonpressedSoundClip;
+
 
     private void Awake()
     {
@@ -21,6 +30,13 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    private void Start()
+    {
+        if (buttonPressSound ==null)
+        {
+            buttonPressSound= gameObject.AddComponent<AudioSource>();
+        }
+    }
 
     // Play background music
     public void PlayBackgroundMusic()
@@ -30,14 +46,21 @@ public class AudioManager : MonoBehaviour
             backgroundMusic.Play();
         }
     }
+    public void SetBackgroundMusicVolume(float volume)
+    {
+        backgroundMusic.volume = Mathf.Clamp01(volume);  // Ensure volume is within range [0, 1]
+    }
 
     // Play button press sound
     public void PlayButtonPressSound()
     {
-        if (buttonPressSound != null)
-        {
-            buttonPressSound.PlayOneShot(buttonPressSound.clip);
-        }
+        
+            buttonPressSound.PlayOneShot(buttonpressedSoundClip);
+        
+    }
+    public void SetButtonPressedVolume(float volume)
+    {
+        buttonPressSound.volume = Mathf.Clamp01(volume);  // Ensure volume is within range [0, 1]
     }
 
     // Play pickup activation sound
@@ -48,4 +71,31 @@ public class AudioManager : MonoBehaviour
             pickupActivationSound.PlayOneShot(pickupActivationSound.clip);
         }
     }
+    public void SpeedBoostSound()
+    {
+      speedBoostSound.PlayOneShot(speedBoostSound.clip);
+    }
+    public void JumpBoostSound()
+    { 
+      jumpBoostSound.PlayOneShot(jumpBoostSound.clip);
+    }
+    public void ImmunitySound()
+    {
+        immunitySound.PlayOneShot(immunitySound.clip);
+    }
+    public void BossSound()
+    {
+        bossSound.PlayOneShot(pickupActivationSound.clip);
+    }
+    public void DeathSound()
+    {
+        deathSound.PlayOneShot(deathSound.clip);
+    }
+    public void FootStepsSound()
+    {
+        footStepsSound.PlayOneShot(footStepsSound.clip);
+    }
+   
+
+
 }
