@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
             //calls the die method
+            AudioManager.Instance.PlayDeathSound();
             gm.PlayerDeath();
             Die();
            

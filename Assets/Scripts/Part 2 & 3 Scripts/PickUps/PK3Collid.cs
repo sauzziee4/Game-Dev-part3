@@ -26,6 +26,7 @@ public class PK3Collid : MonoBehaviour
         //if the player collides with the pickup the pickup manager is notified and the object is destroyed
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySpeedBoostSound();
             GameManager.Instance.ActivatePickup3();
             
             Destroy(this.gameObject);

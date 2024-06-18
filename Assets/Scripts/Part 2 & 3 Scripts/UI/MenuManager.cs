@@ -20,12 +20,15 @@ public class MenuManager : MonoBehaviour
     }
     public void ShowHighScoreMenu()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         startMenu.SetActive(false);
         highScoreMenu.SetActive(true);
 
     }
     public void ShowStartMenu()
     {
+        AudioManager.Instance.PlayButtonPressSound();
+
         startMenu.SetActive(true);
         highScoreMenu.SetActive(false);
 

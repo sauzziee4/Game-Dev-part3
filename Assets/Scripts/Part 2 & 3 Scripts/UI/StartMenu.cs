@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    public AudioSource ButtonAudioSource;
     public void StartGame()
     {
+        
         Debug.Log("should start the game");
         AudioManager.Instance.PlayButtonPressSound();
         //loads the next scene which is level1

@@ -10,8 +10,8 @@ public class VolumeControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonPressedSlider.value = AudioManager.Instance.buttonPressSound.volume;
-        buttonPressedSlider.onValueChanged.AddListener(OnButtonPressedVolumeChanged);
+        //buttonPressedSlider.value = AudioManager.Instance.buttonPressSound.volume;
+        //buttonPressedSlider.onValueChanged.AddListener(OnButtonPressedVolumeChanged);
         
     }
 

@@ -91,6 +91,7 @@ public class ServicesSetup : MonoBehaviour
     }
     private async Task LoadHighscore()
     {
+        AudioManager.Instance.PlayButtonPressSound();
         Item data = await CloudSave.LoadData();
         _highscoreText.SetText(data.Value.GetAs<int>().ToString());
         print(_highscoreText.text);

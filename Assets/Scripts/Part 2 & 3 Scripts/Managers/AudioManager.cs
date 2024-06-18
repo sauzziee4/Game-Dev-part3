@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public AudioSource backgroundMusic;
-    public AudioSource buttonPressSound;
+    //public AudioSource buttonPressSound;
     public AudioSource speedBoostSound;
     public AudioSource jumpBoostSound;
     public AudioSource immunitySound;
@@ -15,7 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioSource footStepsSound;
     public AudioSource pickupActivationSound;
 
-    public AudioClip buttonpressedSoundClip;
+    public AudioSource buttonpressedAudioSource;
+
+    //public GameObject ButtonSoundObject;
+    //private AudioSource ButtonSoundAudioSource;
 
 
     private void Awake()
@@ -23,6 +26,7 @@ public class AudioManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            //ButtonSoundAudioSource= GetComponent<AudioSource>();
         }
         else
         {
@@ -32,10 +36,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        if (buttonPressSound ==null)
-        {
-            buttonPressSound= gameObject.AddComponent<AudioSource>();
-        }
+        
     }
 
     // Play background music
@@ -54,46 +55,42 @@ public class AudioManager : MonoBehaviour
     // Play button press sound
     public void PlayButtonPressSound()
     {
-        
-            buttonPressSound.PlayOneShot(buttonpressedSoundClip);
-        
+
+        buttonpressedAudioSource.Play();
+
+
+
     }
     public void SetButtonPressedVolume(float volume)
     {
-        buttonPressSound.volume = Mathf.Clamp01(volume);  // Ensure volume is within range [0, 1]
+        //buttonPressSound.volume = Mathf.Clamp01(volume);  // Ensure volume is within range [0, 1]
     }
 
     // Play pickup activation sound
-    public void PlayPickupActivationSound()
-    {
-        if (pickupActivationSound != null)
-        {
-            pickupActivationSound.PlayOneShot(pickupActivationSound.clip);
-        }
-    }
-    public void SpeedBoostSound()
+   
+    public void PlaySpeedBoostSound()
     {
       speedBoostSound.PlayOneShot(speedBoostSound.clip);
     }
-    public void JumpBoostSound()
-    { 
-      jumpBoostSound.PlayOneShot(jumpBoostSound.clip);
-    }
-    public void ImmunitySound()
+    public void PlayJumpBoostSound()
     {
-        immunitySound.PlayOneShot(immunitySound.clip);
+        jumpBoostSound.Play();
     }
-    public void BossSound()
+    public void PlayImmunitySound()
     {
-        bossSound.PlayOneShot(pickupActivationSound.clip);
+        immunitySound.Play();
     }
-    public void DeathSound()
+    public void PlayBossSound()
     {
-        deathSound.PlayOneShot(deathSound.clip);
+        bossSound.Play();
     }
-    public void FootStepsSound()
+    public void PlayDeathSound()
     {
-        footStepsSound.PlayOneShot(footStepsSound.clip);
+        deathSound.Play();
+    }
+    public void PlayFootStepsSound()
+    {
+        footStepsSound.Play();
     }
    
 
